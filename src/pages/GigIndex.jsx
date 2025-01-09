@@ -63,6 +63,9 @@ export function GigIndex() {
                 {userService.getLoggedinUser() && <button onClick={onAddCar}>Add Gig</button>}
                 
             </header>
+            {gigs&&gigs.map(gig=>{
+                return <p key={gig._id}>{gig._id} -{ gig.title} - {gig.price} </p>
+            })}
             {/* <CarFilter filterBy={filterBy} setFilterBy={setFilterBy} />
             <CarList 
                 cars={cars}
