@@ -20,18 +20,17 @@ export function AppHeader() {
 
 	return (
 		<header className="app-header full">
+			<NavLink to="/" className="logo">
+				<img src="/img/fiverr_logo.svg" alt="Fiverr Logo" className="logo-img"/>
+			</NavLink>
 			<nav>
-				<NavLink to="/" className="logo">
-					E2E Demo
-				</NavLink>
-				<NavLink to="about">About</NavLink>
+
 				<NavLink to="gig">Explore Gigs</NavLink>
-				<NavLink to="chat">Chat</NavLink>
-				<NavLink to="review">Review</NavLink>
+				<NavLink to="">Become a Seller</NavLink>
 
-                {user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
+				{/* {user?.isAdmin && <NavLink to="/admin">Admin</NavLink>} */}
 
-				{!user && <NavLink to="login" className="login-link">Login</NavLink>}
+				{!user && <NavLink to="login" className="login-link">Sing in</NavLink>}
 				{user && (
 					<div className="user-info">
 						<Link to={`user/${user._id}`}>
@@ -42,7 +41,9 @@ export function AppHeader() {
 						<button onClick={onLogout}>logout</button>
 					</div>
 				)}
+				<NavLink to="">Join</NavLink> 
 			</nav>
+		
 		</header>
 	)
 }
