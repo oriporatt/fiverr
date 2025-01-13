@@ -6,7 +6,7 @@
     display: grid;
     height: 5rem;
     padding: 0 rem(32px);
-    grid-template-columns: 1fr 1.5fr auto;
+    grid-template-columns: auto 1fr auto 3fr;
     align-items: center;
     border-bottom: 1px solid #e0e0e0; 
     position: fixed;
@@ -16,22 +16,41 @@
     background-color: $white;
 
 
-    .logo-img {
+    .side-menu{
         grid-column: 1;
-        width: 89px;
-        height: 27px;
+        width: rem(27px);
+        height: rem(27px);   
+        margin-right: 10px;   
+        margin-top: rem(10px); 
+        display: block;
+    }
+
+    .logo-img {
+        grid-column: 2;
+        max-width: rem(89px); 
+        max-height: rem(27px);  
         fill: none;
         img{
             width: 100%; 
-            height: auto;
+            height: 100%;
+            object-fit: contain;
+
         }
     }
 
+    .search-box{
+        grid-column: 3;
+        background-color: red;
+
+    }
+
+
     
     nav {
+        grid-column: 4;
         font-family: 'Macan', sans-serif; 
         font-weight: 700;
-        grid-column: 3;
+        
         font-size: 1rem;
         display: grid;
         grid-auto-flow: column;
@@ -40,8 +59,8 @@
         gap: rem(24px);
         margin-right: rem(24px);
 
-        .active {
-        }
+        // .active {
+        // }
 
 
         .login-link {
@@ -93,5 +112,42 @@
     //     }
     // }
 
+    @include for-narrow-layout {
+        .side-menu{
+            display: block;
+        }
+
+        .become-seller{
+            display: none;
+        }
+
+        .gig-link{
+            display: none;
+        }
+    }
+
+    @include for-normal-layout {
+        .side-menu{
+            display: none;
+        }        
+        .become-seller{
+            display: block;
+        }
+        .gig-link{
+            display: block;
+        }
+
+    }
+    @include for-wide-layout {
+        .side-menu{
+            display: none;
+        }
+        .become-seller{
+            display: block;
+        }
+        .gig-link{
+            display: block;
+        }
+    }
 
 }
