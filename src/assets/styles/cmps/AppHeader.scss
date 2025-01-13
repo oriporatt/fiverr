@@ -1,19 +1,21 @@
 
-
-.app-header {
-    
-
-    display: grid;
-    height: 5rem;
-    padding: 0 rem(32px);
-    grid-template-columns: auto 1fr auto 3fr;
-    align-items: center;
-    border-bottom: 1px solid #e0e0e0; 
+.app-header{
     position: fixed;
     top: 0;
     left: 0;
+    border-bottom: 1px solid #e0e0e0; 
     width: 100%;
+}
+
+.header-elements {
+    
+    display: grid;
+    height: 5rem;
+    grid-template-columns: auto 1fr auto 3fr;
+    align-items: center;
     background-color: $white;
+
+
 
 
     .side-menu{
@@ -57,7 +59,6 @@
         justify-content: end;
         align-items: center;
         gap: rem(24px);
-        margin-right: rem(24px);
 
         // .active {
         // }
@@ -164,3 +165,4 @@
     }
 
 }
+

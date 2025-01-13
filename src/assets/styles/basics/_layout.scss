@@ -11,25 +11,35 @@
         }
     }
 
+    .full{
+        grid-column: 1 / -1;
+
+    }
+
+    
     @include for-narrow-layout {
         grid-template-columns: 
-            minmax(2rem, 1fr)
-            minmax(auto, $mobile-breakpoint)
-            minmax(2rem, 1fr);
+            // minmax(2rem, 1fr)
+            // minmax(auto, $mobile-breakpoint)
+            // minmax(2rem, 1fr);
+            minmax(2rem)
+            auto
+            minmax(2rem);
     }
     @include for-normal-layout {
-
         grid-template-columns: 
-            minmax(2rem, 1fr)
-            minmax(auto, $narrow-breakpoint)
-            minmax(2rem, 1fr);
+            // minmax(2rem, 1fr)
+            // minmax(auto, $narrow-breakpoint)
+            // minmax(2rem, 1fr);
+            minmax(2rem)
+            auto
+            minmax(2rem);
     }
     @include for-wide-layout {
-
-        grid-template-columns: 
-            minmax(2rem, 1fr)     
-            minmax(auto, $normal-breakpoint) 
-            minmax(2rem, 1fr);
+        grid-template-columns:
+            minmax(2rem, 1fr)
+            minmax(auto, $normal-breakpoint)
+            minmax(2rem, 1fr)
     }
 }
 
