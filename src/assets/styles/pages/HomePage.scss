@@ -1,0 +1,142 @@
+
+.home-page{
+
+    .main-home-search{
+        margin-top: rem(40px);
+        justify-items: center;
+        width: 100%; 
+        max-width: 1400px; 
+        background-image: url('/img/hero.png');
+        height: 438px; 
+        border-radius: 16px;
+        padding: 0;
+        
+        background-size: cover; 
+        background-repeat: no-repeat;
+
+        display: grid;
+        grid-template-rows: 2fr auto auto 1fr ;
+        justify-content: center;
+        text-align: center;
+
+        div{
+            grid-row: 2;
+            margin-bottom: rem(40px);
+        }
+        & h1{
+            
+            max-width: 800px;
+            font-family: 'Macan', sans-serif; 
+            font-weight: 400;
+            font-size: rem(60px);
+            letter-spacing:  -.04em;
+            line-height: rem(67px);
+            margin: 0;
+            color: $white;
+
+
+            span{
+                font-family: 'DomaineDisplay', sans-serif; 
+                font-weight: 400;
+            }
+        }
+       
+
+        .search-container {
+            position: relative;
+            grid-row: 3;
+            display: inline-block;
+            width: rem(560px);
+            height: rem(60px);
+            margin-bottom: 0;
+           
+            input {
+                width: 100%;
+                height: 100%;
+                padding-left: rem(20px);          
+                padding-right: rem(20px);  
+                font-family: 'Macan', sans-serif; 
+                font-weight: 400;
+                border-radius: rem(16px);
+            }
+          
+            .search-icon {
+                background-color:#003912 ;
+                position: absolute;
+                right: rem(10px);
+                top: rem(10px);
+                width: rem(40px);
+                height: rem(40px);
+                border-radius: rem(12px);
+                padding: rem(10px) rem(10px);
+                
+                
+            }
+        }
+
+        .trusted-by{
+            grid-row: 4;
+            display: grid;
+            grid-auto-flow: column;
+            align-items: center;
+
+            color: #adadadfa;
+
+            & > * {
+                margin-right: rem(40px);
+                width: 70px;
+            }
+            .text{
+                font-size: rem(12px);
+                font-weight: bold;
+                color: #adadadfa;
+            }
+            img{
+                filter: invert(25%) sepia(2%) saturate(100%) hue-rotate(200deg) brightness(75%) contrast(50%);
+            }
+        }
+        
+
+    }
+    // @include for-narrow-layout {
+    //     .side-menu{
+    //         display: block;
+    //     }
+
+    //     .become-seller{
+    //         display: none;
+    //     }
+
+    //     .gig-link{
+    //         display: none;
+    //     }
+    // }
+
+    // @include for-normal-layout {
+    //     .side-menu{
+    //         display: none;
+    //     }        
+    //     .become-seller{
+    //         display: block;
+    //     }
+    //     .gig-link{
+    //         display: block;
+    //     }
+
+    // }
+    // @include for-wide-layout {
+    //     .side-menu{
+    //         display: none;
+    //     }
+    //     .become-seller{
+    //         display: block;
+    //     }
+    //     .gig-link{
+    //         display: block;
+    //     }
+    // }
+
+}
+
+
+

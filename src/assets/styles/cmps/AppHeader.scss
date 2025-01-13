@@ -112,6 +112,19 @@
     //     }
     // }
 
+    // for mobile:
+    .side-menu{
+        display: block;
+    }
+
+    .become-seller{
+        display: none;
+    }
+
+    .gig-link{
+        display: none;
+    }
+
     @include for-narrow-layout {
         .side-menu{
             display: block;
