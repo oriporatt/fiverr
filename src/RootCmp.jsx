@@ -23,7 +23,7 @@ export function RootCmp() {
             <AppHeader />
             <UserMsg />
 
-            <main>
+            <main className='main'>
                 <Routes>
                     <Route path="" element={<HomePage />} />
                     <Route path="about" element={<AboutUs />}>
@@ -42,7 +42,7 @@ export function RootCmp() {
                     </Route>
                 </Routes>
             </main>
-            <AppFooter />
+            {/* <AppFooter /> */}
         </div>
     )
 }

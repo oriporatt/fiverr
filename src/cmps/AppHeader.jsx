@@ -41,7 +41,7 @@ export function AppHeader() {
 						<button onClick={onLogout}>logout</button>
 					</div>
 				)}
-				<NavLink to="">Join</NavLink> 
+				<NavLink to=""><button>Join</button></NavLink> 
 			</nav>
 		
 		</header>
