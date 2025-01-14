@@ -7,7 +7,7 @@ import { logout } from '../store/actions/user.actions'
 export function AppHeader() {
 	const location = useLocation();
 	const isHomePage = location.pathname==='/'
-	console.log(isHomePage)
+
 	const user = useSelector(storeState => storeState.userModule.user)
 	const searchBoxPos = useSelector(storeState => storeState.systemModule.searchBoxPosition)
 	
