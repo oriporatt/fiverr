@@ -6,13 +6,10 @@
         justify-items: center;
         width: 100%; 
         max-width: 1400px; 
-        //img:
-        background-image: url('/img/hero.png');
-        height: 500px; 
-        border-radius: 16px;
+        
         padding: 0;
-        background-size: cover; 
-        background-repeat: no-repeat;
+
+
 
         display: grid;
         //vertical seperation:
@@ -26,12 +23,10 @@
         }
         & h1{
             
-            max-width: 800px;
             font-family: 'Macan', sans-serif; 
             font-weight: 400;
             font-size: rem(60px);
             letter-spacing:  -.04em;
-            line-height: rem(67px);
             margin: 0;
             color: $white;
 
@@ -81,7 +76,7 @@
             grid-auto-flow: column;
             align-items: center;
 
-            color: #adadadfa;
+            
 
             & > * {
                 margin-right: rem(40px);
@@ -92,50 +87,114 @@
                 font-weight: bold;
                 color: #adadadfa;
             }
-            img{
-                filter: invert(25%) sepia(2%) saturate(100%) hue-rotate(200deg) brightness(75%) contrast(50%);
+
+
+
+        }
+        @include for-mobile-layout{
+            border-radius: none;
+            padding-top: rem(0px);
+            background: linear-gradient(180deg, #003912 36.72%, #19aa64 141.43%);
+            height: 350px; 
+            div h1{
+                max-width: 150px;
+                font-size: rem(32px);
+                text-align: center;
+                line-height: rem(45px);
+            }
+            .trusted-by{
+                color: transparent;
+                .text{
+                    color: transparent;
+                }
+            }
+            .search-container {
+                width: rem(150px); 
+            }
+                
+        }
+
+
+        @include for-narrow-layout{
+            border-radius: none;
+            padding-top: rem(50px);
+            background: linear-gradient(180deg, #003912 36.72%, #19aa64 141.43%);
+            height: 350px; 
+            div h1{
+                max-width: 350px;
+                font-size: rem(40px);
+                text-align: center;
+                line-height: rem(45px);
+            }
+            .trusted-by{
+                color: transparent;
+                .text{
+                    color: transparent;
+                }
+            }
+            .search-container {
+                width: rem(350px); 
+            }
+                
+        }
+
+
+        @include for-normal-layout{
+            border-radius: 16px;
+            padding-top: none;
+
+            //img:
+            height: 400px; 
+            div h1{
+                max-width: 800px;
+                font-size: rem(60px);
+                text-align: center;
+                line-height: rem(67px);
+
+            }
+            background-image: url('/img/hero.png');
+            background-size: cover; 
+            background-repeat: no-repeat;
+            .trusted-by{
+                color: #adadadfa;
+                .text{
+                    color: #adadadfa;
+                }
+            }
+            .search-container {
+                width: rem(560px); 
+            }
+        }
+
+        @include for-wide-layout{
+            border-radius: 16px;
+            padding-top: none;
+            //img:
+            height: 500px; 
+            div h1{
+                max-width: 800px;
+                font-size: rem(60px);
+                text-align: center;
+                line-height: rem(67px);
+
+            }
+            background-image: url('/img/hero.png');
+            background-size: cover; 
+            background-repeat: no-repeat;
+            .trusted-by{
+                color: #adadadfa;
+                .text{
+                    color: #adadadfa;
+                }
+            }
+            .search-container {
+                width: rem(560px); 
             }
         }
         
 
     }
-    // @include for-narrow-layout {
-    //     .side-menu{
-    //         display: block;
-    //     }
 
-    //     .become-seller{
-    //         display: none;
-    //     }
-
-    //     .gig-link{
-    //         display: none;
-    //     }
-    // }
-
-    // @include for-normal-layout {
-    //     .side-menu{
-    //         display: none;
-    //     }        
-    //     .become-seller{
-    //         display: block;
-    //     }
-    //     .gig-link{
-    //         display: block;
-    //     }
-
-    // }
-    // @include for-wide-layout {
-    //     .side-menu{
-    //         display: none;
-    //     }
-    //     .become-seller{
-    //         display: block;
-    //     }
-    //     .gig-link{
-    //         display: block;
-    //     }
-    // }
 
 }
 

@@ -1,7 +1,7 @@
 
 .main-container {
     display: grid;
-    grid-template-columns: 2rem 1fr 2rem;
+    
 
     > * {
         grid-column: 2;
@@ -15,25 +15,26 @@
         grid-column: 1 / -1;
 
     }
-
+    @include for-mobile-layout {
+        grid-template-columns: 0 auto 0;
+    }
     
     @include for-narrow-layout {
-        grid-template-columns: 
+        grid-template-columns: 0 auto 0;
+    }
             // minmax(2rem, 1fr)
             // minmax(auto, $mobile-breakpoint)
             // minmax(2rem, 1fr);
-            minmax(2rem)
-            auto
-            minmax(2rem);
-    }
+
+    
     @include for-normal-layout {
         grid-template-columns: 
             // minmax(2rem, 1fr)
             // minmax(auto, $narrow-breakpoint)
             // minmax(2rem, 1fr);
-            minmax(2rem)
+            2rem
             auto
-            minmax(2rem);
+            2rem;
     }
     @include for-wide-layout {
         grid-template-columns:

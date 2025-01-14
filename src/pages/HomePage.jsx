@@ -49,8 +49,8 @@ export function HomePage() {
 
             <div className="main-home-search">
                 <div>
-                    <h1>Scale your professional</h1> 
-                    <h1>workforce with <span>freelancers</span></h1>
+                    <h1>Scale your professional workforce with <span>freelancers</span></h1>
+                    {/* <h1>workforce with <span>freelancers</span></h1> */}
                 </div>
                 <div className="search-container" ref={searchBoxEl} >
                     <input type="text" placeholder="Search for any service..."/>

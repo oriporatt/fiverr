@@ -6,20 +6,17 @@
     border-bottom: 1px solid #e0e0e0; 
     width: 100%;
     z-index: 9999;
+    background-color: $white;
 }
 
 .header-elements {
     
     display: grid;
     height: 5rem;
-    
     align-items: center;
     background-color: $white;
     justify-items: center;
-
-
-    
-
+ 
     .side-menu{
         width: rem(27px);
         height: rem(27px);   
@@ -131,7 +128,8 @@
     }
 
     @include for-mobile-layout{
-        grid-template-columns:auto auto 1fr auto;
+        margin-left: none;
+        grid-template-columns:1fr 1fr  1fr;
         .side-menu{
             display: block;
             grid-column: 1;
@@ -145,19 +143,22 @@
         }
         .logo-img {
             grid-column: 2;
+            
+
         }
         .top-search-box{
             display: none;
 
         }
         .nav{
-            grid-column: 4;
+            grid-column: 3;
         }
     }
 
 
     //narrow : with search top option, with menu icon , small nav menu, no img
     @include for-narrow-layout {
+        margin-left: 2rem;
         grid-template-columns:auto auto 1fr auto;
         .side-menu{
             display: block;
@@ -184,6 +185,8 @@
 
     //normal : with search top option, no menu icon , big nav menu, with img
     @include for-normal-layout {
+        margin-left: none;
+
         grid-template-columns:auto 1fr auto;
         .side-menu{
             display: none;
@@ -208,6 +211,8 @@
     }
     // wide : with search top option, no menu icon , big nav menu, with img
     @include for-wide-layout {
+        margin-left: none;
+
         grid-template-columns:auto 1fr auto;
         .side-menu{
             display: none;
