@@ -6,20 +6,21 @@
         justify-items: center;
         width: 100%; 
         max-width: 1400px; 
+        //img:
         background-image: url('/img/hero.png');
-        height: 438px; 
+        height: 500px; 
         border-radius: 16px;
         padding: 0;
-        
         background-size: cover; 
         background-repeat: no-repeat;
 
         display: grid;
+        //vertical seperation:
         grid-template-rows: 2fr auto auto 1fr ;
         justify-content: center;
         text-align: center;
 
-        div{
+        div{ //headers tex
             grid-row: 2;
             margin-bottom: rem(40px);
         }
