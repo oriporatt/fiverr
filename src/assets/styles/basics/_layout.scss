@@ -1,3 +1,6 @@
+@use "../setup/mixins";
+@use "../setup/variables";
+
 
 .main-container {
     display: grid;
@@ -15,11 +18,11 @@
         grid-column: 1 / -1;
 
     }
-    @include for-mobile-layout {
+    @include mixins.for-mobile-layout {
         grid-template-columns: 0 auto 0;
     }
     
-    @include for-narrow-layout {
+    @include mixins.for-narrow-layout {
         grid-template-columns: 0 auto 0;
     }
             // minmax(2rem, 1fr)
@@ -27,7 +30,7 @@
             // minmax(2rem, 1fr);
 
     
-    @include for-normal-layout {
+    @include mixins.for-normal-layout {
         grid-template-columns: 
             // minmax(2rem, 1fr)
             // minmax(auto, $narrow-breakpoint)
@@ -36,10 +39,10 @@
             auto
             2rem;
     }
-    @include for-wide-layout {
+    @include mixins.for-wide-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
-            minmax(auto, $normal-breakpoint)
+            minmax(auto, variables.$normal-breakpoint)
             minmax(2rem, 1fr)
     }
 }

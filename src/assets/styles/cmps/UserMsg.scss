@@ -1,3 +1,5 @@
+@use "../setup/variables";
+
 .user-msg {
     position: fixed;
     top: 60px;
@@ -24,11 +26,11 @@
 }
 
 .user-msg button {
-    background-color: $gray1;
+    background-color: variables.$gray1;
     padding: 1px 6px;
     border:0;
     border-radius: 50%;
-    color: $gray4;
+    color: variables.$gray4;
 }
 
 .user-msg.success {

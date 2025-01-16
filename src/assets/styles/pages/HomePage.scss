@@ -1,8 +1,12 @@
+@use "../setup/functions";
+@use "../setup/mixins";
+@use "../setup/variables";
+
 
 .home-page{
 
     .main-home-search{
-        margin-top: rem(40px);
+        margin-top: functions.rem(40px);
         justify-items: center;
         width: 100%; 
         max-width: 1400px; 
@@ -19,16 +23,16 @@
 
         div{ //headers tex
             grid-row: 2;
-            margin-bottom: rem(40px);
+            margin-bottom: functions.rem(40px);
         }
         & h1{
             
             font-family: 'Macan', sans-serif; 
             font-weight: 400;
-            font-size: rem(60px);
+            font-size: functions.rem(60px);
             letter-spacing:  -.04em;
             margin: 0;
-            color: $white;
+            color: variables.$white;
 
 
             span{
@@ -42,29 +46,29 @@
             position: relative;
             grid-row: 3;
             display: inline-block;
-            width: rem(560px);
-            height: rem(60px);
+            width: functions.rem(560px);
+            height: functions.rem(60px);
             margin-bottom: 0;
            
             input {
                 width: 100%;
                 height: 100%;
-                padding-left: rem(20px);          
-                padding-right: rem(20px);  
+                padding-left: functions.rem(20px);          
+                padding-right: functions.rem(20px);  
                 font-family: 'Macan', sans-serif; 
                 font-weight: 400;
-                border-radius: rem(16px);
+                border-radius: functions.rem(16px);
             }
           
             .search-icon {
                 background-color:#003912 ;
                 position: absolute;
-                right: rem(10px);
-                top: rem(10px);
-                width: rem(40px);
-                height: rem(40px);
-                border-radius: rem(12px);
-                padding: rem(10px) rem(10px);
+                right: functions.rem(10px);
+                top: functions.rem(10px);
+                width: functions.rem(40px);
+                height: functions.rem(40px);
+                border-radius: functions.rem(12px);
+                padding: functions.rem(10px) functions.rem(10px);
                 
                 
             }
@@ -79,11 +83,11 @@
             
 
             & > * {
-                margin-right: rem(40px);
+                margin-right: functions.rem(40px);
                 width: 70px;
             }
             .text{
-                font-size: rem(12px);
+                font-size: functions.rem(12px);
                 font-weight: bold;
                 color: #adadadfa;
             }
@@ -91,16 +95,16 @@
 
 
         }
-        @include for-mobile-layout{
+        @include mixins.for-mobile-layout{
             border-radius: none;
-            padding-top: rem(0px);
+            padding-top: functions.rem(0px);
             background: linear-gradient(180deg, #003912 36.72%, #19aa64 141.43%);
             height: 350px; 
             div h1{
                 max-width: 150px;
-                font-size: rem(32px);
+                font-size: functions.rem(32px);
                 text-align: center;
-                line-height: rem(45px);
+                line-height: functions.rem(45px);
             }
             .trusted-by{
                 color: transparent;
@@ -109,22 +113,22 @@
                 }
             }
             .search-container {
-                width: rem(150px); 
+                width: functions.rem(150px); 
             }
                 
         }
 
 
-        @include for-narrow-layout{
+        @include mixins.for-narrow-layout{
             border-radius: none;
-            padding-top: rem(50px);
+            padding-top: functions.rem(50px);
             background: linear-gradient(180deg, #003912 36.72%, #19aa64 141.43%);
             height: 350px; 
             div h1{
                 max-width: 350px;
-                font-size: rem(40px);
+                font-size: functions.rem(40px);
                 text-align: center;
-                line-height: rem(45px);
+                line-height: functions.rem(45px);
             }
             .trusted-by{
                 color: transparent;
@@ -133,13 +137,13 @@
                 }
             }
             .search-container {
-                width: rem(350px); 
+                width: functions.rem(350px); 
             }
                 
         }
 
 
-        @include for-normal-layout{
+        @include mixins.for-normal-layout{
             border-radius: 16px;
             padding-top: none;
 
@@ -147,9 +151,9 @@
             height: 400px; 
             div h1{
                 max-width: 800px;
-                font-size: rem(60px);
+                font-size: functions.rem(60px);
                 text-align: center;
-                line-height: rem(67px);
+                line-height: functions.rem(67px);
 
             }
             background-image: url('/img/hero.png');
@@ -162,20 +166,20 @@
                 }
             }
             .search-container {
-                width: rem(560px); 
+                width: functions.rem(560px); 
             }
         }
 
-        @include for-wide-layout{
+        @include mixins.for-wide-layout{
             border-radius: 16px;
             padding-top: none;
             //img:
             height: 500px; 
             div h1{
                 max-width: 800px;
-                font-size: rem(60px);
+                font-size: functions.rem(60px);
                 text-align: center;
-                line-height: rem(67px);
+                line-height: functions.rem(67px);
 
             }
             background-image: url('/img/hero.png');
@@ -188,7 +192,7 @@
                 }
             }
             .search-container {
-                width: rem(560px); 
+                width: functions.rem(560px); 
             }
         }
         

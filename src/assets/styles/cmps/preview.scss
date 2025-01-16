@@ -1,6 +1,8 @@
+@use "../setup/variables";
+
 .preview {
     a {
-        color: $clr4;
+        color: variables.$clr4;
         padding: 0;
     }    
 	p {

@@ -1,39 +1,39 @@
 // Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/mixins";
-@import "setup/typography";
+@use "setup/variables";
+@use "setup/functions";
+@use "setup/mixins";
+@use "setup/typography";
 
 // Basics
-@import "basics/helpers";
-@import "basics/layout";
-@import "basics/base";
+@use "basics/helpers";
+@use "basics/layout";
+@use "basics/base";
 // @import "basics/links";
-@import "basics/forms";
+@use "basics/forms";
 
 
 // pages
-@import "RootCmp";
+@use "RootCmp";
 
-@import "pages/AboutUs";
-@import "pages/HomePage";
-@import "pages/CarIndex";
-@import "pages/ReviewIndex";
-@import "pages/UserDetails";
+@use "pages/AboutUs";
+@use "pages/HomePage";
+@use "pages/CarIndex";
+@use "pages/ReviewIndex";
+@use "pages/UserDetails";
 // @import "pages/TaskDetails";
-@import "pages/LoginSignup";
+@use "pages/LoginSignup";
 
 // Components
-@import "cmps/list";
-@import "cmps/preview";
+@use "cmps/list";
+@use "cmps/preview";
 
-@import "cmps/AppHeader";
-@import "cmps/AppFooter";
-@import "cmps/UserMsg";
+@use "cmps/AppHeader";
+@use "cmps/AppFooter";
+@use "cmps/UserMsg";
 
-@import "cmps/CarFilter";
-@import "cmps/ReviewEdit";
-@import "cmps/ReviewList";
-@import "cmps/ReviewPreview";
+@use "cmps/CarFilter";
+@use "cmps/ReviewEdit";
+@use "cmps/ReviewList";
+@use "cmps/ReviewPreview";
 // @import "cmps/CarList";
 // @import "cmps/CarPreview";

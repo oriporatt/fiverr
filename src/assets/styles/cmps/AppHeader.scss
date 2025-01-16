@@ -1,3 +1,7 @@
+@use "../setup/functions";
+@use "../setup/mixins";
+@use "../setup/variables";
+
 
 .app-header{
     position: fixed;
@@ -6,7 +10,7 @@
     border-bottom: 1px solid #e0e0e0; 
     width: 100%;
     z-index: 9999;
-    background-color: $white;
+    background-color: variables.$white;
 }
 
 .header-elements {
@@ -14,20 +18,20 @@
     display: grid;
     height: 5rem;
     align-items: center;
-    background-color: $white;
+    background-color: variables.$white;
     justify-items: center;
  
     .side-menu{
-        width: rem(27px);
-        height: rem(27px);   
+        width: functions.rem(27px);
+        height: functions.rem(27px);   
         margin-right: 10px;   
-        margin-top: rem(10px); 
+        margin-top: functions.rem(10px); 
         display: block;
     }
 
     .logo-img {
-        max-width: rem(89px); 
-        max-height: rem(27px);  
+        max-width: functions.rem(89px); 
+        max-height: functions.rem(27px);  
         fill: none;
         img{
             width: 100%; 
@@ -44,7 +48,7 @@
         grid-template-columns: 1fr auto;
         margin-left: 42px;
         margin-right: 42px;
-        fill: $white;
+        fill: variables.$white;
         height: 42px;
         max-width: 450px; 
         width: 80%;
@@ -66,8 +70,8 @@
         }
         svg{
             grid-column: 2;
-            width: rem(52px);
-            height: rem(42px);
+            width: functions.rem(52px);
+            height: functions.rem(42px);
             padding: 13px;
             background-color: #222325;
             align-self: center;
@@ -90,7 +94,7 @@
         grid-auto-flow: column;
         justify-content: end;
         align-items: center;
-        gap: rem(24px);
+        gap: functions.rem(24px);
 
         // .active {
         // }
@@ -103,22 +107,22 @@
         button {
             font-family: 'Macan', sans-serif; 
             font-weight: 700;
-            color: $clr3;
-            border: 1px solid $clr3;
-            background-color: $white;
+            color: variables.$clr3;
+            border: 1px solid variables.$clr3;
+            background-color: variables.$white;
             padding: 10px 20px;
             border-radius: 5px;
             &:hover{
-                background-color: $clr3;
-                color: $white;
+                background-color: variables.$clr3;
+                color: variables.$white;
             }
         }
 
 
         & a{
-            color: $clr2;
+            color: variables.$clr2;
             &:hover{
-                color: $clr3;
+                color: variables.$clr3;
                 text-decoration: none;
             }
         }
@@ -127,7 +131,7 @@
 
     }
 
-    @include for-mobile-layout{
+    @include mixins.for-mobile-layout{
         margin-left: none;
         grid-template-columns:1fr 1fr  1fr;
         .side-menu{
@@ -157,7 +161,7 @@
 
 
     //narrow : with search top option, with menu icon , small nav menu, no img
-    @include for-narrow-layout {
+    @include mixins.for-narrow-layout {
         margin-left: 2rem;
         grid-template-columns:auto auto 1fr auto;
         .side-menu{
@@ -184,7 +188,7 @@
     }
 
     //normal : with search top option, no menu icon , big nav menu, with img
-    @include for-normal-layout {
+    @include mixins.for-normal-layout {
         margin-left: none;
 
         grid-template-columns:auto 1fr auto;
@@ -210,7 +214,7 @@
 
     }
     // wide : with search top option, no menu icon , big nav menu, with img
-    @include for-wide-layout {
+    @include mixins.for-wide-layout {
         margin-left: none;
 
         grid-template-columns:auto 1fr auto;

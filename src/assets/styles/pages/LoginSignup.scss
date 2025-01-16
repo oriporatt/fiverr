@@ -1,3 +1,5 @@
+@use "../setup/variables";
+
 .login-form,
 .signup-form {
 	display: grid;
@@ -5,7 +7,7 @@
 	margin: auto;
 
 	padding: 1em;
-	background-color: $clr4;
+	background-color: variables.$clr4;
 }
 
 .signup-form {
@@ -34,15 +36,15 @@
 
 	a {
 		font-size: 0.8em;
-		color: $clr4;
+		color: variables.$clr4;
 
 		&:hover {
-			color: $clr1;
+			color: variables.$clr1;
 		}
 	}
 	a.active {
 		text-decoration: underline;
-		color: $clr2;
+		color: variables.$clr2;
 		
 	}
 }

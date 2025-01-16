@@ -1,3 +1,6 @@
+@use "../setup/functions";
+@use "../setup/variables";
+
 .app-footer{
     display: flex;
     align-items: center;
@@ -5,8 +8,8 @@
 
     min-height: 3.5rem;
 
-    padding: rem(10px) 1rem;
-    background-color: $clr4;
+    padding: functions.rem(10px) 1rem;
+    background-color: variables.$clr4;
 
     p {
         margin: 0;
@@ -16,11 +19,11 @@
         font-size: .8em;
         
         &.local-services {
-            color: $clr1;
+            color: variables.$clr1;
         }
         
         &.remote-services {
-            color: $clr5;
+            color: variables.$clr5;
         }
     }
 }
