@@ -12,7 +12,8 @@ $gray2: #aaa;
 $gray3: #777;
 $gray4: #333;
 
-$white: white;
+$white: hsl(0, 0%, 100%);
+$black: hsl(228, 4%, 26%);
 
 // Breakpoints
 $mobile-breakpoint: 460px;

@@ -1,12 +1,21 @@
-import { useEffect,useRef} from "react";
+import { useEffect,useRef,useState} from "react";
 import { useDispatch,useSelector} from 'react-redux'
 
 import{SET_SEARCH_BOX_POS} from '../store/reducers/system.reducer'
+import SVGgraphicAndDesign  from '../assets/svgs/SVGgraphicAndDesign';
+import SVGprogrammingAndTech  from '../assets/svgs/SVGprogrammingAndTech';
+import SVGdigitalMarketing  from '../assets/svgs/SVGdigitalMarketing';
+import SVGwritingAndTranslation  from '../assets/svgs/SVGwritingAndTranslation';
+import SVGvideoAndAnimation  from '../assets/svgs/SVGvideoAndAnimation';
+import SVGaiSerices from "../assets/svgs/SVGaiSerices";
+import SVGmusicAndAudio from "../assets/svgs/SVGmusicAndAudio";
+import SVGbusiness from "../assets/svgs/SVGbusiness";
+import SVGconsulting from "../assets/svgs/SVGconsulting";
+
 
 
 export function HomePage() {
     const searchBoxEl=useRef(null); 
-
 	const dispatch = useDispatch()
     let showSearchOnTop = false
     const searchBoxPos = useSelector(storeState => storeState.systemModule.searchBoxPosition)
@@ -14,6 +23,27 @@ export function HomePage() {
         showSearchOnTop=true
     }
 
+    // horizinal scroling functions
+    const [leftScrollButton, setLeftScrollButton] = useState(false)
+    const listRef = useRef(null);
+    
+    const scrollLeft = () => {
+        listRef.current.scrollBy({
+        left: -listRef.current.offsetWidth, 
+        behavior: "smooth",
+        });
+        setLeftScrollButton(false)
+    };
+    
+    const scrollRight = () => {
+        listRef.current.scrollBy({
+        left: listRef.current.offsetWidth, 
+        behavior: "smooth",
+        });
+        setLeftScrollButton(true)
+
+
+    };
     
     useEffect(()=>{
         const mainSearchBoxObserver = new IntersectionObserver(onScrollSearchBox, {
@@ -111,46 +141,67 @@ export function HomePage() {
 
                 </ul>
             </div>
-          
+            
+            <div className="home-main-categories">
+            
+                {leftScrollButton&&<button className="scroll-button left" onClick={scrollLeft} >
+                    {"<"}
+                </button>}
+                <button className="scroll-button right" onClick={scrollRight} >
+                    {">"}
+                </button>
+                <ul className="main-categories-list" ref={listRef} >
+                    <li>
+                        <div className="svg-element-main"><SVGprogrammingAndTech/></div>
+                        <h3>Programming & Tech</h3>
+                    </li>
+                    <li>
+                        <div className="svg-element-main"><SVGgraphicAndDesign /></div>
+                        <h3>Graphics & Design</h3>
+                    </li>
+                    <li>
+                        <div className="svg-element-main">< SVGdigitalMarketing/></div>
+                        <h3>Digital Marketing</h3>
+                    </li>
+                    <li>
+                        <div className="svg-element-main">< SVGwritingAndTranslation/></div>
+                        <h3>Writing & Translation</h3>
+                    </li>
+                    <li>
+                        <div className="svg-element-main">< SVGvideoAndAnimation/></div>
+                        <h3>Video & Animation</h3>
+                    </li>
+
+                    <li>
+                        <div className="svg-element-main">< SVGaiSerices/></div>
+                        <h3>AI Services</h3>
+                    </li>
+                    
+                    <li>
+                        <div className="svg-element-main">< SVGmusicAndAudio/></div>
+                        <h3>Music & Audio</h3>
+                    </li>
+
+                    <li>
+                        <div className="svg-element-main">< SVGbusiness/></div>
+                        <h3>Business</h3>
+                    </li>
+
+                    <li>
+                        <div className="svg-element-main">< SVGconsulting/></div>
+                        <h3>Consulting</h3>
+                    </li>
+
+                    
+                </ul>
+
+            </div>
             
 
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
-            <h1>Home sweet Home</h1>
+            <h1>Popular services</h1>
+
+ 
+
         </section >
     )
 }
