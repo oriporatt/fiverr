@@ -100,9 +100,7 @@
         // }
 
 
-        .login-link {
 
-        }
 
         button {
             font-family: 'Macan', sans-serif; 
@@ -115,6 +113,7 @@
             &:hover{
                 background-color: variables.$clr3;
                 color: variables.$white;
+
             }
         }
 
@@ -134,6 +133,8 @@
     @include mixins.for-mobile-layout{
         margin-left: none;
         grid-template-columns:1fr 1fr  1fr;
+        padding-right: 5px;
+
         .side-menu{
             display: block;
             grid-column: 1;
@@ -156,6 +157,10 @@
         }
         .nav{
             grid-column: 3;
+            
+        }
+        .login-link{
+            display: none;
         }
     }
 
@@ -163,6 +168,7 @@
     //narrow : with search top option, with menu icon , small nav menu, no img
     @include mixins.for-narrow-layout {
         margin-left: 2rem;
+        margin-right: 2rem;
         grid-template-columns:auto auto 1fr auto;
         .side-menu{
             display: block;
@@ -184,6 +190,10 @@
         }
         .nav{
             grid-column: 4;
+        }
+
+        .login-link{
+            display: block;
         }
     }
 
@@ -212,6 +222,10 @@
             grid-column: 3;
         }
 
+        .login-link{
+            display: block;
+        }
+
     }
     // wide : with search top option, no menu icon , big nav menu, with img
     @include mixins.for-wide-layout {
@@ -236,6 +250,10 @@
         }
         .nav{
             grid-column: 3;
+        }
+
+        .login-link{
+            display: block;
         }
     }
 

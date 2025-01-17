@@ -10,13 +10,13 @@
 }
 
 @mixin for-narrow-layout {
-    @media (min-width: calc(variables.$mobile-breakpoint + 40px)) {
+    @media (min-width: calc(variables.$mobile-breakpoint + 40px)) and (max-width: calc(variables.$narrow-breakpoint + 40px)) {
         @content;
     }
 }
 
 @mixin for-normal-layout {
-    @media (min-width: calc(variables.$narrow-breakpoint + 40px)) {
+    @media (min-width: calc(variables.$narrow-breakpoint + 40px)) and (max-width: calc(variables.$normal-breakpoint + 40px)) {
         @content;
     }
 }
@@ -28,6 +28,7 @@
 }
 
 
+
 @mixin main-box-style {
     min-width: functions.rem(100px);
     max-width: functions.rem(120px);
@@ -37,6 +38,7 @@
     font-size: 1rem;
     border-radius:1rem ;
     box-shadow: 0 0 .880517px rgba(0,0,0,.029),0 0 2.29197px rgba(0,0,0,.03),0 0 5.52px rgba(0,0,0,.054),0 0 11px rgba(0,0,0,.09);  
+
 }
 
 /* Media  Mixins */

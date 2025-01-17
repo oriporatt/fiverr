@@ -206,32 +206,98 @@
 
 .main-categories-list{
     display: grid;
-    grid-auto-flow: column;
+
    
-    // @include mixins.for-mobile-layout{
-    //     background-color: green;
-    // }
+    @include mixins.for-mobile-layout{
 
-
-    // @include mixins.for-narrow-layout{
-    //     li{
+        grid-auto-flow: row;
+        grid-template-columns: repeat(3,1fr) ;
+        
+        padding-top: functions.rem(12px);
+        padding-bottom: functions.rem(12px);
+        justify-content: space-around;
+        align-items: center;
+        align-items: center;
+        li{
+            display: grid;
+            grid-template-rows: auto 1fr;
+            justify-items: center ; 
+            align-items: center;
+            margin-top: functions.rem(6px);
+            box-sizing: border-box;
             
-    //         background-color: blue;
-    //         grid-auto-flow: row;
-    //         grid-template-rows: auto auto;
-    //         .svg-element-main{
-    //             grid-row: 1;
-    //             @include mixins.main-box-style;
-    //             padding: functions.rem(25px);
-    //         }
-    //         h3{
-    //             grid-row: 2;
+            .svg-element-main{
+                @include mixins.main-box-style; //make every card the rectangle design
+                grid-row: 1;
+                max-width: 30px;
+                aspect-ratio: 1 / 1;
+                color: #222325;
+                
+                display: flex;
+                justify-content: center; 
+                align-items: center; 
 
-    //         }
-    //     }
-    // }
+            }
+            h3{
+                width: 100px;
+                grid-row: 2;
+
+                padding-bottom: 5%;
+                font-size: functions.rem(14px);
+                font-weight: 600;
+                color: #222325;
+                text-align: center;  
+            }
+        }
+    }
+
+
+    @include mixins.for-narrow-layout{
+
+        grid-auto-flow: row;
+        grid-template-columns: repeat(4,1fr) ;
+        
+        padding-top: functions.rem(12px);
+        padding-bottom: functions.rem(12px);
+        justify-content: space-around;
+        align-items: center;
+        align-items: center;
+        li{
+            display: grid;
+            grid-template-rows: auto 1fr;
+            justify-items: center ; 
+            align-items: center;
+            margin-top: functions.rem(6px);
+            box-sizing: border-box;
+            
+            .svg-element-main{
+                @include mixins.main-box-style; //make every card the rectangle design
+                grid-row: 1;
+                max-width: 30px;
+                aspect-ratio: 1 / 1;
+                color: #222325;
+                
+                display: flex;
+                justify-content: center; 
+                align-items: center; 
+
+            }
+            h3{
+                width: 100px;
+                grid-row: 2;
+
+                padding-bottom: 5%;
+                font-size: functions.rem(14px);
+                font-weight: 600;
+                color: #222325;
+                text-align: center;  
+            }
+        }
+    }
 
     @include mixins.for-normal-layout{
+
+        grid-auto-flow: column;
         overflow-x:  hidden;
         padding-top: functions.rem(12px);
         padding-bottom: functions.rem(12px);
@@ -270,34 +336,98 @@
 
 
 
-    // @include mixins.for-wide-layout{
-    //     background-color: yellow;
-    // }
+    @include mixins.for-wide-layout{
+        grid-auto-flow: column;
+        overflow-x:  hidden;
+        padding-top: functions.rem(12px);
+        padding-bottom: functions.rem(12px);
+
+        li{
+
+            @include mixins.main-box-style; //make every card the rectangle design
+            margin: functions.rem(6px);
+            width: functions.rem(120px);
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            box-sizing: border-box;
+            overflow: hidden;
+            
+            .svg-element-main{
+                grid-row: 1;
+                justify-self: start;
+                align-self: end;
+                max-width: 30px;
+                aspect-ratio: 1 / 1;
+                padding-top: 10%;
+                padding-left: 10%;
+                color: #222325;
+            }
+            h3{
+                justify-self: start;
+                grid-row: 2;
+                padding-left: 5%;
+                padding-right: 5%;
+                padding-bottom: 5%;
+                font-size: functions.rem(14px);
+                color: #222325;
+            }
+        }
+    }
 }
 
 .home-main-categories{
-    position: relative;
 
+    position: relative;
 }
 
 
 .scroll-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: variables.$white;
-    color: #222325;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 .880517px rgba(0,0,0,.029),0 0 2.29197px rgba(0,0,0,.03),0 0 5.52px rgba(0,0,0,.054),0 0 11px rgba(0,0,0,.09);  
-    font-size: functions.rem(20px);
-    z-index: 40;
+    @include mixins.for-narrow-layout{
+        display: none;
+    }
+
+    @include mixins.for-mobile-layout{
+        display: none;
+
+    }
+
+    // same for wide and normal:
+    @include mixins.for-wide-layout {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: variables.$white;
+        color: #222325;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 .880517px rgba(0,0,0,.029),0 0 2.29197px rgba(0,0,0,.03),0 0 5.52px rgba(0,0,0,.054),0 0 11px rgba(0,0,0,.09);  
+        font-size: functions.rem(20px);
+        z-index: 40;
+    }
+    @include mixins.for-normal-layout{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: variables.$white;
+        color: #222325;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 .880517px rgba(0,0,0,.029),0 0 2.29197px rgba(0,0,0,.03),0 0 5.52px rgba(0,0,0,.054),0 0 11px rgba(0,0,0,.09);  
+        font-size: functions.rem(20px);
+        z-index: 40;
+    }
   }
   
   .scroll-button.left {
