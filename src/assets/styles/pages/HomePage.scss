@@ -215,12 +215,11 @@
         
         padding-top: functions.rem(12px);
         padding-bottom: functions.rem(12px);
-        justify-content: space-around;
-        align-items: center;
-        align-items: center;
+
         li{
             display: grid;
             grid-template-rows: auto 1fr;
+            margin-right:6px;
             justify-items: center ; 
             align-items: center;
             margin-top: functions.rem(6px);
@@ -259,9 +258,7 @@
         
         padding-top: functions.rem(12px);
         padding-bottom: functions.rem(12px);
-        justify-content: space-around;
-        align-items: center;
-        align-items: center;
+
         li{
             display: grid;
             grid-template-rows: auto 1fr;
