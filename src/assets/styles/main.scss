@@ -24,9 +24,8 @@
 @use "pages/LoginSignup";
 
 // Components
-@use "cmps/list";
-@use "cmps/preview";
-
+@use "cmps/GigList";
+@use "cmps/GigPreview";
 @use "cmps/AppHeader";
 @use "cmps/AppFooter";
 @use "cmps/UserMsg";
@@ -35,5 +34,3 @@
 @use "cmps/ReviewEdit";
 @use "cmps/ReviewList";
 @use "cmps/ReviewPreview";
-// @import "cmps/CarList";
-// @import "cmps/CarPreview";

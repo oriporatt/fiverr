@@ -205,8 +205,16 @@ export function HomePage() {
 
             <h2>What success on Fiverr looks like</h2>
             <h3>Vontélle Eyewear turns to Fiverr freelancers to bring their vision to life.</h3>
- 
+            <br></br>
+            <br></br>
 
+            <h1>Popular services</h1>
+            <h3>The premium freelance solution for businesses</h3>
+            <br></br>
+            <br></br>
+
+            <h2>What success on Fiverr looks like</h2>
+            <h3>Vontélle Eyewear turns to Fiverr freelancers to bring their vision to life.</h3>
         </section >
     )
 }

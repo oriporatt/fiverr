@@ -4,6 +4,8 @@
 
 
 .app-header{
+
+
     position: fixed;
     top: 0;
     left: 0;
@@ -11,6 +13,8 @@
     width: 100%;
     z-index: 50;
     background-color: variables.$white;
+
+
 }
 
 .header-elements {
@@ -284,3 +288,7 @@
 }
 
 
+.header-regular{
+    position:static;
+    grid-column: -1/1;
+}

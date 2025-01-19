@@ -3,30 +3,19 @@
 @use "../setup/variables";
 
 .gig-index {
-    // header {
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: space-between;
-
-    //     padding-block: .3em;
-    // }
-
-    // h2 {
-    //     margin: 0;
-    //     font-size: 1.3em;
-    // }
-
-    // button {
-    //     margin-inline-end: 0;
-    // }
+    margin-top: 0;
+    position:static;
+    grid-column: -1/1;
+    width: 100%;
 }
 
 .index-header{
-    position: fixed;
-    top: 5rem;
-    height: functions.rem(40px);
-    margin-top:1px;
+    display: grid;
     left: 0;
+    position: absolute; 
+    width: 100%;
+    // 
+    height: functions.rem(40px); 
     border-bottom: 1px solid #e0e0e0; 
     z-index: 50;
     background-color: variables.$white;
@@ -87,7 +76,8 @@
 
 
 .scroll-button-main-categories {
-    z-index: 60;
+    z-index: 70;
+    top: 6rem;
     @include mixins.for-narrow-layout{
         display: none;
     }
@@ -98,26 +88,14 @@
     }
 
     // same for wide and normal:
-    @include mixins.for-wide-layout {
-        position: absolute;
-        top: 45%;
-        transform: translateY(-50%);
 
-        background: linear-gradient(90deg, #fff 50%, hsla(0, 0%, 100%, 0));
-        svg{
-            fill: variables.$gray;
-            background: linear-gradient(270deg,#fff 50%,hsla(0,0%,100%,0));
-            height: 15px;
-            width: 15px;
-        }
-    }
     @include mixins.for-normal-layout{
         position: absolute;
-        top: 45%;
         transform: translateY(-50%);
 
         background: linear-gradient(90deg, #fff 50%, hsla(0, 0%, 100%, 0));
         svg{
+
             fill: variables.$gray;
             background: linear-gradient(270deg,#fff 50%,hsla(0,0%,100%,0));
             height: 15px;
@@ -125,14 +103,29 @@
         }
 
     }
-  }
   
-  .scroll-button-main-categories.left {
-    left: -5px;
-    
-  }
-  
-  .scroll-button-main-categories.right {
-    right: -5px;
-  }
 
+    @include mixins.for-wide-layout {
+        position: absolute;
+
+        transform: translateY(-50%);
+
+        background: linear-gradient(90deg, #fff 50%, hsla(0, 0%, 100%, 0));
+        svg{
+
+            fill: variables.$gray;
+            background: linear-gradient(270deg,#fff 50%,hsla(0,0%,100%,0));
+            
+            height: 15px;
+            width: 15px;
+        }
+    }
+}
+  
+.scroll-button-main-categories.left {
+    left: 0;
+}
+  
+.scroll-button-main-categories.right {
+    right: 0;
+}

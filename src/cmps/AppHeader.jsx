@@ -7,6 +7,8 @@ import { logout } from '../store/actions/user.actions'
 export function AppHeader() {
 	const location = useLocation();
 	const isHomePage = location.pathname==='/'
+	const isGigsIndexPage=location.pathname.startsWith('/gig');
+
 
 	const user = useSelector(storeState => storeState.userModule.user)
 	const searchBoxPos = useSelector(storeState => storeState.systemModule.searchBoxPosition)
@@ -25,8 +27,9 @@ export function AppHeader() {
 	if (searchBoxPos==='top' && isHomePage){
 		showSearchOnTop=true
 	}
+	
 	return (
-		<header className="app-header main-container">
+		<header className={`app-header main-container ${isGigsIndexPage ? 'header-regular' : ''}`}>
 			<div className='header-elements'>
 				<NavLink to="/" className="side-menu">
 					<img src="/img/menu.svg" alt="menu" className="menu-img"/>

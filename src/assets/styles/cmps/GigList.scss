@@ -1,0 +1,47 @@
+@use "../setup/functions";
+@use "../setup/mixins";
+@use "../setup/variables";
+
+
+.gig-list { //ul
+    margin-top: 4rem;
+    --min-column-size: 220px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
+
+    @include mixins.for-mobile-layout{
+        grid-template-columns: repeat(1, minmax(var(--min-column-size), 1fr));
+    }
+    @include mixins.for-narrow-layout{
+        grid-template-columns: repeat(2, minmax(var(--min-column-size), 1fr));
+    }
+
+    @include mixins.for-normal-layout{
+        grid-template-columns: repeat(3, minmax(var(--min-column-size), 1fr));
+    }
+
+    @include mixins.for-wide-layout{
+        grid-template-columns: repeat(4, minmax(var(--min-column-size), 1fr));
+    }
+
+    
+
+
+
+    li {
+        display: flex;
+        flex-direction: column; 
+        padding: .5em;
+        background-color: variables.$white;
+        color: variables.$gray;
+
+        .actions {
+            justify-self: end;
+
+            button {
+                padding: .3em .5em;
+            }
+        }
+    }
+}
