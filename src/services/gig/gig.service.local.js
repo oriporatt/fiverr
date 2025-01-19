@@ -6,16 +6,25 @@ import {saveToStorage,loadFromStorage} from '../util.service'
 
 const STORAGE_KEY = 'gig'
 
+const categories = ['Graphics & Design','Programming & Tech','Digital Marketing',
+    'Video & Animation','Writing & Translation','Music & Audio',
+    'Business','Finance','AI Services',
+    'Personal Growth','Consulting','Photography']
+
 export const gigService = {
     query,
     getById,
     save,
     remove,
+    categories,
     // addCarMsg
 }
 window.cs = gigService
 
 _makeDummyGigs()
+
+
+
 
 
 
