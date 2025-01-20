@@ -19,12 +19,12 @@ import { GigIndex } from './pages/GigIndex.jsx'
 
 export function RootCmp() {
     return (
-        <div className="main-container">
+        <div >
             <AppHeader />
             
             <UserMsg />
 
-            <main className='main'>
+            <main className='main-container'>
                 <Routes>
                     <Route path="" element={<HomePage />} />
                     <Route path="about" element={<AboutUs />}>

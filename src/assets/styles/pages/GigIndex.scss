@@ -3,70 +3,80 @@
 @use "../setup/variables";
 
 .gig-index {
-    margin-top: 0;
-    position:static;
-    grid-column: -1/1;
-    width: 100%;
 }
 
 .index-header{
+
     display: grid;
-    left: 0;
-    position: absolute; 
-    width: 100%;
-    // 
+
     height: functions.rem(40px); 
     border-bottom: 1px solid #e0e0e0; 
     z-index: 50;
     background-color: variables.$white;
-
-    .categories-header{
+    grid-column: 1/-1;
+    
+    .header-element-layout{
         display: grid;
-        grid-auto-flow: column;
-        grid-template-columns: auto;
-        width: 100%;
-        overflow-y:hidden;
-        overflow-x:hidden;
-        white-space: nowrap; 
-        align-items: center;
-        margin: 0 0;
-        
+        height: functions.rem(40px); 
+        position: relative;
+    
 
-        li {
-            height: 100%;
-            padding: 0px 10px;
-        }
-        
-        a {
-            display: flex;
+        .categories-header{
+            
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: auto;
+            width: 100%;
+            overflow-y:hidden;
+            overflow-x:hidden;
+            white-space: nowrap; 
             align-items: center;
-            flex-grow: 1; 
-            height: 100%; 
-            position: relative;
-            color: variables.$gray;
-            font-size: 16px;
-            line-height: 24px;
-            font-family: 'Macan', sans-serif;
-            font-weight: 400;
-            padding-right: 8px;
-            text-decoration: none;
-            cursor: pointer;
-          
+            margin: 0 0;
+            
+
+            li {
+                height: 100%;
+                padding: 0px 10px;
+            }
+            
+            a {
+                display: flex;
+                align-items: center;
+                flex-grow: 1; 
+                height: 100%; 
+                position: relative;
+                color: variables.$gray;
+                font-size: 16px;
+                line-height: 24px;
+                font-family: 'Macan', sans-serif;
+                font-weight: 400;
+                padding-right: 8px;
+                text-decoration: none;
+                cursor: pointer;
+            
+            }
+            a::after {
+                content: ''; 
+                position: absolute; 
+                bottom: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 0; 
+                background-color: variables.$green; 
+                transition: height 0.1s ease; 
+            }
+            
+            a:hover::after {
+                height: functions.rem(4px);
+            }
         }
-        a::after {
-            content: ''; 
-            position: absolute; 
-            bottom: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 0; 
-            background-color: variables.$green; 
-            transition: height 0.1s ease; 
-        }
-        
-        a:hover::after {
-            height: functions.rem(4px);
-        }
+    }
+    @include mixins.for-narrow-layout{
+        display: none;
+    }
+
+    @include mixins.for-mobile-layout{
+        display: none;
 
     }
 
@@ -76,8 +86,12 @@
 
 
 .scroll-button-main-categories {
+    position: absolute;
     z-index: 70;
-    top: 6rem;
+    top:45%;
+    background: linear-gradient(90deg, #fff 50%, hsla(0, 0%, 100%, 0));
+    transform: translateY(-50%);
+
     @include mixins.for-narrow-layout{
         display: none;
     }
@@ -90,12 +104,7 @@
     // same for wide and normal:
 
     @include mixins.for-normal-layout{
-        position: absolute;
-        transform: translateY(-50%);
-
-        background: linear-gradient(90deg, #fff 50%, hsla(0, 0%, 100%, 0));
         svg{
-
             fill: variables.$gray;
             background: linear-gradient(270deg,#fff 50%,hsla(0,0%,100%,0));
             height: 15px;
@@ -106,26 +115,23 @@
   
 
     @include mixins.for-wide-layout {
-        position: absolute;
 
-        transform: translateY(-50%);
-
-        background: linear-gradient(90deg, #fff 50%, hsla(0, 0%, 100%, 0));
         svg{
-
             fill: variables.$gray;
             background: linear-gradient(270deg,#fff 50%,hsla(0,0%,100%,0));
-            
             height: 15px;
             width: 15px;
         }
     }
+
+
+    &.left {
+        left: -15px;
+    }
+
+    &.right {
+        right: -15px;
+
+    }
 }
-  
-.scroll-button-main-categories.left {
-    left: 0;
-}
-  
-.scroll-button-main-categories.right {
-    right: 0;
-}
+
