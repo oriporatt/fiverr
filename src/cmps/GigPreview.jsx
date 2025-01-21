@@ -11,7 +11,7 @@ export function GigPreview({ gig }) {
             <Link to={`/gig/${gig._id}`}>{gig.owner.fullname}</Link>
         </header>
 
-        <p><span>{gig.title}</span></p>
-        <p><span>From {gig.price}</span></p>
+        <p><span className='gig-title'>{gig.title}</span></p>
+        <p><span className='price-tag'>From {gig.price}$</span></p>
     </article>
 }

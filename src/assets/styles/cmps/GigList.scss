@@ -4,10 +4,11 @@
 
 
 .gig-list { //ul
-    margin-top: 4rem;
+    margin-top: 2rem;
     --min-column-size: 220px;
-
     display: grid;
+    gap: 2rem 1rem;
+
     grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
 
     @include mixins.for-mobile-layout{
@@ -24,24 +25,17 @@
     @include mixins.for-wide-layout{
         grid-template-columns: repeat(4, minmax(var(--min-column-size), 1fr));
     }
-
     
 
-
-
     li {
-        display: flex;
-        flex-direction: column; 
+        display: grid;
         padding: .5em;
         background-color: variables.$white;
         color: variables.$gray;
+        height: 100%;
+        width: 100%;
 
-        .actions {
-            justify-self: end;
-
-            button {
-                padding: .3em .5em;
-            }
-        }
     }
+
+
 }
