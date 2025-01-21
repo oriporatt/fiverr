@@ -4,7 +4,7 @@
 
 
 .home-page{
-    margin-top: functions.rem(120px);
+    margin-top: functions.rem(80px);
     .main-home-search{
         margin-top: functions.rem(40px);
         justify-items: center;
@@ -148,7 +148,7 @@
         @include mixins.for-normal-layout{
             border-radius: 16px;
             padding-top: none;
-
+            
             //img:
             height: 400px; 
             div h1{
@@ -422,7 +422,7 @@
         justify-content: center;
         box-shadow: 0 0 .880517px rgba(0,0,0,.029),0 0 2.29197px rgba(0,0,0,.03),0 0 5.52px rgba(0,0,0,.054),0 0 11px rgba(0,0,0,.09);  
         font-size: functions.rem(20px);
-        z-index: 60;
+        z-index: 40;
     }
   }
   

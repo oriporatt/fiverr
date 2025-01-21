@@ -1,11 +1,28 @@
 import { useState, useEffect,useRef } from 'react'
 
 import { gigService } from '../services/gig/index'
-
+import { Link, NavLink ,useLocation} from 'react-router-dom'
+import { useNavigate } from 'react-router'
+import { useSelector } from 'react-redux'
 
 export function CategoriesHeader() {
+    const location = useLocation();
+	const isHomePage = location.pathname==='/'
+	const isGigsIndexPage=location.pathname.startsWith('/gig');
+    const searchBoxPos = useSelector(storeState => storeState.systemModule.searchBoxPosition)
+    const navigate = useNavigate()
+    let show =false
+    let showSticky=false
 
+    if (isGigsIndexPage || isHomePage){
+        show=true;
+    }
+    if (searchBoxPos==='top' && isHomePage){
+        showSticky=true
+    }
+    
 
+    // horiznal scroll:
     const [leftScrollButton, setLeftScrollButton] = useState(false)
     const [rightScrollButton, setRightScrollButton] = useState(true)
 
@@ -34,10 +51,11 @@ export function CategoriesHeader() {
     const headerCategories = gigService.categories
     console.log('left',leftScrollButton)
     console.log('right',rightScrollButton)
+    console.log(document.querySelector('.categories-header'));
 
     return (
-        <main className="categories-header full">
-            <header className='index-header main-container'>      
+        <main className={`categories-header full ${showSticky?'home-upper':''}`}>
+            {show&&<header className='index-header main-container'>      
                 <div className='header-element-layout'>
 
                     {rightScrollButton&&<button className="scroll-button-main-categories right" onClick={scrollRight} >
@@ -60,7 +78,7 @@ export function CategoriesHeader() {
                     })}
                     </ul>
                 </div>
-            </header>
+            </header>}
         </main>
     )
 }

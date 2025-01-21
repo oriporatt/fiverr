@@ -9,7 +9,7 @@
 
     height: functions.rem(40px); 
     border-bottom: 1px solid #e0e0e0; 
-    z-index: 50;
+    z-index: 70;
     background-color: variables.$white;
     grid-column: 1/-1;
     
@@ -67,6 +67,9 @@
             a:hover::after {
                 height: functions.rem(4px);
             }
+
+
+
         }
     }
     @include mixins.for-narrow-layout{
@@ -77,6 +80,7 @@
         display: none;
 
     }
+
 
 }
 
@@ -133,3 +137,12 @@
     }
 }
 
+.home-upper {
+    position: fixed;
+    width: 100%;
+    z-index: 70;
+    left: 0;
+    top: functions.rem(81px);
+    transition: all 2s ease; /* Add smooth transition */
+
+}
