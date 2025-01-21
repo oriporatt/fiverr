@@ -24,7 +24,7 @@
             // minmax(auto, $narrow-breakpoint)
             // minmax(2rem, 1fr);
             2rem
-            auto
+            1fr
             2rem;
     }
     @include mixins.for-wide-layout {

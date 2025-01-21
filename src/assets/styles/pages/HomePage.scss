@@ -299,7 +299,6 @@
         overflow-x:  hidden;
         padding-top: functions.rem(12px);
         padding-bottom: functions.rem(12px);
-        
 
         li{
 
@@ -310,7 +309,6 @@
             grid-template-rows: 1fr 1fr;
             box-sizing: border-box;
             overflow: hidden;
-            
             .svg-element-main{
                 grid-row: 1;
                 justify-self: start;
