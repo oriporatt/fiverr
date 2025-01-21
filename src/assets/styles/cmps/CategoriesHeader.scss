@@ -9,7 +9,7 @@
 
     height: functions.rem(40px); 
     border-bottom: 1px solid #e0e0e0; 
-    z-index: 70;
+    z-index: 50;
     background-color: variables.$white;
     grid-column: 1/-1;
     
@@ -89,7 +89,7 @@
 
 .scroll-button-main-categories {
     position: absolute;
-    z-index: 70;
+    z-index: 50;
     top:45%;
     background: linear-gradient(90deg, #fff 50%, hsla(0, 0%, 100%, 0));
     transform: translateY(-50%);
@@ -143,6 +143,5 @@
     z-index: 70;
     left: 0;
     top: functions.rem(81px);
-    transition: all 2s ease; /* Add smooth transition */
 
 }
