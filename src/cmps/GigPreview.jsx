@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
+import { GigPreviewCarrousel } from './GigPreviewCarrousel'
 
 export function GigPreview({ gig }) {
     return <article className="gig-preview">
         <div className="img-container">
-            <img src={gig.imgs[0]} alt="Description of image" />
-
+            {/* <img src={gig.imgs[0]} alt="Description of image" /> */}
+            <GigPreviewCarrousel images={gig.imgs} />
         </div>
 
         <header>

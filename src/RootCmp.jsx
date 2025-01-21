@@ -17,14 +17,14 @@ import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { GigIndex } from './pages/GigIndex.jsx'
 import { CategoriesHeader } from './cmps/CategoriesHeader.jsx'
-
+import {GigPreviewCarrousel} from './cmps/GigPreviewCarrousel.jsx'
 export function RootCmp() {
     return (
         <div >
             <AppHeader />
             <CategoriesHeader/>
             <UserMsg />
-
+            {/* <GigPreviewCarrousel/> */}
             <main className='main-container'>
                 <Routes>
                     <Route path="" element={<HomePage />} />
