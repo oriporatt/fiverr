@@ -129,7 +129,11 @@ function _makeDummyGigs(){
                 "likedByUsers": ['mini-user'],
                 "imgs": [
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306769/i9KtW3QsxDK7ise5azCJpN-1200-80_jwegtj.jpg",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306730/download_oazfmh.jpg"
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306730/download_oazfmh.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306932/download_y0ktkt.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306928/download_ultd3k.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306968/download_ib6mgm.png",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306960/download_w0geic.jpg"
                 ]
             },
             {
