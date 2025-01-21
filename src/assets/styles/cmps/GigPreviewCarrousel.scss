@@ -10,13 +10,13 @@
     .carousel-card {
       display: flex;
       width: 100%;
-      height: 100%;
+    //   height: 100%;
       transition: transform 0.3s ease-in-out;
     }
   
     .carousel-image {
       min-width: 100%;
-      height: 100%;
+    //   height: 100%;
       object-fit: cover;
     }
   

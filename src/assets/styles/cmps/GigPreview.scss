@@ -35,10 +35,9 @@
 
     .img-container {
         position: relative;
-        width: 100%; /* Ensure it takes up full width of its parent */
+        width: 100%; 
         height: auto; 
-
-        aspect-ratio: 5 / 3; /* Maintain aspect ratio */
+        aspect-ratio: 5 / 3; 
         overflow: hidden;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow effect on the container */
         border-radius: 8px;
@@ -60,7 +59,7 @@
         right: 0;
         bottom: 0;
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
-        pointer-events: none; /* Ensure it doesn't block interactions */
+        pointer-events: none; 
     }
 
 

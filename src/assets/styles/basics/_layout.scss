@@ -13,16 +13,11 @@
     @include mixins.for-narrow-layout {
         grid-template-columns: 0 auto 0;
     }
-            // minmax(2rem, 1fr)
-            // minmax(auto, $mobile-breakpoint)
-            // minmax(2rem, 1fr);
+
 
     
     @include mixins.for-normal-layout {
         grid-template-columns: 
-            // minmax(2rem, 1fr)
-            // minmax(auto, $narrow-breakpoint)
-            // minmax(2rem, 1fr);
             2rem
             1fr
             2rem;
