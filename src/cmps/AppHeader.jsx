@@ -24,7 +24,7 @@ export function AppHeader() {
 			showErrorMsg('Cannot logout')
 		}
 	}
-	if (searchBoxPos==='top' && isHomePage){
+	if ((searchBoxPos==='top' && isHomePage) || isGigsIndexPage){
 		showSearchOnTop=true
 	}
 	
