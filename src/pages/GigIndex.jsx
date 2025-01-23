@@ -12,18 +12,17 @@ import { GigList } from '../cmps/GigList'
 
 export function GigIndex() {
 
-    const [ filterBy, setFilterBy ] = useState(gigService.getDefaultFilter())
+    // const [ filterBy, setFilterBy ] = useState()
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
+    const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
 
-        
-
-    // useEffect(() => {
-    //     loadGigs(filterBy)
-    // }, [filterBy])
+    console.log(filterBy)
 
     useEffect(() => {
-        loadGigs()
-    }, [])
+        loadGigs(filterBy)
+    }, [filterBy])
+
+
 
     // async function onRemoveCar(carId) {
     //     try {

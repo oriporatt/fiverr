@@ -1,11 +1,20 @@
 import { Link, NavLink ,useLocation} from 'react-router-dom'
+import { useState } from 'react'
 import { useNavigate } from 'react-router'
-import { useSelector } from 'react-redux'
+import { useSelector ,useDispatch} from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
+import { UPDATE_FILTER_BY } from '../store/reducers/gig.reducer'
+import RejectSVG from '../assets/svgs/rejectSVG.svg?react'
 
 export function AppHeader() {
 	const location = useLocation();
+	const dispatch = useDispatch()
+	const searchBoxTextGlobal = useSelector(storeState => storeState.gigModule.filterBy.txt)
+	const [ showX, setShowX ] = useState(false)
+	const [ localInput, setLocalInput ] = useState(searchBoxTextGlobal)
+
+
 	const isHomePage = location.pathname==='/'
 	const isGigsIndexPage=location.pathname.startsWith('/gig');
 
@@ -27,6 +36,38 @@ export function AppHeader() {
 	if ((searchBoxPos==='top' && isHomePage) || isGigsIndexPage){
 		showSearchOnTop=true
 	}
+
+	function onSubmitSearch(event) {
+		event.preventDefault(); 
+		const searchValue = event.target.searchBox.value.trim(); 
+	
+		dispatch({
+			type: UPDATE_FILTER_BY,
+			filterBy: { 'txt': searchValue }
+		});
+	}
+	
+	function onClearSearchBox(event) {
+		event.preventDefault(); 
+		setLocalInput('')
+		setShowX(false)
+		dispatch({
+			type: UPDATE_FILTER_BY,
+			filterBy: { 'txt': '' }
+		});
+	}
+
+	function onChangeInput(event) {
+		const searchValue = event.target.value.trim();
+		if (searchValue!==''){
+			setShowX(true)
+		} else{
+			setShowX(false)
+		}
+		setLocalInput(searchValue)
+	}
+
+
 	
 	return (
 		<header className={`app-header main-container ${isGigsIndexPage ? 'header-regular' : ''}`}>
@@ -40,14 +81,20 @@ export function AppHeader() {
 				</NavLink>
 
 				{showSearchOnTop&&
-				<div className='top-search-box'>
-                    <input type="text" placeholder="What service are you looking for today?"/>
-                    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" 
-						fill="currentFill">
-						<path d="m15.89 14.653-3.793-3.794a.37.37 0 0 0-.266-.109h-.412A6.499 6.499 0 0 0 6.5 0C2.91 0 0 2.91 0 6.5a6.499 6.499 0 0 0 10.75 4.919v.412c0 .1.04.194.11.266l3.793 3.794a.375.375 0 0 0 .531 0l.707-.707a.375.375 0 0 0 0-.53ZM6.5 11.5c-2.763 0-5-2.238-5-5 0-2.763 2.237-5 5-5 2.762 0 5 2.237 5 5 0 2.762-2.238 5-5 5Z">
-						</path>
-					</svg>
-                </div>}
+				<form className='top-search-box' onSubmit={onSubmitSearch}>
+					
+                    <input  type="text" value={localInput}  onChange={onChangeInput} name='searchBox' placeholder="What service are you looking for today?"/>
+                    <button type='submit' >
+						<svg  width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" 
+							fill="currentFill">
+							<path d="m15.89 14.653-3.793-3.794a.37.37 0 0 0-.266-.109h-.412A6.499 6.499 0 0 0 6.5 0C2.91 0 0 2.91 0 6.5a6.499 6.499 0 0 0 10.75 4.919v.412c0 .1.04.194.11.266l3.793 3.794a.375.375 0 0 0 .531 0l.707-.707a.375.375 0 0 0 0-.53ZM6.5 11.5c-2.763 0-5-2.238-5-5 0-2.763 2.237-5 5-5 2.762 0 5 2.237 5 5 0 2.762-2.238 5-5 5Z">
+							</path>
+						</svg>
+						{showX&& <RejectSVG className='x-button' onClick={onClearSearchBox} /> }
+	
+
+					</button>
+                </form>}
 
 				<nav>
 

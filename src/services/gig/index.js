@@ -16,7 +16,10 @@ function getEmptyCar() {
 function getDefaultFilter() {
     return {
         txt: '',
+        categoriesArray:[],
+        minPrice:'',
         maxPrice: '',
+        deliveryMaxTime:'',
         sortField: '',
         sortDir: '',
     }

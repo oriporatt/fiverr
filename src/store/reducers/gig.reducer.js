@@ -3,17 +3,21 @@ export const SET_GIG = 'SET_GIG'
 export const REMOVE_GIG = 'REMOVE_GIG'
 export const ADD_GIG = 'ADD_GIG'
 export const UPDATE_GIG = 'UPDATE_GIG'
+export const UPDATE_FILTER_BY='UPDATE_FILTER_BY'
 // export const ADD_GIG_MSG = 'ADD_GIG_MSG'
+import { gigService } from "../../services/gig/index"
 
 const initialState = {
     gigs: [],
     gig: null,
+    filterBy: gigService.getDefaultFilter()
     
 }
 
 export function gigReducer(state = initialState, action) {
     var newState = state
     var gigs
+    var filterBy
     switch (action.type) {
         case SET_GIGS:
             newState = { ...state, gigs: action.gigs }
@@ -32,6 +36,12 @@ export function gigReducer(state = initialState, action) {
         case UPDATE_GIG:
             cars = state.cars.map(gig => (gig._id === action.gig._id) ? action.gig : gig)
             newState = { ...state, gigs }
+            break
+        case UPDATE_FILTER_BY:
+            let newFilter = action.filterBy
+            newFilter=  {...state.filterBy,...newFilter}
+            
+            newState = { ...state, filterBy: newFilter}
             break
         // case ADD_GIG_MSG:
         //     newState = { ...state, car: { ...state.car, msgs: [...state.car.msgs || [], action.msg] } }

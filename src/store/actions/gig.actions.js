@@ -2,10 +2,14 @@ import { gigService } from '../../services/gig/gig.service.local'
 import { store } from '../store'
 import { ADD_GIG, REMOVE_GIG,SET_GIG,SET_GIGS,UPDATE_GIG } from '../reducers/gig.reducer'
 
-export async function loadGigs() { //(filterBy)
+export async function loadGigs(filterBy) { 
     try {
-        const gigs = await gigService.query() //(filterBy)
-        store.dispatch(getCmdSetGigs(gigs))
+        const gigs = await gigService.query(filterBy) 
+        store.dispatch( 
+            {
+            type: SET_GIGS,
+            gigs
+            })
     } catch (err) {
         console.log('Cannot load gigs', err)
         throw err
@@ -66,13 +70,7 @@ export async function updateGig(gig) {
 //     }
 // }
 
-// Command Creators:
-function getCmdSetGigs(gigs) {
-    return {
-        type: SET_GIGS,
-        gigs
-    }
-}
+
 function getCmdSetGig(gig) {
     return {
         type: SET_GIG,

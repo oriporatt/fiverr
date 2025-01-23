@@ -47,13 +47,12 @@
 
 
     .top-search-box{
-        
+
         display: grid;
         grid-template-columns: 1fr auto;
-        margin-left: 42px;
-        margin-right: 42px;
         fill: variables.$white;
         height: 42px;
+        
         max-width: 450px; 
         width: 80%;
         border-radius: 4px;
@@ -61,27 +60,54 @@
         overflow: hidden;
         
         align-items: center;
+        button{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background-color: #222325;
+
+            .x-button{
+                height: 25px;
+                width: 25px;
+                position: absolute;
+                top: 50%;
+                left: -80%;
+                transform: translateY(-50%); 
+                z-index: 50;
+                fill: variables.$black;
+                background-color: variables.$lightGray;
+                border-radius: 50%;
+                padding: 5px;
+            }
+        }
         input{
+            height: 100%;
+            margin: 0 0 0 0 ;
             grid-column: 1;
             border: none;
             outline: none;
-            padding: 10px 2px 10px 16px;
+            padding: 0px 2px 0px 16px;
             color: #62646a;
             font-family: 'Macan', sans-serif; 
             font-weight: 400;
             font-size: 1rem;
 
+
         }
         svg{
             grid-column: 2;
-            width: functions.rem(52px);
-            height: functions.rem(42px);
-            padding: 13px;
+            width: auto;
+            height: 100%;
             background-color: #222325;
             align-self: center;
+            transform: scale(0.5); 
+            transform-origin: center
             
 
         }
+
+
 
     }
 

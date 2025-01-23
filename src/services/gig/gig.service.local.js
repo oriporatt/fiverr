@@ -26,18 +26,17 @@ _makeDummyGigs()
 
 
 
-
-
-// async function query(filterBy = { txt: '', price: 0 }) {
-async function query() {
+async function query(filterBy = { txt: '', minPrice: 0 }) {
 
     var gigs = await storageService.query(STORAGE_KEY)
-    // const { txt, maxPrice, sortField, sortDir } = filterBy
+    const { txt, categoriesArray,
+        minPrice, maxPrice,deliveryMaxTime,
+        sortField, sortDir } = filterBy
 
-    // if (txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
-    // }
+    if (txt) {
+        const regex = new RegExp(filterBy.txt, 'i')
+        gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description)|| regex.test(gig.owner.fullname))
+    }
     // if (minSpeed) {
     //     cars = cars.filter(car => car.speed >= minSpeed)
     // }
