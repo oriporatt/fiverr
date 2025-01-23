@@ -49,5 +49,42 @@
         right: 10px;
       }
     }
+
+
+
+    .status-nav-bar{
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%); 
+      z-index: 50;
+      ul{
+        display: flex;
+        gap: 0;
+        padding: 0;
+        align-items: center;
+        li{
+          margin-right: -10px;
+          background-color: transparent;
+
+          svg{
+            fill: variables.$offwhite;
+            width: 30px;
+            height: 30px;
+            &.big-dot{
+
+            }
+            &.small-dot{
+              width: 20px;
+              height: 20px;
+            }
+            &.white-dot{
+              fill: variables.$white;
+
+            }
+          }
+        }
+      }
+    }
   }
   
