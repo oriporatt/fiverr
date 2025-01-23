@@ -133,7 +133,10 @@ function _makeDummyGigs(){
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306932/download_y0ktkt.jpg",
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306928/download_ultd3k.jpg",
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306968/download_ib6mgm.png",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306960/download_w0geic.jpg"
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306960/download_w0geic.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307761/seo-benefit-1_cpxktd.png",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307767/download_ckd5jc.png",
+                    
                 ]
             },
             {
@@ -159,7 +162,7 @@ function _makeDummyGigs(){
                 "likedByUsers": ['mini-user', 'pro-user'],
                 "imgs": [
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306932/download_y0ktkt.jpg",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306928/download_ultd3k.jpg"
+
                 ]
             },
             {
@@ -185,7 +188,8 @@ function _makeDummyGigs(){
                 "likedByUsers": ['user123'],
                 "imgs": [
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306968/download_ib6mgm.png",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306960/download_w0geic.jpg"
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737306960/download_w0geic.jpg",
+
                 ]
             },
             {
@@ -211,7 +215,8 @@ function _makeDummyGigs(){
                 "likedByUsers": ['pro-user'],
                 "imgs": [
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307415/images_i83hev.jpg",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307459/download_uc4mqt.jpg"
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307459/download_uc4mqt.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307497/download_zwlruz.jpg",
                 ]
             },
             {
@@ -237,7 +242,9 @@ function _makeDummyGigs(){
                 "likedByUsers": ['mini-user', 'user456'],
                 "imgs": [
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307497/download_zwlruz.jpg",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307502/download_tmltz6.jpg"
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307502/download_tmltz6.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307555/download_wczwcs.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307549/four-corporate-business-flyer-design-templates_psg9oe.jpg"
                 ]
             },
             {
@@ -262,7 +269,11 @@ function _makeDummyGigs(){
                 "likedByUsers": ['mini-user'],
                 "imgs": [
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307555/download_wczwcs.jpg",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307549/four-corporate-business-flyer-design-templates_psg9oe.jpg"
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307549/four-corporate-business-flyer-design-templates_psg9oe.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307611/images_kcynbu.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307618/images_ghirkk.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307415/images_i83hev.jpg",
+
                 ]
             },
             {
@@ -286,8 +297,13 @@ function _makeDummyGigs(){
                 ],
                 "likedByUsers": ['user123'],
                 "imgs": [
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307618/images_ghirkk.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307555/download_wczwcs.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307549/four-corporate-business-flyer-design-templates_psg9oe.jpg",
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307611/images_kcynbu.jpg",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307618/images_ghirkk.jpg"
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307618/images_ghirkk.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307415/images_i83hev.jpg",
+
                 ]
             },
             {
@@ -312,7 +328,13 @@ function _makeDummyGigs(){
                 "likedByUsers": ['user456'],
                 "imgs": [
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307656/The-Best-English-To-Spanish-Translation-Service-Online_vfovnl.webp",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307661/download_g98nwj.png"
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307661/download_g98nwj.png",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307618/images_ghirkk.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307555/download_wczwcs.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307549/four-corporate-business-flyer-design-templates_psg9oe.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307611/images_kcynbu.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307618/images_ghirkk.jpg",
+
                 ]
             },
             {
@@ -336,7 +358,15 @@ function _makeDummyGigs(){
                 "likedByUsers": ['mini-user', 'user123'],
                 "imgs": [
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307706/images_mlesua.jpg",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307715/download_h4vdz8.jpg"
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307715/download_h4vdz8.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307618/images_ghirkk.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307555/download_wczwcs.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307549/four-corporate-business-flyer-design-templates_psg9oe.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307611/images_kcynbu.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307618/images_ghirkk.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307415/images_i83hev.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307459/download_uc4mqt.jpg",
+
                 ]
             },
             {
@@ -360,7 +390,15 @@ function _makeDummyGigs(){
                 "likedByUsers": ['pro-user'],
                 "imgs": [
                     "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307761/seo-benefit-1_cpxktd.png",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307767/download_ckd5jc.png"
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307767/download_ckd5jc.png",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307618/images_ghirkk.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307555/download_wczwcs.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307549/four-corporate-business-flyer-design-templates_psg9oe.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307611/images_kcynbu.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307618/images_ghirkk.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307415/images_i83hev.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307459/download_uc4mqt.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307497/download_zwlruz.jpg",
                 ]
             }
         ]
