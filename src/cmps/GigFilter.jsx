@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import MarkV from '../assets/svgs/markV.svg?react'
 
 export function GigFilter({ filterBy, onSetFilterBy }) {
-    const [ filterToEdit, setFilterToEdit ] = useState(structuredClone(filterBy))
-
+    // structuredClone(filterBy)
+    const [ filterToEdit, setFilterToEdit ] = useState(filterBy)
+    
     useEffect(() => {
         onSetFilterBy(filterToEdit)
     }, [filterToEdit])
-
 
     //sort:
     const [sortByField,setSortByField] = useState('price')
@@ -15,53 +15,57 @@ export function GigFilter({ filterBy, onSetFilterBy }) {
     const [showSortByMenu,setShowSortByMenu] = useState(false)
 
     useEffect(() => {
-        setFilterToEdit((prevFilter) => ({
-            ...prevFilter,
+        setFilterToEdit(
+            {
             sortField: sortByField,
-            sortDir: sortByDirection,
-        }));
+            sortDir:sortByDirection
+            }
+        )
     }, [sortByField,sortByDirection])
+
+
 
     function toggleSortMenu(){
         setShowSortByMenu((prevState)=>!prevState)
     }
 
-
-
-
-
     function onClickSortBy(field){
         setSortByField(field)
-
         setShowSortByMenu(false)
     }
     
 
-    function handleChange(ev) {
-        const type = ev.target.type
-        const field = ev.target.name
-        let value
+    // function handleChange(ev) {
+    //     const type = ev.target.type
+    //     const field = ev.target.name
+    //     let value
 
-        switch (type) {
-            case 'text':
-            case 'radio':
-                value = field === 'sortDir' ? +ev.target.value : ev.target.value
-                if(!filterToEdit.sortDir) filterToEdit.sortDir = 1
-                break
-            case 'number':
-                value = +ev.target.value || ''
-                break
-        }
-        setFilterToEdit({ ...filterToEdit, [field]: value })
-    }
+    //     switch (type) {
+    //         case 'text':
+    //         case 'radio':
+    //             value = field === 'sortDir' ? +ev.target.value : ev.target.value
+    //             if(!filterToEdit.sortDir) filterToEdit.sortDir = 1
+    //             break
+    //         case 'number':
+    //             value = +ev.target.value || ''
+    //             break
+    //     }
+    //     setFilterToEdit({ ...filterToEdit, [field]: value })
+    // }
 
-    function clearFilter() {
-        setFilterToEdit({ ...filterToEdit, txt: '', minSpeed: '', maxPrice: '' })
+    function resetFilter() {
+        setFilterToEdit({
+            txt:'',
+            categoriesArray: [], 
+            deliveryMaxTime: '', 
+            maxPrice: '',
+            minPrice:'',
+            sortDir:1,
+            sortField:'price',
+         })
     }
-    
-    function clearSort() {
-        setFilterToEdit({ ...filterToEdit, sortField: '', sortDir: '' })
-    }
+   
+
 
     let sortByTitle 
     switch (sortByField){
@@ -116,7 +120,7 @@ export function GigFilter({ filterBy, onSetFilterBy }) {
             </div>
             <button 
                 className="btn-clear" 
-                onClick={clearSort}>Reset Filter
+                onClick={resetFilter}>Reset Filter
             </button>
 
 

@@ -25,6 +25,7 @@ export function GigIndex() {
 
 
     function onSetFilterBy(newFilterBy){
+
         dispatch({
             type: UPDATE_FILTER_BY,
             filterBy: newFilterBy 

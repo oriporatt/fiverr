@@ -38,10 +38,11 @@ export function gigReducer(state = initialState, action) {
             newState = { ...state, gigs }
             break
         case UPDATE_FILTER_BY:
-            let newFilter = action.filterBy
-            newFilter=  {...state.filterBy,...newFilter}
-            
+            let newFilterInput = action.filterBy
+            let newFilter=  {...state.filterBy,...newFilterInput}
+
             newState = { ...state, filterBy: newFilter}
+            
             break
         // case ADD_GIG_MSG:
         //     newState = { ...state, car: { ...state.car, msgs: [...state.car.msgs || [], action.msg] } }

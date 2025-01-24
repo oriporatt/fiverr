@@ -39,7 +39,6 @@ export function AppHeader() {
 
 	function onSubmitSearch(event) {
 		event.preventDefault(); 
-		// const searchValue = event.target.searchBox.value.trim(); 
 	
 		dispatch({
 			type: UPDATE_FILTER_BY,
@@ -58,7 +57,7 @@ export function AppHeader() {
 	}
 
 	function onChangeInput(event) {
-		const searchValue = event.target.value.trim();
+		const searchValue = event.target.value;
 		if (searchValue!==''){
 			setShowX(true)
 		} else{
@@ -71,6 +70,8 @@ export function AppHeader() {
 		setLocalInput(searchBoxTextGlobal)
 		if (searchBoxTextGlobal){
 			setShowX(true)
+		}else{
+			setShowX(false)
 		}
 	},
 	[searchBoxTextGlobal])

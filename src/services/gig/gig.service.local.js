@@ -25,8 +25,8 @@ _makeDummyGigs()
 
 
 
-
-async function query(filterBy = { txt: '', minPrice: 0 }) {
+// txt: '', minPrice: 0 
+async function query(filterBy = {txt: '' }) {
 
     var gigs = await storageService.query(STORAGE_KEY)
     const { txt, categoriesArray,
