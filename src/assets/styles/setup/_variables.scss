@@ -1,3 +1,4 @@
+@use "sass:color";
 // Colors
 $clr1: #ce2e6c;
 $clr2: #62646A; // buttons of header
@@ -13,7 +14,8 @@ $gray3: #777;
 $gray4: #333;
 
 $white: rgb(255, 255, 255);
-$offwhite: darken($white, 20%);
+$offwhite: color.adjust($white, $lightness: -20%);
+
 $black: rgb(64, 65, 69);
 $gray: hsl(225, 4%, 40%);
 $lightGray: #e0dddd;

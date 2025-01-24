@@ -74,7 +74,7 @@ export function HomePage() {
         })
     }
     return (
-        <section className='home-page  '>
+        <section className='home-page '>
             
 
             <div className="main-home-search ">
@@ -82,6 +82,7 @@ export function HomePage() {
                     <h1>Scale your professional workforce with <span>freelancers</span></h1>
                     {/* <h1>workforce with <span>freelancers</span></h1> */}
                 </div>
+
                 <div className="search-container " ref={searchBoxEl} >
                     <input type="text" placeholder="Search for any service..."/>
                     <img src="/img/search-icon.svg" alt="Search" className='search-icon' onClick={handleSearchInput} />

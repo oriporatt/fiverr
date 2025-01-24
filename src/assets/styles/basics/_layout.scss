@@ -7,11 +7,11 @@
 
 
     @include mixins.for-mobile-layout {
-        grid-template-columns: 0 auto 0;
+        grid-template-columns: 2rem auto 2rem;
     }
     
     @include mixins.for-narrow-layout {
-        grid-template-columns: 0 auto 0;
+        grid-template-columns: 2rem auto 2rem;
     }
 
 

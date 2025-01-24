@@ -4,6 +4,16 @@
 
 
 .home-page{
+    
+    @include mixins.for-narrow-layout{
+        grid-column: -1/1;
+    }
+    @include mixins.for-mobile-layout{
+        grid-column: -1/1;
+    }
+
+
+
     margin-top: functions.rem(80px);
     .main-home-search{
         margin-top: functions.rem(40px);
@@ -103,13 +113,17 @@
             background: linear-gradient(180deg, #003912 36.72%, #19aa64 141.43%);
             height: 350px; 
             div h1{
-                max-width: 150px;
+                max-height: 200px;
+                padding-top: 50px;
+                max-width: 250px;
                 font-size: functions.rem(32px);
                 text-align: center;
+                justify-self: center;
                 line-height: functions.rem(45px);
             }
             .trusted-by{
                 color: transparent;
+                width:0;
                 .text{
                     color: transparent;
                 }
@@ -134,6 +148,7 @@
             }
             .trusted-by{
                 color: transparent;
+                width:0;
                 .text{
                     color: transparent;
                 }
