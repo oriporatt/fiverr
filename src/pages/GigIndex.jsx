@@ -8,13 +8,12 @@ import { gigService } from '../services/gig/index'
 import { userService } from '../services/user'
 
 import { GigList } from '../cmps/GigList'
-// import { CarFilter } from '../cmps/CarFilter'
+ import { GigFilter } from '../cmps/GigFilter'
 
 export function GigIndex() {
 
-    // const [ filterBy, setFilterBy ] = useState()
+    const [ filterBy, setFilterBy ] = useState(useSelector(storeState => storeState.gigModule.filterBy))
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
-    const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
 
 
     useEffect(() => {
@@ -60,8 +59,9 @@ export function GigIndex() {
     return (
         <main className="gig-index full">
             <div className='main-index main-container'>
+                <GigFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+
                 {gigs&&<GigList  gigs={gigs}/>}
-                {/* <CarFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
                 {/* <CarList 
                     cars={cars}
                     onRemoveCar={onRemoveCar} 

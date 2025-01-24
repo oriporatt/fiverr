@@ -40,14 +40,11 @@ async function query(filterBy = { txt: '', minPrice: 0 }) {
     // if (minSpeed) {
     //     cars = cars.filter(car => car.speed >= minSpeed)
     // }
-    // if(sortField === 'vendor' || sortField === 'owner'){
-    //     cars.sort((car1, car2) => 
-    //         car1[sortField].localeCompare(car2[sortField]) * +sortDir)
-    // }
-    // if(sortField === 'price' || sortField === 'speed'){
-    //     cars.sort((car1, car2) => 
-    //         (car1[sortField] - car2[sortField]) * +sortDir)
-    // }
+
+    if(sortField === 'price' || sortField === 'daysToMake'){
+        gigs.sort((gig1, gig2) => 
+            (gig1[sortField] - gig2[sortField]) * +sortDir)
+    }
     
     // cars = cars.map(({ _id, vendor, price, speed, owner }) => ({ _id, vendor, price, speed, owner }))
     return gigs

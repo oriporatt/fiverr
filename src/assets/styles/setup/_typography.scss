@@ -9,12 +9,15 @@
 
 @font-face {
     font-family: 'Macan';
-    src: url('/fonts/Macan/macan-bold.woff2') format('truetype'); 
+    src: url('/fonts/Macan/macan-bold.woff2') format('woff2'); 
+    font-weight: bold;
 }
 
 @font-face {
     font-family: 'Macan';
-    src: url('/fonts/Macan/macan-regular.woff2') format('truetype'); 
+    src: url('/fonts/Macan/macan-regular.woff2') format('woff2');
+    font-weight: normal; 
+
 }
 
 @font-face {

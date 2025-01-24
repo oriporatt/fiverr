@@ -1,0 +1,62 @@
+@use "../setup/functions";
+@use "../setup/variables";
+
+.gig-filter{
+
+}
+
+.sort-by-menu{
+    justify-self: end;
+    position: relative;
+   label{
+    font-size: 1rem;
+    color: variables.$gray;
+    font-weight: 400;
+
+
+    .sort-by-title{
+        color: variables.$black;
+        font-weight: 700;
+
+        &:hover{
+            cursor: pointer;
+        }
+
+    }
+    .sort-by-modal{
+        display: flex;
+        border: 1px solid #e4e5e7;
+        border-radius: 15px;
+        padding: functions.rem(24px);
+        position: absolute;
+        right: 0;
+        flex-direction: column;
+        background-color: variables.$white;
+        overflow-y:scroll; 
+        width: 10rem;
+        box-sizing: border-box;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        z-index: 70;
+        height: functions.rem(150px);  
+        width: functions.rem(250px);
+
+        label{
+            width: 100%;
+            font-size: functions.rem(14px) ;
+            color: variables.$black;
+            border-radius: 3px;
+            padding: 0.5rem 0.5rem;
+
+            &:hover{
+                background-color: variables.$veryLightGray;
+                cursor: pointer;
+
+            }
+ 
+        }
+    }
+   } 
+
+
+
+}
