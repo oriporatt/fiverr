@@ -81,8 +81,26 @@
                 height: functions.rem(40px);
                 border-radius: functions.rem(12px);
                 padding: functions.rem(10px) functions.rem(10px);
+                &:hover{
+                    cursor: pointer; 
+                }
                 
-                
+            }
+            .x-button{
+                height: 25px;
+                width: 25px;
+                position: absolute;
+                top: 50%;
+                right: 60px;
+                transform: translateY(-50%); 
+                z-index: 90;
+                fill: variables.$black;
+                background-color: variables.$lightGray;
+                border-radius: 50%;
+                padding: 5px;
+                &:hover{
+                    cursor: pointer; 
+                }
             }
         }
 

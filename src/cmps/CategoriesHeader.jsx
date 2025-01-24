@@ -49,9 +49,7 @@ export function CategoriesHeader() {
     };
         
     const headerCategories = gigService.categories
-    console.log('left',leftScrollButton)
-    console.log('right',rightScrollButton)
-    console.log(document.querySelector('.categories-header'));
+
 
     return (
         <main className={`categories-header full ${showSticky?'home-upper':''}`}>

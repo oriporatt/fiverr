@@ -1,6 +1,6 @@
 import { useEffect,useRef,useState} from "react";
 import { useDispatch,useSelector} from 'react-redux'
-
+import { useNavigate } from "react-router";
 import{SET_SEARCH_BOX_POS} from '../store/reducers/system.reducer'
 import SVGgraphicAndDesign  from '../assets/svgs/SVGgraphicAndDesign';
 import SVGprogrammingAndTech  from '../assets/svgs/SVGprogrammingAndTech';
@@ -11,17 +11,56 @@ import SVGaiSerices from "../assets/svgs/SVGaiSerices";
 import SVGmusicAndAudio from "../assets/svgs/SVGmusicAndAudio";
 import SVGbusiness from "../assets/svgs/SVGbusiness";
 import SVGconsulting from "../assets/svgs/SVGconsulting";
-
-
+import { UPDATE_FILTER_BY } from "../store/reducers/gig.reducer"; 
+import RejectSVG from '../assets/svgs/rejectSVG.svg?react'
 
 export function HomePage() {
     const searchBoxEl=useRef(null); 
+    const navigate = useNavigate()
 	const dispatch = useDispatch()
     let showSearchOnTop = false
     const searchBoxPos = useSelector(storeState => storeState.systemModule.searchBoxPosition)
     if (searchBoxPos==='top'){
         showSearchOnTop=true
     }
+
+    //search box functions
+	const searchBoxTextGlobal = useSelector(storeState => storeState.gigModule.filterBy.txt)
+	const [ showX, setShowX ] = useState(false)
+	const [ localInput, setLocalInput ] = useState(searchBoxTextGlobal)
+
+
+    function onSubmitSearch(event) {
+        event.preventDefault(); 
+        
+        dispatch({
+            type: UPDATE_FILTER_BY,
+            filterBy: { 'txt': localInput }
+        });
+
+        navigate('/gig')
+
+    }
+    
+    function onClearSearchBox(event) {
+        event.preventDefault(); 
+        setLocalInput('')
+        setShowX(false)
+        dispatch({
+            type: UPDATE_FILTER_BY,
+            filterBy: { 'txt': '' }
+        });
+    }
+
+	useEffect(()=>{
+		if (localInput){
+			setShowX(true)
+		}else{
+            setShowX(false)
+
+        }
+	},
+	[localInput])
 
     // horizinal scroling functions
     const [leftScrollButton, setLeftScrollButton] = useState(false)
@@ -58,9 +97,6 @@ export function HomePage() {
 
 
 
-    const handleSearchInput = () => {
-        console.log('click');
-      };
 
 
 
@@ -84,8 +120,14 @@ export function HomePage() {
                 </div>
 
                 <div className="search-container " ref={searchBoxEl} >
-                    <input type="text" placeholder="Search for any service..."/>
-                    <img src="/img/search-icon.svg" alt="Search" className='search-icon' onClick={handleSearchInput} />
+                    <input 
+                            type="text" 
+                            placeholder="Search for any service..."
+                            value={localInput} 
+                            onChange={(e) => setLocalInput(e.target.value)} 
+                    />
+                    <img src="/img/search-icon.svg" alt="Search" className='search-icon' onClick={onSubmitSearch} />
+                    {showX&& <RejectSVG className='x-button' onClick={onClearSearchBox} /> }
                 </div>
 
                 <ul className='trusted-by' >

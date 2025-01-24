@@ -1,5 +1,5 @@
 import { Link, NavLink ,useLocation} from 'react-router-dom'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { useSelector ,useDispatch} from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
@@ -67,7 +67,13 @@ export function AppHeader() {
 		setLocalInput(searchValue)
 	}
 
-
+	useEffect(()=>{
+		setLocalInput(searchBoxTextGlobal)
+		if (searchBoxTextGlobal){
+			setShowX(true)
+		}
+	},
+	[searchBoxTextGlobal])
 	
 	return (
 		<header className={`app-header main-container ${isGigsIndexPage ? 'header-regular' : ''}`}>

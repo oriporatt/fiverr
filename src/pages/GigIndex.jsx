@@ -16,7 +16,6 @@ export function GigIndex() {
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
     const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
 
-    console.log(filterBy)
 
     useEffect(() => {
         loadGigs(filterBy)
