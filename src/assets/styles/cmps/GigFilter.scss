@@ -2,11 +2,32 @@
 @use "../setup/variables";
 
 .gig-filter{
+    h3{
+        margin-top: 1rem;
+        font-size: functions.rem(28px);
+        .results-for{
+            font-weight: bold;
+            
+        }
+    }
 
 }
 
+
+.bottom-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem;
+    align-items: center;
+    p3{
+        font-size: functions.rem(16px);
+        
+    }
+}
+
+
 .sort-by-menu{
-    justify-self: end;
     position: relative;
    label{
     font-size: 1rem;
@@ -77,4 +98,52 @@
 
 
 
+}
+
+.filter-buttons{
+    display: flex;
+    gap:10px;
+    button{
+        line-height: functions.rem(24px);
+        
+        padding: functions.rem(10px) functions.rem(20px);
+        color: variables.$black;
+        background-color: variables.$white;
+        border-color: #dadbdd;
+        border-width: functions.rem(1px); 
+        border-style: solid; 
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap:0.5rem;
+        p{
+            white-space: nowrap;
+            margin: 0;
+            color: variables.$black;
+        }
+        svg{
+            transform: scale(0.8); 
+            transform-origin: center;
+
+        }
+    }
+
+
+}
+
+.btn-clear{
+    padding: functions.rem(5px) functions.rem(10px);
+    color: variables.$black;
+    background-color: variables.$white;
+    border-color: variables.$black;
+    border-width: functions.rem(2px); 
+    border-style: solid; 
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: functions.rem(12px); 
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
 }

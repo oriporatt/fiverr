@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import MarkV from '../assets/svgs/markV.svg?react'
+import DropDown from '../assets/svgs/DropDown.svg?react'
 
-export function GigFilter({ filterBy, onSetFilterBy }) {
+
+export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     // structuredClone(filterBy)
     const [ filterToEdit, setFilterToEdit ] = useState(filterBy)
     
@@ -79,7 +81,7 @@ export function GigFilter({ filterBy, onSetFilterBy }) {
 
 
     return <section className="gig-filter">
-            <h3>Filter:</h3>
+            <h3>Results for <span className='results-for'>{filterBy.txt}</span> </h3>
             {/* <input
                 type="text"
                 name="txt"
@@ -101,23 +103,52 @@ export function GigFilter({ filterBy, onSetFilterBy }) {
                 className="btn-clear" 
                 onClick={clearFilter}>Clear
             </button> */}
+            <div className='filter-buttons'>
+                <button className='category-filter'>
+                    <p>Category</p>
+                    <DropDown/>
+                </button>
 
-            <div className='sort-by-menu'>
-                <label>Sort by: <span className='sort-by-title' onClick={toggleSortMenu}>{sortByTitle}</span>
-                    {showSortByMenu&&
-                        <div className='sort-by-modal'>
-                            <label onClick={()=>onClickSortBy('price')}>
-                                {(sortByField==='price')&&<span className='mark-v'><MarkV/></span>}
-                                <span className='title'>Budget</span>
-                            </label>
-                            <label onClick={()=>onClickSortBy('daysToMake')}>
-                                {(sortByField==='daysToMake')&&<span className='mark-v'><MarkV/></span>}
-                                <span className='title'>Delivery Time</span>
-                            </label>
-                            
-                        </div>}
-                </label>
+                <button className='seller-details'>
+                    <p>Seller details</p>
+                    <DropDown/>
+                </button>
+
+                <button className='budget'>
+                    <p>Budget</p>
+                    <DropDown/>
+                </button>
+
+                <button className='delivery-time'>
+                    <p>Delivery Time</p>
+                    <DropDown/>
+                </button>
+
             </div>
+            
+            <div className='bottom-menu'>
+                <p3 className='results-num'>{gigsLength} results</p3>
+                <div className='sort-by-menu'>
+                    <label>Sort by: <span className='sort-by-title' onClick={toggleSortMenu}>{sortByTitle}</span>
+                        {showSortByMenu&&
+                            <div className='sort-by-modal'>
+                                <label onClick={()=>onClickSortBy('price')}>
+                                    {(sortByField==='price')&&<span className='mark-v'><MarkV/></span>}
+                                    <span className='title'>Budget</span>
+                                </label>
+                                <label onClick={()=>onClickSortBy('daysToMake')}>
+                                    {(sortByField==='daysToMake')&&<span className='mark-v'><MarkV/></span>}
+                                    <span className='title'>Delivery Time</span>
+                                </label>
+                                
+                            </div>}
+                    </label>
+                </div>
+            </div>
+
+
+            
+
             <button 
                 className="btn-clear" 
                 onClick={resetFilter}>Reset Filter

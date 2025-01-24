@@ -70,7 +70,9 @@ export function GigIndex() {
     return (
         <main className="gig-index full">
             <div className='main-index main-container'>
-                <GigFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+                <GigFilter filterBy={filterBy} 
+                onSetFilterBy={onSetFilterBy} 
+                gigsLength={gigs.length} />
 
                 {gigs&&<GigList  gigs={gigs}/>}
                 {/* <CarList 
