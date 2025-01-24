@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
+import MarkV from '../assets/svgs/markV.svg?react'
 
-export function GigFilter({ filterBy, setFilterBy }) {
+export function GigFilter({ filterBy, onSetFilterBy }) {
     const [ filterToEdit, setFilterToEdit ] = useState(structuredClone(filterBy))
-    const [sortByField,setSortByField] = useState('price')
-    const [sortByDirection,setSortByDirection] = useState(1)
-
-    const [showSortByMenu,setShowSortByMenu] = useState(false)
-
 
     useEffect(() => {
-        setFilterBy(filterToEdit)
+        onSetFilterBy(filterToEdit)
     }, [filterToEdit])
 
+
+    //sort:
+    const [sortByField,setSortByField] = useState('price')
+    const [sortByDirection,setSortByDirection] = useState(1)
+    const [showSortByMenu,setShowSortByMenu] = useState(false)
 
     useEffect(() => {
         setFilterToEdit((prevFilter) => ({
@@ -25,9 +26,15 @@ export function GigFilter({ filterBy, setFilterBy }) {
         setShowSortByMenu((prevState)=>!prevState)
     }
 
-    // function changeSortBy{
 
-    // }
+
+
+
+    function onClickSortBy(field){
+        setSortByField(field)
+
+        setShowSortByMenu(false)
+    }
     
 
     function handleChange(ev) {
@@ -95,8 +102,14 @@ export function GigFilter({ filterBy, setFilterBy }) {
                 <label>Sort by: <span className='sort-by-title' onClick={toggleSortMenu}>{sortByTitle}</span>
                     {showSortByMenu&&
                         <div className='sort-by-modal'>
-                            <label onClick={()=>setSortByField('price')}>Budget</label>
-                            <label onClick={()=>setSortByField('daysToMake')}>Delivery Time</label>
+                            <label onClick={()=>onClickSortBy('price')}>
+                                {(sortByField==='price')&&<span className='mark-v'><MarkV/></span>}
+                                <span className='title'>Budget</span>
+                            </label>
+                            <label onClick={()=>onClickSortBy('daysToMake')}>
+                                {(sortByField==='daysToMake')&&<span className='mark-v'><MarkV/></span>}
+                                <span className='title'>Delivery Time</span>
+                            </label>
                             
                         </div>}
                 </label>

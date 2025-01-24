@@ -39,11 +39,11 @@ export function AppHeader() {
 
 	function onSubmitSearch(event) {
 		event.preventDefault(); 
-		const searchValue = event.target.searchBox.value.trim(); 
+		// const searchValue = event.target.searchBox.value.trim(); 
 	
 		dispatch({
 			type: UPDATE_FILTER_BY,
-			filterBy: { 'txt': searchValue }
+			filterBy: { 'txt': localInput }
 		});
 	}
 	

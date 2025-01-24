@@ -1,5 +1,5 @@
 import { useState, useEffect,useRef } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 
 import {  loadGigs } from '../store/actions/gig.actions'
 
@@ -9,10 +9,13 @@ import { userService } from '../services/user'
 
 import { GigList } from '../cmps/GigList'
  import { GigFilter } from '../cmps/GigFilter'
+ import { UPDATE_FILTER_BY } from "../store/reducers/gig.reducer"; 
+
 
 export function GigIndex() {
+    const dispatch = useDispatch()
 
-    const [ filterBy, setFilterBy ] = useState(useSelector(storeState => storeState.gigModule.filterBy))
+    const filterBy =useSelector(storeState => storeState.gigModule.filterBy)
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
 
 
@@ -20,6 +23,13 @@ export function GigIndex() {
         loadGigs(filterBy)
     }, [filterBy])
 
+
+    function onSetFilterBy(newFilterBy){
+        dispatch({
+            type: UPDATE_FILTER_BY,
+            filterBy: newFilterBy 
+        });
+    }
 
 
     // async function onRemoveCar(carId) {
@@ -59,7 +69,7 @@ export function GigIndex() {
     return (
         <main className="gig-index full">
             <div className='main-index main-container'>
-                <GigFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+                <GigFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
 
                 {gigs&&<GigList  gigs={gigs}/>}
                 {/* <CarList 
