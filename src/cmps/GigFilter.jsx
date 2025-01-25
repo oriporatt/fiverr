@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
 import MarkV from '../assets/svgs/markV.svg?react'
 import DropDown from '../assets/svgs/DropDown.svg?react'
+import Checked from '../assets/svgs/Checked.svg?react'
+import Unchecked from '../assets/svgs/Unchecked.svg?react'
 
+import { gigService } from '../services/gig/index'
 
 export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     // structuredClone(filterBy)
@@ -10,7 +13,6 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     useEffect(() => {
         onSetFilterBy(filterToEdit)
     }, [filterToEdit])
-
     //sort:
     const [sortByField,setSortByField] = useState('price')
     const [sortByDirection,setSortByDirection] = useState(1)
@@ -25,7 +27,9 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
         )
     }, [sortByField,sortByDirection])
 
-
+    function onUpdateFilter(){
+        onSetFilterBy({ ...filterBy, ...filterToEdit })
+    }
 
     function toggleSortMenu(){
         setShowSortByMenu((prevState)=>!prevState)
@@ -79,7 +83,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
             break
     }
 
-
+    console.log(filterBy)
     return <section className="gig-filter">
             <h3>Results for <span className='results-for'>{filterBy.txt}</span> </h3>
             {/* <input
@@ -104,9 +108,20 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
                 onClick={clearFilter}>Clear
             </button> */}
             <div className='filter-buttons'>
-                <button className='category-filter'>
+                <button className='btn-category-filter'>
                     <p>Category</p>
-                    <DropDown/>
+                        <DropDown/>
+                        <div className='filter-categories-modal'>
+                            <ul >
+                                {gigService.categories.map((category)=>(
+                                    <li key={category}>
+                                        <Unchecked/>
+                                        {category}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    
                 </button>
 
                 <button className='seller-details'>
@@ -127,7 +142,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
             </div>
             
             <div className='bottom-menu'>
-                <p3 className='results-num'>{gigsLength} results</p3>
+                <h3 className='results-num'>{gigsLength} results</h3>
                 <div className='sort-by-menu'>
                     <label>Sort by: <span className='sort-by-title' onClick={toggleSortMenu}>{sortByTitle}</span>
                         {showSortByMenu&&
@@ -152,6 +167,11 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
             <button 
                 className="btn-clear" 
                 onClick={resetFilter}>Reset Filter
+            </button>
+
+            <button style={{backgroundColor:'green'}}
+                className="set-filter" 
+                onClick={onUpdateFilter}>Set Filter
             </button>
 
 

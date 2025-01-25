@@ -1,5 +1,7 @@
 @use "../setup/functions";
 @use "../setup/variables";
+@use "../setup/mixins";
+
 
 .gig-filter{
     h3{
@@ -20,7 +22,7 @@
     justify-content: space-between;
     padding: 0.5rem;
     align-items: center;
-    p3{
+    h3{
         font-size: functions.rem(16px);
         
     }
@@ -48,23 +50,14 @@
 
     }
     .sort-by-modal{
-        display: flex;
-        border: 1px solid #e4e5e7;
-        border-radius: 15px;
-        padding: functions.rem(24px);
-        position: absolute;
-        right: 0;
-        top: functions.rem(40px);
-        flex-direction: column;
-        background-color: variables.$white;
-        overflow-y:scroll; 
-        width: 10rem;
-        box-sizing: border-box;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-        z-index: 70;
-        height: functions.rem(150px);  
-        width: functions.rem(250px);
- 
+
+        @include mixins.filter-modal{
+            top: functions.rem(40px);
+            width: 10rem;
+            height: functions.rem(150px);  
+            width: functions.rem(250px);
+        }
+
         label{
             display: grid;
             grid-template-columns:2rem 1fr ;
@@ -146,4 +139,29 @@
     display: flex;
     align-items: center;
     gap:0.5rem;
+}
+
+
+.btn-category-filter{
+    position: relative;
+    
+    .filter-categories-modal{
+        position: absolute;
+        @include mixins.filter-modal{
+            left:0;
+            top: functions.rem(48px);
+            height: functions.rem(400px);  
+            width: functions.rem(500px);
+        }
+        
+        svg{
+            width: 25px;
+            height: 25px;
+            transform: scale(1); 
+            transform-origin: center;
+            fill:variables.$white;
+            stroke-width: 1px;
+            stroke: variables.$lightGray;
+        }
+    }
 }
