@@ -34,7 +34,6 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
         onSetFilterBy(newSort)
 
     }, [sortByField,sortByDirection])
-    console.log(filterBy)
 
 
     let sortByTitle 
@@ -59,16 +58,17 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
 
     // category filter
     const [filterModalOpen,setFilterModalOpen] = useState('')
+    const uncheckedFilterArray =gigService.categories.map(category=>{
+        return (
+            {
+            category: category,
+            active:false,
+            })
+    })
+    const [categoryFilterArray,setCategoryFilterArray] = useState(uncheckedFilterArray)
 
-    const [categoryFilterArray,setCategoryFilterArray] = useState(
-        gigService.categories.map(category=>{
-            return (
-                {
-                category: category,
-                active:false,
-                })
-        })
-    )
+
+
     useEffect(() => {
         onUpdateFilterLocal('categoriesArray',categoryFilterArray)
     }, [categoryFilterArray])
@@ -85,6 +85,43 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
         
         
     }
+
+    
+    function toggleCategoryCheckbox(category){
+        setCategoryFilterArray((lastState)=>
+            lastState.map(categoryItem=>{
+                if (categoryItem.category===category){
+                    return {category,
+                            active:!categoryItem.active
+                    }
+                }else{
+                    return categoryItem
+                }
+            }))
+
+    }
+
+    let outputLabels
+    function makeCategoriesLabels(){
+        outputLabels=filterBy.categoriesArray
+            .filter(item=>(item.active===true))
+            .map(item=>item.category)
+    }
+
+    function resetFilterCategory(){
+
+        onSetFilterBy({ 
+            ...filterBy,
+            ...filterToEdit,
+            categoriesArray:uncheckedFilterArray
+         })
+        setCategoryFilterArray(uncheckedFilterArray)
+        setFilterModalOpen('')
+
+
+    }
+
+    makeCategoriesLabels()
 
 
     // update store and states functions
@@ -103,6 +140,8 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
         onSetFilterBy({ ...filterBy, ...filterToEdit })
         setFilterModalOpen('')
     }
+
+
 
 
 
@@ -137,29 +176,6 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     }
    
 
-    function toggleCategoryCheckbox(category){
-        setCategoryFilterArray((lastState)=>
-            lastState.map(categoryItem=>{
-                if (categoryItem.category===category){
-                    return {category,
-                            active:!categoryItem.active
-                    }
-                }else{
-                    return categoryItem
-                }
-            }))
-
-    }
-
-    let outputLabels
-    function makeCategoriesLabels(){
-        outputLabels=filterBy.categoriesArray
-            .filter(item=>(item.active===true))
-            .map(item=>item.category)
-    }
-    
-    makeCategoriesLabels()
-    console.log(outputLabels)
 
     return <section className="gig-filter">
 
@@ -188,7 +204,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
                         </div>}
                         {filterModalOpen==='category'&&
                         <div className='bottom-buttons'>
-                                <button className='clr-all-btn'>Clear All</button>
+                                <button className='clr-all-btn' onClick={resetFilterCategory}>Clear All</button>
                                 <button className='apply-btn' onClick={onUpdateFilterStore}>Apply</button>
                         </div>}
   
@@ -223,7 +239,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
 
             </div>
 
-            {outputLabels&&
+            {outputLabels.length!==0&&
                 <ul className='labels-list'><p>Categories </p>{outputLabels.map(label=>(
                     <li key={label}>
                         <span className='label-filter'>{label}</span>
