@@ -12,6 +12,18 @@
             
         }
     }
+    .labels-list{
+        display: flex;
+        gap: 1rem;
+    }
+    .label-filter{
+        padding: 0.6rem 1rem;
+        border-radius: 10px;
+        font-size: functions.rem(14px);
+        font-weight: 700;
+        background-color: variables.$lightGray;
+        color: variables.$black;
+    }
 
 }
 

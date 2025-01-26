@@ -58,7 +58,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     
 
     // category filter
-    const [categoryOpen,setCategoryOpen] = useState('')
+    const [filterModalOpen,setFilterModalOpen] = useState('')
 
     const [categoryFilterArray,setCategoryFilterArray] = useState(
         gigService.categories.map(category=>{
@@ -74,8 +74,8 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     }, [categoryFilterArray])
 
     
-    function onSetCategory(categoryClicked){
-        setCategoryOpen((lastState)=>{
+    function onSetFilterModalOpen(categoryClicked){
+        setFilterModalOpen((lastState)=>{
             if (categoryClicked===lastState){
                 return('')
             }else{
@@ -101,10 +101,10 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     function onUpdateFilterStore(){
 
         onSetFilterBy({ ...filterBy, ...filterToEdit })
-        setCategoryOpen('')
+        setFilterModalOpen('')
     }
 
-    
+
 
     // function handleChange(ev) {
     //     const type = ev.target.type
@@ -150,17 +150,35 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
             }))
 
     }
+
+    let outputLabels
+    function makeCategoriesLabels(){
+        outputLabels=filterBy.categoriesArray
+            .filter(item=>(item.active===true))
+            .map(item=>item.category)
+    }
+    
+    makeCategoriesLabels()
+    console.log(outputLabels)
+
     return <section className="gig-filter">
             <h3>Results for <span className='results-for'>{filterBy.txt}</span> </h3>
+            {outputLabels&&<p >Filters:</p>}
+            {outputLabels&&
+                <ul className='labels-list'>{outputLabels.map(label=>(
+                    <li key={label}>
+                        <span className='label-filter'>{label}</span>
+                    </li>))}
+                </ul>}
 
             <div className='filter-buttons'>
                 <div className='filter-button-template btn-category-filter'>
                         <div className='btn-design'
-                        onClick={()=>onSetCategory('category')}>
+                        onClick={()=>onSetFilterModalOpen('category')}>
                             <p>Category</p>
                             <DropDown/>  
                         </div>
-                        {categoryOpen==='category'&&
+                        {filterModalOpen==='category'&&
                         <div className='filter-categories-modal'>
                             <h3>Category</h3>
                             <ul >
@@ -174,7 +192,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
                                 ))}
                             </ul>
                         </div>}
-                        {categoryOpen==='category'&&
+                        {filterModalOpen==='category'&&
                         <div className='bottom-buttons'>
                                 <button className='clr-all-btn'>Clear All</button>
                                 <button className='apply-btn' onClick={onUpdateFilterStore}>Apply</button>
@@ -184,7 +202,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
 
                 <div className='filter-button-template seller-details'>
                     <div className='btn-design'
-                        onClick={()=>onSetCategory('seller')}>
+                        onClick={()=>onSetFilterModalOpen('seller')}>
                             <p>Seller details</p>
                             <DropDown/>  
                     </div>
@@ -192,7 +210,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
 
                 <div className='filter-button-template budget'>
                     <div className='btn-design'
-                        onClick={()=>onSetCategory('budget')}>
+                        onClick={()=>onSetFilterModalOpen('budget')}>
                             <p>Budget</p>
                             <DropDown/>
                     </div>
@@ -203,7 +221,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
 
 
                     <div className='btn-design'
-                        onClick={()=>onSetCategory('deliveryTime')}>
+                        onClick={()=>onSetFilterModalOpen('deliveryTime')}>
                             <p>Delivery Time</p>
                             <DropDown/>
                     </div>
