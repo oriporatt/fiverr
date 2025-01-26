@@ -101,9 +101,10 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     function onUpdateFilterStore(){
 
         onSetFilterBy({ ...filterBy, ...filterToEdit })
+        setCategoryOpen('')
     }
 
-
+    
 
     // function handleChange(ev) {
     //     const type = ev.target.type
