@@ -27,8 +27,14 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
         )
     }, [sortByField,sortByDirection])
 
-    function onUpdateFilter(){
-        onSetFilterBy({ ...filterBy, ...filterToEdit })
+    let sortByTitle 
+    switch (sortByField){
+        case 'price':
+            sortByTitle= 'Budget'
+            break
+        case 'daysToMake':
+            sortByTitle= 'Delivery Time'
+            break
     }
 
     function toggleSortMenu(){
@@ -40,6 +46,36 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
         setShowSortByMenu(false)
     }
     
+
+    // category filter
+    const [categoryFilterArray,setCategoryFilterArray] = useState(
+        gigService.categories.map(category=>{
+            return (
+                {
+                category: category,
+                active:false,
+                })
+        })
+    )
+
+    const [categoryOpen,setCategoryOpen] = useState('')
+    function onSetCategory(categoryClicked){
+        setCategoryOpen((lastState)=>{
+            if (categoryClicked===lastState){
+                return('')
+            }else{
+                return(categoryClicked)
+            }
+        })
+    }
+
+    //
+
+    function onUpdateFilter(){
+        onSetFilterBy({ ...filterBy, ...filterToEdit })
+    }
+
+
 
     // function handleChange(ev) {
     //     const type = ev.target.type
@@ -72,18 +108,21 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     }
    
 
-
-    let sortByTitle 
-    switch (sortByField){
-        case 'price':
-            sortByTitle= 'Budget'
-            break
-        case 'daysToMake':
-            sortByTitle= 'Delivery Time'
-            break
+    function toggleCategoryCheckbox(category){
+        setCategoryFilterArray((lastState)=>
+            lastState.map(categoryItem=>{
+                if (categoryItem.category===category){
+                    return {category,
+                            active:!categoryItem.active
+                    }
+                }else{
+                    return categoryItem
+                }
+            }))
     }
 
-    console.log(filterBy)
+    console.log(categoryOpen)
+    
     return <section className="gig-filter">
             <h3>Results for <span className='results-for'>{filterBy.txt}</span> </h3>
             {/* <input
@@ -108,36 +147,60 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
                 onClick={clearFilter}>Clear
             </button> */}
             <div className='filter-buttons'>
-                <button className='btn-category-filter'>
-                    <p>Category</p>
-                        <DropDown/>
+                <div className='filter-button-template btn-category-filter'>
+                        <div className='btn-design'
+                        onClick={()=>onSetCategory('category')}>
+                            <p>Category</p>
+                            <DropDown/>  
+                        </div>
+                        {categoryOpen==='category'&&
                         <div className='filter-categories-modal'>
+                            <h3>Category</h3>
                             <ul >
-                                {gigService.categories.map((category)=>(
-                                    <li key={category}>
-                                        <Unchecked/>
-                                        {category}
+                                {categoryFilterArray.map((categoryItem,idx)=>(
+                                    <li key={idx}>
+                                        {categoryItem.active?  
+                                            <Checked className='checked' onClick={()=>toggleCategoryCheckbox(categoryItem.category)}/>
+                                            :<Unchecked className='unchecked' onClick={()=>toggleCategoryCheckbox(categoryItem.category)}/>}
+                                        <p>{categoryItem.category}</p>
                                     </li>
                                 ))}
                             </ul>
-                        </div>
-                    
-                </button>
+                        </div>}
+                        {categoryOpen==='category'&&
+                        <div className='bottom-buttons'>
+                                <button className='clr-all-btn'>Clear All</button>
+                                <button className='apply-btn'>Apply</button>
+                        </div>}
+  
+                </div>
 
-                <button className='seller-details'>
-                    <p>Seller details</p>
-                    <DropDown/>
-                </button>
+                <div className='filter-button-template seller-details'>
+                    <div className='btn-design'
+                        onClick={()=>onSetCategory('seller')}>
+                            <p>Seller details</p>
+                            <DropDown/>  
+                    </div>
+                </div>
 
-                <button className='budget'>
-                    <p>Budget</p>
-                    <DropDown/>
-                </button>
+                <div className='filter-button-template budget'>
+                    <div className='btn-design'
+                        onClick={()=>onSetCategory('budget')}>
+                            <p>Budget</p>
+                            <DropDown/>
+                    </div>
 
-                <button className='delivery-time'>
-                    <p>Delivery Time</p>
-                    <DropDown/>
-                </button>
+                </div>
+
+                <div className='filter-button-template delivery-time'>
+
+
+                    <div className='btn-design'
+                        onClick={()=>onSetCategory('deliveryTime')}>
+                            <p>Delivery Time</p>
+                            <DropDown/>
+                    </div>
+                </div>
 
             </div>
             

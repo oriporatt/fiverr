@@ -16,7 +16,7 @@
 }
 
 
-.bottom-menu{
+.bottom-menu{ //sort+# elemnts
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -93,38 +93,7 @@
 
 }
 
-.filter-buttons{
-    display: flex;
-    gap:10px;
-    button{
-        line-height: functions.rem(24px);
-        
-        padding: functions.rem(10px) functions.rem(20px);
-        color: variables.$black;
-        background-color: variables.$white;
-        border-color: #dadbdd;
-        border-width: functions.rem(1px); 
-        border-style: solid; 
-        border-radius: 10px;
-        font-weight: 700;
-        font-size: 1rem;
-        display: flex;
-        align-items: center;
-        gap:0.5rem;
-        p{
-            white-space: nowrap;
-            margin: 0;
-            color: variables.$black;
-        }
-        svg{
-            transform: scale(0.8); 
-            transform-origin: center;
 
-        }
-    }
-
-
-}
 
 .btn-clear{
     padding: functions.rem(5px) functions.rem(10px);
@@ -142,26 +111,159 @@
 }
 
 
+.filter-buttons{
+    display: flex;
+    gap:10px;
+    .filter-button-template{
+
+
+
+    }
+
+
+}
+
 .btn-category-filter{
     position: relative;
-    
+    .bottom-buttons{
+        top: functions.rem(400px);
+        width: functions.rem(500px);
+        left:-1px;
+
+    }
     .filter-categories-modal{
         position: absolute;
         @include mixins.filter-modal{
-            left:0;
-            top: functions.rem(48px);
-            height: functions.rem(400px);  
+            left:-1px;
+            top: functions.rem(51px);
+            height: functions.rem(350px);  
             width: functions.rem(500px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow effect on the container */
+            border-radius: 15px 15px  0 0;
+
         }
+
+        h3{
+            padding: functions.rem(24px) functions.rem(24px);
+            align-self: start;
+            margin:  0.5rem 0;
+        }
+        ul{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: start;
+            row-gap: 1rem;
+            padding-left:functions.rem(24px) ;
+            li{
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                p{
+                    align-self: center;
+                    font-size: functions.rem(14px);
+                    font-weight: bold;
+                }
+            }
+            
+        }
+
+
         
         svg{
-            width: 25px;
-            height: 25px;
+
+            width: 30px;
+            height: 30px;
             transform: scale(1); 
             transform-origin: center;
-            fill:variables.$white;
             stroke-width: 1px;
-            stroke: variables.$lightGray;
+
+
         }
+        .unchecked{
+
+            color: variables.$lightGray;
+        }
+        .checked{
+            fill: black;
+            color: black;
+            stroke-width: 1px;
+            stroke:black;
+
+        }
+    }
+}
+
+
+.bottom-buttons{
+    position: absolute;
+    background-color:variables.$white; ;
+    top:500px;
+    display: flex;
+    border-top: 1px solid #e0e0e0; 
+    padding: functions.rem(16px) functions.rem(24px);
+    justify-content: space-between;
+    width: 100;
+    padding: 0.5rem;
+    border: 1px solid #e4e5e7;
+    border-radius: 0 0 15px 15px ;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    z-index: 70;
+    button{
+        
+        height: functions.rem(48px);
+        line-height: functions.rem(24px);
+        padding: functions.rem(10px) functions.rem(20px);
+        &.clr-all-btn{
+            background-color:transparent;
+            color: variables.$btnGray;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+
+        }
+        &.apply-btn{
+            color: variables.$white;
+            background-color: variables.$black;
+            border-color: #dadbdd;
+            border-width: functions.rem(1px); 
+            border-style: solid; 
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+
+
+    }
+}
+
+.btn-design{
+    width: 100%;
+    height: functions.rem(48px);
+    line-height: functions.rem(24px);
+    padding: functions.rem(10px) functions.rem(20px);
+    color: variables.$black;
+    background-color: variables.$white;
+    border-color: #dadbdd;
+    border-width: functions.rem(1px); 
+    border-style: solid; 
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
+    &:hover{
+        cursor: pointer;
+        background-color: variables.$veryLightGray;
+    }
+    p{
+        white-space: nowrap;
+        margin: 0;
+        color: variables.$black;
+    }
+    svg{
+        transform: scale(0.8); 
+          transform-origin: center;
     }
 }
