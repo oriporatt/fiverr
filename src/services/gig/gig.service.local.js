@@ -26,7 +26,7 @@ _makeDummyGigs()
 
 
 // txt: '', minPrice: 0 
-async function query(filterBy = {txt: '' }) {
+async function query(filterBy) {
 
     var gigs = await storageService.query(STORAGE_KEY)
     const { txt, categoriesArray,
@@ -37,9 +37,24 @@ async function query(filterBy = {txt: '' }) {
         const regex = new RegExp(filterBy.txt, 'i')
         gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description)|| regex.test(gig.owner.fullname))
     }
-    // if (minSpeed) {
-    //     cars = cars.filter(car => car.speed >= minSpeed)
-    // }
+
+    if (categoriesArray) {
+        if (
+            (categoriesArray.every(category=>category.active===true))||
+            (categoriesArray.every(category=>category.active===false))||
+            (categoriesArray.length===0)
+        ){
+            return gigs
+        }else{
+            const chosenFilterTags=categoriesArray.filter(tag=>tag.active===true)
+            const chosenFilterTagsList= chosenFilterTags.map(item=>item.category)
+            
+            const filteredGigs = gigs.filter(gig =>
+                gig.tags.some(tag => chosenFilterTagsList.includes(tag))
+            )
+            return filteredGigs
+        }
+    }
 
     if(sortField === 'price' || sortField === 'daysToMake'){
         gigs.sort((gig1, gig2) => 
@@ -117,10 +132,9 @@ function _makeDummyGigs(){
                 "description": "Make unique logo...",
                 "imgUrl": "",
                 "tags": [
-                    "logo-design",
-                    "artistic",
-                    "professional",
-                    "accessible"
+                    'Graphics & Design',
+                    'Finance',
+                    'Consulting',
                 ],
                 "likedByUsers": ['mini-user'],
                 "imgs": [
@@ -150,10 +164,9 @@ function _makeDummyGigs(){
                 "description": "Build a responsive and modern website tailored to your needs.",
                 "imgUrl": "",
                 "tags": [
-                    "web-development",
-                    "responsive",
-                    "modern",
-                    "seo-friendly"
+                    'Personal Growth',
+                    'Consulting',
+                    'Photography'
                 ],
                 "likedByUsers": ['mini-user', 'pro-user'],
                 "imgs": [
@@ -176,10 +189,8 @@ function _makeDummyGigs(){
                 "description": "Craft unique and engaging blog content for your audience.",
                 "imgUrl": "",
                 "tags": [
-                    "content-writing",
-                    "blogging",
-                    "engaging",
-                    "seo-optimized"
+                    'Finance',
+                    'AI Services',
                 ],
                 "likedByUsers": ['user123'],
                 "imgs": [
@@ -203,10 +214,8 @@ function _makeDummyGigs(){
                 "description": "Design professional and memorable business cards for your brand.",
                 "imgUrl": "",
                 "tags": [
-                    "graphic-design",
-                    "business-card",
-                    "branding",
-                    "creative"
+                    "Photography",
+
                 ],
                 "likedByUsers": ['pro-user'],
                 "imgs": [
@@ -230,10 +239,7 @@ function _makeDummyGigs(){
                 "description": "Professional video editing to take your content to the next level.",
                 "imgUrl": "",
                 "tags": [
-                    "video-editing",
-                    "professional",
-                    "cinematic",
-                    "engaging"
+                    'Video & Animation',
                 ],
                 "likedByUsers": ['mini-user', 'user456'],
                 "imgs": [
@@ -258,9 +264,8 @@ function _makeDummyGigs(){
                 "description": "Design eye-catching and professional flyers for any event.",
                 "imgUrl": "",
                 "tags": [
-                    "graphic-design",
-                    "flyer-design",
-                    "event-promotion"
+                    'Graphics & Design',
+                    'Writing & Translation'
                 ],
                 "likedByUsers": ['mini-user'],
                 "imgs": [
@@ -287,9 +292,9 @@ function _makeDummyGigs(){
                 "description": "Enhance your photos with professional retouching.",
                 "imgUrl": "",
                 "tags": [
-                    "photo-editing",
-                    "retouching",
-                    "professional"
+                    'Photography',
+                    'Graphics & Design'
+
                 ],
                 "likedByUsers": ['user123'],
                 "imgs": [
@@ -317,9 +322,8 @@ function _makeDummyGigs(){
                 "description": "Accurate and professional Spanish translations for your documents.",
                 "imgUrl": "",
                 "tags": [
-                    "translation",
-                    "spanish",
-                    "documents"
+                    'Writing & Translation',
+                    'AI Services'
                 ],
                 "likedByUsers": ['user456'],
                 "imgs": [
@@ -348,8 +352,8 @@ function _makeDummyGigs(){
                 "description": "Create a realistic 3D model for your product.",
                 "imgUrl": "",
                 "tags": [
-                    "3d-modeling",
-                    "product-design"
+                    'AI Services',
+                    'Graphics & Design',
                 ],
                 "likedByUsers": ['mini-user', 'user123'],
                 "imgs": [
@@ -380,8 +384,8 @@ function _makeDummyGigs(){
                 "description": "Improve your website's search engine ranking with expert SEO services.",
                 "imgUrl": "",
                 "tags": [
-                    "seo",
-                    "search-engine-optimization"
+                    'Programming & Tech',
+                    'Consulting'
                 ],
                 "likedByUsers": ['pro-user'],
                 "imgs": [

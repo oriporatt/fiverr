@@ -7,25 +7,35 @@ import Unchecked from '../assets/svgs/Unchecked.svg?react'
 import { gigService } from '../services/gig/index'
 
 export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
+    
     // structuredClone(filterBy)
     const [ filterToEdit, setFilterToEdit ] = useState(filterBy)
     
+    //update when store filter changed
     useEffect(() => {
-        onSetFilterBy(filterToEdit)
-    }, [filterToEdit])
+        setFilterToEdit(filterBy)
+    }, [filterBy.txt])
+
     //sort:
     const [sortByField,setSortByField] = useState('price')
     const [sortByDirection,setSortByDirection] = useState(1)
     const [showSortByMenu,setShowSortByMenu] = useState(false)
 
     useEffect(() => {
-        setFilterToEdit(
+        const newSort=
             {
             sortField: sortByField,
             sortDir:sortByDirection
             }
-        )
+            //update local
+            onUpdateFilterLocalSort(newSort)
+
+        //update global
+        onSetFilterBy(newSort)
+
     }, [sortByField,sortByDirection])
+
+
 
     let sortByTitle 
     switch (sortByField){
@@ -48,6 +58,8 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     
 
     // category filter
+    const [categoryOpen,setCategoryOpen] = useState('')
+
     const [categoryFilterArray,setCategoryFilterArray] = useState(
         gigService.categories.map(category=>{
             return (
@@ -57,8 +69,11 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
                 })
         })
     )
+    useEffect(() => {
+        onUpdateFilterLocal('categoriesArray',categoryFilterArray)
+    }, [categoryFilterArray])
 
-    const [categoryOpen,setCategoryOpen] = useState('')
+    
     function onSetCategory(categoryClicked){
         setCategoryOpen((lastState)=>{
             if (categoryClicked===lastState){
@@ -67,11 +82,24 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
                 return(categoryClicked)
             }
         })
+        
+        
     }
 
-    //
 
-    function onUpdateFilter(){
+    // update store and states functions
+
+    function onUpdateFilterLocal(field,value){
+        setFilterToEdit({ ...filterToEdit, [field]: value })
+    }
+
+    function onUpdateFilterLocalSort(newSortBy){
+        setFilterToEdit({ ...filterToEdit, ...newSortBy })
+    }
+
+
+    function onUpdateFilterStore(){
+
         onSetFilterBy({ ...filterBy, ...filterToEdit })
     }
 
@@ -119,33 +147,11 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
                     return categoryItem
                 }
             }))
-    }
 
-    console.log(categoryOpen)
-    
+    }
     return <section className="gig-filter">
             <h3>Results for <span className='results-for'>{filterBy.txt}</span> </h3>
-            {/* <input
-                type="text"
-                name="txt"
-                value={filterToEdit.txt}
-                placeholder="Free text"
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="number"
-                min="0"
-                name="minSpeed"
-                value={filterToEdit.minSpeed}
-                placeholder="min. speed"
-                onChange={handleChange}
-                required
-            />
-            <button 
-                className="btn-clear" 
-                onClick={clearFilter}>Clear
-            </button> */}
+
             <div className='filter-buttons'>
                 <div className='filter-button-template btn-category-filter'>
                         <div className='btn-design'
@@ -170,7 +176,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
                         {categoryOpen==='category'&&
                         <div className='bottom-buttons'>
                                 <button className='clr-all-btn'>Clear All</button>
-                                <button className='apply-btn'>Apply</button>
+                                <button className='apply-btn' onClick={onUpdateFilterStore}>Apply</button>
                         </div>}
   
                 </div>
@@ -234,7 +240,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
 
             <button style={{backgroundColor:'green'}}
                 className="set-filter" 
-                onClick={onUpdateFilter}>Set Filter
+               >Set Filter
             </button>
 
 
