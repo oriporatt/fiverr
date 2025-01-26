@@ -34,7 +34,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
         onSetFilterBy(newSort)
 
     }, [sortByField,sortByDirection])
-
+    console.log(filterBy)
 
 
     let sortByTitle 
@@ -162,14 +162,8 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     console.log(outputLabels)
 
     return <section className="gig-filter">
+
             <h3>Results for <span className='results-for'>{filterBy.txt}</span> </h3>
-            {outputLabels&&<p >Filters:</p>}
-            {outputLabels&&
-                <ul className='labels-list'>{outputLabels.map(label=>(
-                    <li key={label}>
-                        <span className='label-filter'>{label}</span>
-                    </li>))}
-                </ul>}
 
             <div className='filter-buttons'>
                 <div className='filter-button-template btn-category-filter'>
@@ -228,6 +222,13 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
                 </div>
 
             </div>
+
+            {outputLabels&&
+                <ul className='labels-list'><p>Categories </p>{outputLabels.map(label=>(
+                    <li key={label}>
+                        <span className='label-filter'>{label}</span>
+                    </li>))}
+                </ul>}
             
             <div className='bottom-menu'>
                 <h3 className='results-num'>{gigsLength} results</h3>

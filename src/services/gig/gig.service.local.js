@@ -44,7 +44,7 @@ async function query(filterBy) {
             (categoriesArray.every(category=>category.active===false))||
             (categoriesArray.length===0)
         ){
-            return gigs
+            gigs=gigs
         }else{
             const chosenFilterTags=categoriesArray.filter(tag=>tag.active===true)
             const chosenFilterTagsList= chosenFilterTags.map(item=>item.category)
@@ -52,7 +52,7 @@ async function query(filterBy) {
             const filteredGigs = gigs.filter(gig =>
                 gig.tags.some(tag => chosenFilterTagsList.includes(tag))
             )
-            return filteredGigs
+            gigs= filteredGigs
         }
     }
 
