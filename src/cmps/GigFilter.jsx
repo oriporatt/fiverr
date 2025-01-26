@@ -6,7 +6,7 @@ import Unchecked from '../assets/svgs/Unchecked.svg?react'
 
 import { gigService } from '../services/gig/index'
 
-export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
+export function GigFilter({ filterBy, onSetFilterBy,gigsLength,closeWindow }) {
     
     // structuredClone(filterBy)
     const [ filterToEdit, setFilterToEdit ] = useState(filterBy)
@@ -66,7 +66,10 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
             })
     })
     const [categoryFilterArray,setCategoryFilterArray] = useState(uncheckedFilterArray)
-
+    
+    function closeWindow(){
+        setFilterModalOpen('')
+    }
 
 
     useEffect(() => {
@@ -164,7 +167,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
     // }
 
     function resetFilter() {
-        setFilterToEdit({
+        onSetFilterBy({
             txt:'',
             categoriesArray: [], 
             deliveryMaxTime: '', 
@@ -173,6 +176,8 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
             sortDir:1,
             sortField:'price',
          })
+         setCategoryFilterArray(uncheckedFilterArray)
+
     }
    
 
@@ -274,10 +279,6 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength }) {
                 onClick={resetFilter}>Reset Filter
             </button>
 
-            <button style={{backgroundColor:'green'}}
-                className="set-filter" 
-               >Set Filter
-            </button>
 
 
 
