@@ -11,6 +11,8 @@
 }
 
 .gig-filter{
+    display: flex;
+    flex-direction: column;
     h3{
         margin-top: 1rem;
         font-size: functions.rem(28px);
@@ -23,19 +25,81 @@
         font-size: functions.rem(20px);
 
     }
+
+}
+
+.filter-tags{
+
     .labels-list{
         display: flex;
-        gap: 1rem;
+        align-items: center;
+        margin: 0 0 ;
+        p{
+            margin-bottom: 0;
+            margin-left: 1rem;
+
+            &.stars{
+                height: functions.rem(24px);
+                padding: 0 1rem;
+                background-color: variables.$veryLightGray;
+                border-radius: 10px;
+                font-size: functions.rem(14px);
+    
+            }
+
+        }
+
+        
     }
     .label-filter{
-        padding: 0.6rem 1rem;
+        margin-left: 1rem;
+        padding: 0.3rem 1rem;
         border-radius: 10px;
         font-size: functions.rem(14px);
         font-weight: 700;
         background-color: variables.$lightGray;
         color: variables.$black;
+
+    }
+    .labels-budget{
+
+        display: flex;
+        align-items: center;
+        margin: 0 0 ;
+        p{
+            margin-bottom: 0;
+            margin-left: 1rem;
+
+
+        }
+        span{
+            height: functions.rem(20px);
+            padding: 0 1rem;
+        }
+        .budget-label-p{
+            margin-left: 0;
+        }     
     }
 
+    .labels-delivery-time{
+
+        display: flex;
+        align-items: center;
+        margin: 0 0 ;
+        p{
+            margin-bottom: 0;
+            margin-left: 1rem;
+
+
+        }
+        span{
+            height: functions.rem(20px);
+            padding: 0 1rem;
+        }
+        .delivery-time-p{
+            margin-left: 0;
+        }
+    }
 
 }
 
@@ -48,6 +112,8 @@
     align-items: center;
     h3{
         font-size: functions.rem(16px);
+        color: variables.$gray;
+
         
     }
 }
@@ -120,6 +186,7 @@
 
 
 .btn-clear{
+    width: 100px;
     padding: functions.rem(5px) functions.rem(10px);
     color: variables.$black;
     background-color: variables.$white;

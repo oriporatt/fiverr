@@ -5,21 +5,21 @@
 
 
 
-.budget{
+.delivery-time{
     position: relative;
     .bottom-buttons{
-        top: functions.rem(400px);
+        top: functions.rem(300px);
         width: functions.rem(350px);
         left:-1px;
 
     }
-    .budget-filter-modal{
+    .delivery-time-filter-modal{
         gap:5px;
         position: absolute;
         @include mixins.filter-modal{
             left:-1px;
             top: functions.rem(51px);
-            height: functions.rem(350px);  
+            height: functions.rem(300px);  
             width: functions.rem(350px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow effect on the container */
             border-radius: 15px 15px  0 0;

@@ -49,6 +49,11 @@ async function query(filterBy) {
         gigs = gigs.filter(gig=>gig.owner.rate>=sellerRate)
     }
 
+    if (deliveryMaxTime!=='anytime'){
+        gigs = gigs.filter(gig=>gig.daysToMake<=deliveryMaxTime)
+    }
+
+
     if (filterPriceGroup){
         if (minPrice && !maxPrice){
             gigs = gigs.filter(gig=>gig.price>=minPrice)

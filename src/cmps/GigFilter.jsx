@@ -6,6 +6,8 @@ import Unchecked from '../assets/svgs/Unchecked.svg?react'
 import { GigFilterCategory } from './GigFilterCategory'
 import { GigFilterSeller } from './GigFilterSeller'
 import { GigFilterBudget } from './GigFilterBudget'
+import { GigFilterDeliveryTime } from './GigFilterDeliveryTime'
+
 import { gigService } from '../services/gig/index'
 
 export function GigFilter({ filterBy, onSetFilterBy,
@@ -78,8 +80,27 @@ export function GigFilter({ filterBy, onSetFilterBy,
             .filter(item=>(item.active===true))
             .map(item=>item.category)
     }
-
+    
     makeCategoriesLabels()
+
+    let budgetLabel
+    function calcStringText(groupName,minPrice,maxPrice){
+        if (minPrice==='' && maxPrice){
+            return `Under ${maxPrice}$`
+        }else if (minPrice && maxPrice){
+            return `${minPrice}$-${maxPrice}$`
+        }else if (minPrice && maxPrice==='') {
+            return `${minPrice}$ & Above`
+ 
+        }else if (groupName==='custom'){
+            return ""
+        }
+    }
+    budgetLabel=calcStringText(
+        filterBy.filterPriceGroup,
+        filterBy.minPrice,
+        filterBy.maxPrice,
+    )
 
 
     // update store and states functions
@@ -103,29 +124,13 @@ export function GigFilter({ filterBy, onSetFilterBy,
 
 
 
-    // function handleChange(ev) {
-    //     const type = ev.target.type
-    //     const field = ev.target.name
-    //     let value
 
-    //     switch (type) {
-    //         case 'text':
-    //         case 'radio':
-    //             value = field === 'sortDir' ? +ev.target.value : ev.target.value
-    //             if(!filterToEdit.sortDir) filterToEdit.sortDir = 1
-    //             break
-    //         case 'number':
-    //             value = +ev.target.value || ''
-    //             break
-    //     }
-    //     setFilterToEdit({ ...filterToEdit, [field]: value })
-    // }
 
     function resetFilter() {
         onSetFilterBy({
             txt:'',
             categoriesArray: gigService.uncheckedFilterArray, 
-            deliveryMaxTime: '', 
+            deliveryMaxTime: 'anytime', 
             maxPrice: '',
             minPrice:'',
             filterPriceGroup: '',
@@ -205,17 +210,50 @@ export function GigFilter({ filterBy, onSetFilterBy,
                             <p>Delivery Time</p>
                             <DropDown/>
                     </div>
+                    {filterModalOpen==='deliveryTime'&&
+                        <GigFilterDeliveryTime
+                            filterToEdit={filterToEdit}
+                            setFilterToEdit={setFilterToEdit}
+                            filterBy={filterBy}
+                            onSetFilterBy={onSetFilterBy}
+                            setFilterModalOpen={setFilterModalOpen}
+                            onUpdateFilterStore={onUpdateFilterStore}
+                        />}
                 </div>
 
             </div>
-
-            {outputLabels.length!==0&&
-                <ul className='labels-list'><p>Categories </p>{outputLabels.map(label=>(
-                    <li key={label}>
-                        <span className='label-filter'>{label}</span>
-                    </li>))}
-                </ul>}
             
+
+            {/* filter tags */}
+            <div className='filter-tags'>
+                {outputLabels.length!==0&&
+                    <ul className='labels-list'><p>Categories </p>{outputLabels.map(label=>(
+                        <li key={label}>
+                            <span className='label-filter'>{label}</span>
+                        </li>))}
+                    </ul>}
+
+                {(filterBy.sellerLevels.length>0||filterBy.sellerRate)&&
+                <ul className='labels-list'><p>Seller </p>{filterBy.sellerLevels.map(level=>(
+                    <li key={level}>
+                        <span className='label-filter'>{level}</span>
+                    </li>))}
+                    {filterBy.sellerRate&&<p className='stars'>{'⭐'.repeat(filterBy.sellerRate)}{filterBy.sellerRate<5? '+':''}</p>}
+                </ul>}
+
+                {filterBy.filterPriceGroup&&
+                <div className='labels-budget'><p>Budget </p>
+                    <span className='label-filter'><p className='budget-label-p'>{budgetLabel}</p></span>
+                </div>}
+
+                {filterBy.deliveryMaxTime!=='anytime'&&
+                <div className='labels-delivery-time'><p>Delivery Time </p>
+                    <span className='label-filter'><p className='delivery-time-p'>Up to {filterBy.deliveryMaxTime===1? '24H':filterBy.deliveryMaxTime+' days'} </p></span>
+                </div>}
+            </div>
+            
+            
+             {/* buttom menu sort */}
             <div className='bottom-menu'>
                 <h3 className='results-num'>{gigsLength} results</h3>
                 <div className='sort-by-menu'>
