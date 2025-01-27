@@ -5,6 +5,7 @@ import Checked from '../assets/svgs/Checked.svg?react'
 import Unchecked from '../assets/svgs/Unchecked.svg?react'
 import { GigFilterCategory } from './GigFilterCategory'
 import { GigFilterSeller } from './GigFilterSeller'
+import { GigFilterBudget } from './GigFilterBudget'
 import { gigService } from '../services/gig/index'
 
 export function GigFilter({ filterBy, onSetFilterBy,
@@ -127,6 +128,7 @@ export function GigFilter({ filterBy, onSetFilterBy,
             deliveryMaxTime: '', 
             maxPrice: '',
             minPrice:'',
+            filterPriceGroup: '',
             sellerRate:'',
             sellerLevels:[],
             sortDir:1,
@@ -183,8 +185,17 @@ export function GigFilter({ filterBy, onSetFilterBy,
                             <p>Budget</p>
                             <DropDown/>
                     </div>
-
+                    {filterModalOpen==='budget'&&
+                        <GigFilterBudget
+                            filterToEdit={filterToEdit}
+                            setFilterToEdit={setFilterToEdit}
+                            filterBy={filterBy}
+                            onSetFilterBy={onSetFilterBy}
+                            setFilterModalOpen={setFilterModalOpen}
+                            onUpdateFilterStore={onUpdateFilterStore}
+                        />}
                 </div>
+
 
                 <div className='filter-button-template delivery-time'>
 

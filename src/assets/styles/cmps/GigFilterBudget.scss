@@ -1,0 +1,106 @@
+@use "../setup/functions";
+@use "../setup/variables";
+@use "../setup/mixins";
+
+
+
+
+.budget{
+    position: relative;
+    .bottom-buttons{
+        top: functions.rem(400px);
+        width: functions.rem(350px);
+        left:-1px;
+
+    }
+    .budget-filter-modal{
+        gap:5px;
+        position: absolute;
+        @include mixins.filter-modal{
+            left:-1px;
+            top: functions.rem(51px);
+            height: functions.rem(350px);  
+            width: functions.rem(350px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow effect on the container */
+            border-radius: 15px 15px  0 0;
+
+        }
+
+        h3{
+            padding: functions.rem(8px) functions.rem(24px);
+            align-self: start;
+            margin:  0.5rem 0;
+        }
+        ul{
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: start;
+            row-gap: 1rem;
+            padding-left:functions.rem(24px) ;
+            margin-bottom: 0;
+
+            li{
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                p{
+                    color: variables.$black;
+                    margin: 0;
+                    align-self: center;
+                    font-size: functions.rem(14px);
+                    font-weight: bold;
+                    span{
+                        font-size: functions.rem(14px);
+                        padding-left: 1rem;
+                        color: variables.$spanGray;
+                        font-weight: 400;
+                    }
+                }
+            }
+            
+        }
+
+        h4{
+            color: variables.$spanGray;
+            font-size: functions.rem(12px);
+            font-weight: bold;
+            margin-left: functions.rem(60px);
+
+        }
+
+        input{
+            height: 2.5rem;
+            
+            margin: 0 functions.rem(60px) 0 functions.rem(60px)  ;
+            border: 1px solid #c5c6c9;
+            outline: none;
+            padding: 0px 2px 0px 16px;
+            color: #62646a;
+            font-family: 'Macan', sans-serif; 
+            font-weight: 700;
+            color:  variables.$black;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+
+        }
+        
+        svg{
+
+            width: 30px;
+            height: 30px;
+            transform: scale(1); 
+            transform-origin: center;
+            stroke-width: 1px;
+
+
+        }
+        .radio-unchecked{
+
+
+        }
+        .radio-checked{
+
+
+        }
+    }
+}

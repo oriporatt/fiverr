@@ -30,7 +30,9 @@ async function query(filterBy) {
 
     var gigs = await storageService.query(STORAGE_KEY)
     const { txt, categoriesArray,
-        minPrice, maxPrice,deliveryMaxTime,
+        minPrice, maxPrice,
+        deliveryMaxTime,
+        filterPriceGroup,
         sellerLevels,sellerRate,
         sortField, sortDir } = filterBy
 
@@ -45,6 +47,16 @@ async function query(filterBy) {
 
     if (sellerRate){
         gigs = gigs.filter(gig=>gig.owner.rate>=sellerRate)
+    }
+
+    if (filterPriceGroup){
+        if (minPrice && !maxPrice){
+            gigs = gigs.filter(gig=>gig.price>=minPrice)
+        }else if (minPrice && maxPrice){
+            gigs = gigs.filter(gig=>gig.price>=minPrice && gig.price<=maxPrice)
+        }else if (!minPrice && maxPrice){
+            gigs = gigs.filter(gig=>gig.price<=maxPrice)
+        }
     }
 
     if (categoriesArray) {

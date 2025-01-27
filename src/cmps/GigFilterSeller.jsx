@@ -56,7 +56,7 @@ export function GigFilterSeller({ filterToEdit,
     }
     console.log(filterToEdit)
 
-    return <section className="gig-seller">
+    return <section className="gig-filter-seller">
 
 
                         <div className='seller-categories-modal'>

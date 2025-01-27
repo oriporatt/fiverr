@@ -24,6 +24,17 @@ const sellerRates=[
                     '⭐⭐⭐⭐+',
                     '⭐⭐⭐⭐⭐',
                     ]
+
+const budgetList=[
+                    {name:'Value',minPrice:'', maxPrice:100},
+                    {name:'Mid-range',minPrice:100, maxPrice:200},
+                    {name:'High-end',minPrice:200, maxPrice:''},
+                    {name:'Custom',minPrice:'', maxPrice:''}
+
+                ]
+
+
+ 
 const uncheckedFilterArray =local.categories.map(category=>{
     return (
         {
@@ -38,6 +49,7 @@ function getDefaultFilter() {
         categoriesArray:uncheckedFilterArray,
         minPrice:'',
         maxPrice: '',
+        filterPriceGroup: '',
         deliveryMaxTime:'',
         sellerRate:'',
         sellerLevels:[],
@@ -48,7 +60,7 @@ function getDefaultFilter() {
 
 const service = VITE_LOCAL === 'true' ? local : local //remote
 export const gigService = { getEmptyCar, getDefaultFilter,
-    uncheckedFilterArray,sellerLevels, sellerRates,
+    uncheckedFilterArray,sellerLevels, sellerRates,budgetList,
     ...service }
 
 // Easy access to this service from the dev tools console
