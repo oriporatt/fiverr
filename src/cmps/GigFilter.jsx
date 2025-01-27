@@ -227,14 +227,14 @@ export function GigFilter({ filterBy, onSetFilterBy,
             {/* filter tags */}
             <div className='filter-tags'>
                 {outputLabels.length!==0&&
-                    <ul className='labels-list'><p>Categories </p>{outputLabels.map(label=>(
+                    <ul className='labels-list'>{outputLabels.map(label=>(
                         <li key={label}>
                             <span className='label-filter'>{label}</span>
                         </li>))}
                     </ul>}
 
                 {(filterBy.sellerLevels.length>0||filterBy.sellerRate)&&
-                <ul className='labels-list'><p>Seller </p>{filterBy.sellerLevels.map(level=>(
+                <ul className='labels-list'>{filterBy.sellerLevels.map(level=>(
                     <li key={level}>
                         <span className='label-filter'>{level}</span>
                     </li>))}
@@ -242,14 +242,14 @@ export function GigFilter({ filterBy, onSetFilterBy,
                 </ul>}
 
                 {filterBy.filterPriceGroup&&
-                <div className='labels-budget'><p>Budget </p>
-                    <span className='label-filter'><p className='budget-label-p'>{budgetLabel}</p></span>
-                </div>}
+                <ul className='labels-budget'>
+                    <li className='label-filter'><p className='budget-label-p'>{budgetLabel}</p></li>
+                </ul>}
 
                 {filterBy.deliveryMaxTime!=='anytime'&&
-                <div className='labels-delivery-time'><p>Delivery Time </p>
-                    <span className='label-filter'><p className='delivery-time-p'>Up to {filterBy.deliveryMaxTime===1? '24H':filterBy.deliveryMaxTime+' days'} </p></span>
-                </div>}
+                <ul className='labels-delivery-time'>
+                    <li className='label-filter'><p className='delivery-time-p'>Up to {filterBy.deliveryMaxTime===1? '24H':filterBy.deliveryMaxTime+' days'} </p></li>
+                </ul>}
             </div>
             
             
