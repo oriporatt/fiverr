@@ -12,11 +12,18 @@ function getEmptyCar() {
 		msgs: [],
 	}
 }
+const uncheckedFilterArray =local.categories.map(category=>{
+    return (
+        {
+        category: category,
+        active:false,
+        })
+})
 
 function getDefaultFilter() {
     return {
         txt: '',
-        categoriesArray:[],
+        categoriesArray:uncheckedFilterArray,
         minPrice:'',
         maxPrice: '',
         deliveryMaxTime:'',
@@ -26,7 +33,7 @@ function getDefaultFilter() {
 }
 
 const service = VITE_LOCAL === 'true' ? local : local //remote
-export const gigService = { getEmptyCar, getDefaultFilter, ...service }
+export const gigService = { getEmptyCar, getDefaultFilter,uncheckedFilterArray, ...service }
 
 // Easy access to this service from the dev tools console
 // when using script - dev / dev:local

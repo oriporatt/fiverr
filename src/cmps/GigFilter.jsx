@@ -3,10 +3,12 @@ import MarkV from '../assets/svgs/markV.svg?react'
 import DropDown from '../assets/svgs/DropDown.svg?react'
 import Checked from '../assets/svgs/Checked.svg?react'
 import Unchecked from '../assets/svgs/Unchecked.svg?react'
+import { GigFilterCategory } from './GigFilterCategory'
 
 import { gigService } from '../services/gig/index'
 
-export function GigFilter({ filterBy, onSetFilterBy,gigsLength,closeWindow }) {
+export function GigFilter({ filterBy, onSetFilterBy,
+                            gigsLength,closeWindow }) {
     
     // structuredClone(filterBy)
     const [ filterToEdit, setFilterToEdit ] = useState(filterBy)
@@ -14,7 +16,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength,closeWindow }) {
     //update when store filter changed
     useEffect(() => {
         setFilterToEdit(filterBy)
-    }, [filterBy.txt])
+    }, [filterBy])
 
     //sort:
     const [sortByField,setSortByField] = useState('price')
@@ -55,28 +57,9 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength,closeWindow }) {
         setShowSortByMenu(false)
     }
     
-
-    // category filter
+    // open modal states
     const [filterModalOpen,setFilterModalOpen] = useState('')
-    const uncheckedFilterArray =gigService.categories.map(category=>{
-        return (
-            {
-            category: category,
-            active:false,
-            })
-    })
-    const [categoryFilterArray,setCategoryFilterArray] = useState(uncheckedFilterArray)
-    
-    function closeWindow(){
-        setFilterModalOpen('')
-    }
 
-
-    useEffect(() => {
-        onUpdateFilterLocal('categoriesArray',categoryFilterArray)
-    }, [categoryFilterArray])
-
-    
     function onSetFilterModalOpen(categoryClicked){
         setFilterModalOpen((lastState)=>{
             if (categoryClicked===lastState){
@@ -85,43 +68,14 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength,closeWindow }) {
                 return(categoryClicked)
             }
         })
-        
-        
     }
 
-    
-    function toggleCategoryCheckbox(category){
-        setCategoryFilterArray((lastState)=>
-            lastState.map(categoryItem=>{
-                if (categoryItem.category===category){
-                    return {category,
-                            active:!categoryItem.active
-                    }
-                }else{
-                    return categoryItem
-                }
-            }))
-
-    }
-
+    //make gray labels
     let outputLabels
     function makeCategoriesLabels(){
         outputLabels=filterBy.categoriesArray
             .filter(item=>(item.active===true))
             .map(item=>item.category)
-    }
-
-    function resetFilterCategory(){
-
-        onSetFilterBy({ 
-            ...filterBy,
-            ...filterToEdit,
-            categoriesArray:uncheckedFilterArray
-         })
-        setCategoryFilterArray(uncheckedFilterArray)
-        setFilterModalOpen('')
-
-
     }
 
     makeCategoriesLabels()
@@ -139,7 +93,7 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength,closeWindow }) {
 
 
     function onUpdateFilterStore(){
-
+        
         onSetFilterBy({ ...filterBy, ...filterToEdit })
         setFilterModalOpen('')
     }
@@ -169,14 +123,13 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength,closeWindow }) {
     function resetFilter() {
         onSetFilterBy({
             txt:'',
-            categoriesArray: [], 
+            categoriesArray: gigService.uncheckedFilterArray, 
             deliveryMaxTime: '', 
             maxPrice: '',
             minPrice:'',
             sortDir:1,
             sortField:'price',
          })
-         setCategoryFilterArray(uncheckedFilterArray)
 
     }
    
@@ -194,24 +147,14 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength,closeWindow }) {
                             <DropDown/>  
                         </div>
                         {filterModalOpen==='category'&&
-                        <div className='filter-categories-modal'>
-                            <h3>Category</h3>
-                            <ul >
-                                {categoryFilterArray.map((categoryItem,idx)=>(
-                                    <li key={idx}>
-                                        {categoryItem.active?  
-                                            <Checked className='checked' onClick={()=>toggleCategoryCheckbox(categoryItem.category)}/>
-                                            :<Unchecked className='unchecked' onClick={()=>toggleCategoryCheckbox(categoryItem.category)}/>}
-                                        <p>{categoryItem.category}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>}
-                        {filterModalOpen==='category'&&
-                        <div className='bottom-buttons'>
-                                <button className='clr-all-btn' onClick={resetFilterCategory}>Clear All</button>
-                                <button className='apply-btn' onClick={onUpdateFilterStore}>Apply</button>
-                        </div>}
+                        <GigFilterCategory
+                            filterToEdit={filterToEdit}
+                            setFilterToEdit={setFilterToEdit}
+                            filterBy={filterBy}
+                            onSetFilterBy={onSetFilterBy}
+                            setFilterModalOpen={setFilterModalOpen}
+                            onUpdateFilterStore={onUpdateFilterStore}
+                        />}
   
                 </div>
 
@@ -271,8 +214,6 @@ export function GigFilter({ filterBy, onSetFilterBy,gigsLength,closeWindow }) {
                 </div>
             </div>
 
-
-            
 
             <button 
                 className="btn-clear" 
