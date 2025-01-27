@@ -31,11 +31,20 @@ async function query(filterBy) {
     var gigs = await storageService.query(STORAGE_KEY)
     const { txt, categoriesArray,
         minPrice, maxPrice,deliveryMaxTime,
+        sellerLevels,sellerRate,
         sortField, sortDir } = filterBy
 
     if (txt) {
         const regex = new RegExp(filterBy.txt, 'i')
         gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description)|| regex.test(gig.owner.fullname))
+    }
+    console.log(sellerLevels)
+    if (sellerLevels.length>0){
+        gigs = gigs.filter(gig=>sellerLevels.includes(gig.owner.level))
+    }
+
+    if (sellerRate){
+        gigs = gigs.filter(gig=>gig.owner.rate>=sellerRate)
     }
 
     if (categoriesArray) {
@@ -125,7 +134,7 @@ function _makeDummyGigs(){
                     "_id": "u101",
                     "fullname": "Dudu Da",
                     "imgUrl": "url",
-                    "level": "basic/premium",
+                    "level": "basic",
                     "rate": 4
                 },
                 "daysToMake": 3,

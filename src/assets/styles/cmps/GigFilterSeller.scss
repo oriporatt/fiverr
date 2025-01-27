@@ -5,7 +5,7 @@
 
 
 
-.btn-category-filter{
+.seller-details{
     position: relative;
     .bottom-buttons{
         top: functions.rem(400px);
@@ -13,7 +13,7 @@
         left:-1px;
 
     }
-    .filter-categories-modal{
+    .seller-categories-modal{
         position: absolute;
         @include mixins.filter-modal{
             left:-1px;
@@ -26,7 +26,7 @@
         }
 
         h3{
-            padding: functions.rem(24px) functions.rem(24px);
+            padding: functions.rem(8px) functions.rem(24px);
             align-self: start;
             margin:  0.5rem 0;
         }

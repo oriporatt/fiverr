@@ -2,6 +2,13 @@
 @use "../setup/variables";
 @use "../setup/mixins";
 
+.filter-buttons{
+    display: flex;
+    gap:10px;
+    .filter-button-template{
+
+    }
+}
 
 .gig-filter{
     h3{

@@ -23,7 +23,6 @@ export function GigIndex() {
         loadGigs(filterBy)
     }, [filterBy])
 
-
     function onSetFilterBy(newFilterBy){
 
         dispatch({

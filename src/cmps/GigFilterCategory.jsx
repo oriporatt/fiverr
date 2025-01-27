@@ -48,7 +48,7 @@ export function GigFilterCategory({ filterToEdit,
     }
 
 
-    return <section className="gig-filter">
+    return <section className="gig-filter-category">
 
 
                         <div className='filter-categories-modal'>
