@@ -19,7 +19,12 @@ export async function loadGigs(filterBy) {
 export async function loadGig(gigId) {
     try {
         const gig = await carService.getById(gigId)
-        store.dispatch(getCmdSetGig(gig))
+        store.dispatch(
+            {
+                type: SET_GIG,
+                gig
+            }
+        )
     } catch (err) {
         console.log('Cannot load gig', err)
         throw err
@@ -71,12 +76,12 @@ export async function updateGig(gig) {
 // }
 
 
-function getCmdSetGig(gig) {
-    return {
-        type: SET_GIG,
-        gig
-    }
-}
+// function getCmdSetGig(gig) {
+//     return {
+//         type: SET_GIG,
+//         gig
+//     }
+// }
 function getCmdRemoveGig(gigId) {
     return {
         type: REMOVE_GIG,

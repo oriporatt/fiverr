@@ -10,14 +10,14 @@ import { AdminIndex } from './pages/AdminIndex.jsx'
 import { UserDetails } from './pages/UserDetails'
 
 import { AppHeader } from './cmps/AppHeader'
-import { AppFooter } from './cmps/AppFooter'
+// import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { GigIndex } from './pages/GigIndex.jsx'
+import { GigDetails } from './pages/GigDetails.jsx'
 import { CategoriesHeader } from './cmps/CategoriesHeader.jsx'
-import {GigPreviewCarrousel} from './cmps/GigPreviewCarrousel.jsx'
 export function RootCmp() {
     return (
         <div >
@@ -33,7 +33,7 @@ export function RootCmp() {
                         <Route path="vision" element={<AboutVision />} />
                     </Route>
                     <Route path="gig" element={<GigIndex />} />
-                    {/* <Route path="gig/:carId" element={<CarDetails />} /> */}
+                    <Route path="gig/:gigId" element={<GigDetails />} />
                     <Route path="user/:id" element={<UserDetails />} />
                     <Route path="review" element={<ReviewIndex />} />
                     <Route path="chat" element={<ChatApp />} />

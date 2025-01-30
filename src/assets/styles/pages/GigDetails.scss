@@ -1,0 +1,13 @@
+@use "../setup/functions";
+@use "../setup/mixins";
+@use "../setup/variables";
+
+.gig-details {
+    h1{
+        font-size: functions.rem(28px) ;
+        line-height: functions.rem(36px) ;
+
+        color: variables.$black;
+        font-weight: 700;
+    }
+}
