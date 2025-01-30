@@ -1,6 +1,10 @@
 // ImageCarousel.jsx
 import { useState } from 'react';
 import Dot from '../assets/svgs/dot.svg?react'
+import LeftArrow from '../assets/svgs/leftArrow.svg?react'
+import RightArrow from '../assets/svgs/rightArrow.svg?react'
+
+
 
 
 export function GigPreviewCarrousel({ images }) {
@@ -70,8 +74,9 @@ export function GigPreviewCarrousel({ images }) {
         </ul>        
       </div>
 
-      <button className="carousel-button left" onClick={goToPrevious}>{'<'}</button>
-      <button className="carousel-button right" onClick={goToNext}>{'>'}</button>
+      {/* <button className="carousel-button left" onClick={goToPrevious}>{'<'}</button> */}
+      <button className="carousel-button left" onClick={goToPrevious}><LeftArrow/></button>
+      <button className="carousel-button right" onClick={goToNext}><RightArrow/></button>
     </div>
   );
 }

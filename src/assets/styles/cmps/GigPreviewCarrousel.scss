@@ -40,12 +40,20 @@
       }
   
       &.left {
+
         left: 10px;
       }
   
       &.right {
         right: 10px;
       }
+      & svg{
+
+        transform: scale(0.9); 
+        transform-origin: center;
+        
+      }
+
     }
 
 
