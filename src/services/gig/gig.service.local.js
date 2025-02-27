@@ -40,7 +40,7 @@ async function query(filterBy) {
         const regex = new RegExp(filterBy.txt, 'i')
         gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description)|| regex.test(gig.owner.fullname))
     }
-    console.log(sellerLevels)
+
     if (sellerLevels.length>0){
         gigs = gigs.filter(gig=>sellerLevels.includes(gig.owner.level))
     }

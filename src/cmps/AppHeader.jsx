@@ -7,6 +7,9 @@ import { logout } from '../store/actions/user.actions'
 import { UPDATE_FILTER_BY } from '../store/reducers/gig.reducer'
 import RejectSVG from '../assets/svgs/rejectSVG.svg?react'
 
+import {  loadUsers } from '../store/actions/user.actions'
+
+
 export function AppHeader() {
 	const location = useLocation();
 	const dispatch = useDispatch()
@@ -75,6 +78,13 @@ export function AppHeader() {
 		}
 	},
 	[searchBoxTextGlobal])
+
+	useEffect(()=>{
+		loadUsers()
+	},
+	[])
+	const users =useSelector(storeState => storeState.userModule.users)
+	console.log(users)
 	
 	return (
 		<header className={`app-header main-container ${isGigsIndexPage ? 'header-regular' : ''}`}>

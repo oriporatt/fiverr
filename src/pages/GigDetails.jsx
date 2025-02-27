@@ -15,15 +15,6 @@ export function GigDetails() {
     loadGig(gigId)
   }, [gigId])
 
-//   async function onAddCarMsg(carId) {
-//     try {
-//         await addCarMsg(carId, 'bla bla ' + parseInt(Math.random()*10))
-//         showSuccessMsg(`Car msg added`)
-//     } catch (err) {
-//         showErrorMsg('Cannot add car msg')
-//     }        
-
-// }
 
   return (
     <section className="gig-details">

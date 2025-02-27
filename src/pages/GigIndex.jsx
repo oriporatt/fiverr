@@ -11,17 +11,25 @@ import { GigList } from '../cmps/GigList'
  import { GigFilter } from '../cmps/GigFilter'
  import { UPDATE_FILTER_BY } from "../store/reducers/gig.reducer"; 
 
+ //users:
+ import {  loadUsers } from '../store/actions/user.actions'
+
 
 export function GigIndex() {
     const dispatch = useDispatch()
 
     const filterBy =useSelector(storeState => storeState.gigModule.filterBy)
-    const gigs = useSelector(storeState => storeState.gigModule.gigs)
+    const gigs =useSelector(storeState => storeState.gigModule.gigs)
+
 
 
     useEffect(() => {
         loadGigs(filterBy)
     }, [filterBy])
+
+    // useEffect(() => {
+    //     loadUsers()
+    //     }, [])
 
     function onSetFilterBy(newFilterBy){
 
