@@ -257,7 +257,7 @@ function _makeDummyGigs(){
                 "owner": {
                     "_id": "s105",
                     "fullname": "Ricardo Mendes",
-                    "imgUrl": "urhttps://randomuser.me/api/portraits/men/53.jpgl",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/53.jpg",
                     "level": "standard",
                     "rate": 4.5
                 },
@@ -282,7 +282,7 @@ function _makeDummyGigs(){
                 "owner": {
                     "_id": "s105",
                     "fullname": "Ricardo Mendes",
-                    "imgUrl": "urhttps://randomuser.me/api/portraits/men/53.jpgl",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/53.jpg",
                     "level": "standard",
                     "rate": 4.5
                 },

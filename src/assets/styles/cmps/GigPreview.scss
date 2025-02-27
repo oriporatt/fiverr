@@ -62,10 +62,21 @@
         pointer-events: none; 
     }
 
+    .card-header{
+        display: flex;
+        gap: functions.rem(8px);
+        align-items: center;
+        img{
+            height: functions.rem(24px);
+            width: functions.rem(24px);
+            border-radius: 50%;
+
+        }
+    }
 
 }
 
 
 
-    
+
 
