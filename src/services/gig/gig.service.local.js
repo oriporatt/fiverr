@@ -148,11 +148,11 @@ function _makeDummyGigs(){
                 "title": "I will design your logo",
                 "price": 12,
                 "owner": {
-                    "_id": "u101",
-                    "fullname": "Dudu Da",
-                    "imgUrl": "url",
-                    "level": "basic",
-                    "rate": 4
+                    "_id": "s101",
+                    "fullname": "Hassan Malik",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/50.jpg",
+                    "level": "premium",
+                    "rate":  4.8
                 },
                 "daysToMake": 3,
                 "description": "Make unique logo...",
@@ -180,11 +180,11 @@ function _makeDummyGigs(){
                 "title": "I will create a modern website",
                 "price": 50,
                 "owner": {
-                    "_id": "u102",
-                    "fullname": "Sara Green",
-                    "imgUrl": "url",
-                    "level": "premium",
-                    "rate": 5
+                    "_id": "s102",
+                    "fullname": "Elena Petrova",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/32.jpg",
+                    "level": "standard",
+                    "rate": 4.6
                 },
                 "daysToMake": 10,
                 "description": "Build a responsive and modern website tailored to your needs.",
@@ -205,11 +205,11 @@ function _makeDummyGigs(){
                 "title": "I will write engaging blog posts",
                 "price": 20,
                 "owner": {
-                    "_id": "u103",
-                    "fullname": "Mike Johnson",
-                    "imgUrl": "url",
+                    "_id": "s103",
+                    "fullname": "James Carter",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/41.jpg",
                     "level": "basic",
-                    "rate": 3.5
+                    "rate": 4.3
                 },
                 "daysToMake": 5,
                 "description": "Craft unique and engaging blog content for your audience.",
@@ -230,11 +230,11 @@ function _makeDummyGigs(){
                 "title": "I will design an eye-catching business card",
                 "price": 15,
                 "owner": {
-                    "_id": "u104",
-                    "fullname": "Emily Rose",
-                    "imgUrl": "url",
-                    "level": "standard",
-                    "rate": 4.5
+                    "_id": "s104",
+                    "fullname": "Mei Ling",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/21.jpg",
+                    "level": "premium",
+                    "rate":  4.9
                 },
                 "daysToMake": 2,
                 "description": "Design professional and memorable business cards for your brand.",
@@ -255,11 +255,11 @@ function _makeDummyGigs(){
                 "title": "I will edit your videos professionally",
                 "price": 30,
                 "owner": {
-                    "_id": "u105",
-                    "fullname": "John Smith",
-                    "imgUrl": "url",
-                    "level": "premium",
-                    "rate": 5
+                    "_id": "s105",
+                    "fullname": "Ricardo Mendes",
+                    "imgUrl": "urhttps://randomuser.me/api/portraits/men/53.jpgl",
+                    "level": "standard",
+                    "rate": 4.5
                 },
                 "daysToMake": 7,
                 "description": "Professional video editing to take your content to the next level.",
@@ -280,11 +280,11 @@ function _makeDummyGigs(){
                 "title": "I will create a stunning flyer design",
                 "price": 25,
                 "owner": {
-                    "_id": "u106",
-                    "fullname": "Alice Walker",
-                    "imgUrl": "url",
-                    "level": "premium",
-                    "rate": 4
+                    "_id": "s105",
+                    "fullname": "Ricardo Mendes",
+                    "imgUrl": "urhttps://randomuser.me/api/portraits/men/53.jpgl",
+                    "level": "standard",
+                    "rate": 4.5
                 },
                 "daysToMake": 4,
                 "description": "Design eye-catching and professional flyers for any event.",
@@ -308,11 +308,11 @@ function _makeDummyGigs(){
                 "title": "I will do professional photo retouching",
                 "price": 40,
                 "owner": {
-                    "_id": "u107",
-                    "fullname": "Lucas Gray",
-                    "imgUrl": "url",
-                    "level": "premium",
-                    "rate": 5
+                    "_id": "s103",
+                    "fullname": "James Carter",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/41.jpg",
+                    "level": "basic",
+                    "rate": 4.3
                 },
                 "daysToMake": 6,
                 "description": "Enhance your photos with professional retouching.",
@@ -338,11 +338,11 @@ function _makeDummyGigs(){
                 "title": "I will translate documents to/from Spanish",
                 "price": 15,
                 "owner": {
-                    "_id": "u108",
-                    "fullname": "Carlos Gomez",
-                    "imgUrl": "url",
-                    "level": "standard",
-                    "rate": 4
+                    "_id": "s103",
+                    "fullname": "James Carter",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/41.jpg",
+                    "level": "basic",
+                    "rate": 4.3
                 },
                 "daysToMake": 5,
                 "description": "Accurate and professional Spanish translations for your documents.",
@@ -368,11 +368,11 @@ function _makeDummyGigs(){
                 "title": "I will create a 3D model for your product",
                 "price": 100,
                 "owner": {
-                    "_id": "u109",
-                    "fullname": "Eva Lee",
-                    "imgUrl": "url",
+                    "_id": "s109",
+                    "fullname": "Mohammed Al-Farsi",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/30.jpg",
                     "level": "premium",
-                    "rate": 5
+                    "rate": 4.9
                 },
                 "daysToMake": 12,
                 "description": "Create a realistic 3D model for your product.",
@@ -400,11 +400,11 @@ function _makeDummyGigs(){
                 "title": "I will provide SEO services for your website",
                 "price": 75,
                 "owner": {
-                    "_id": "u110",
-                    "fullname": "Sophia King",
-                    "imgUrl": "url",
-                    "level": "premium",
-                    "rate": 5
+                    "_id": "s110",
+                    "fullname": "Natalia Ivanova",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/25.jpg",
+                    "level": "standard",
+                    "rate": 4.7
                 },
                 "daysToMake": 14,
                 "description": "Improve your website's search engine ranking with expert SEO services.",
