@@ -108,3 +108,30 @@
         }
     }
 }
+
+.img-container-big{
+    margin-top: functions.rem(32px);
+    margin-bottom: functions.rem(32px);
+    max-width:functions.rem(660px);
+}
+
+.about-gig{
+    h4{
+        margin-top: functions.rem(32px);
+        margin-bottom: functions.rem(16px);
+
+        font-weight: bold;
+        color: variables.$black;
+        font-size: functions.rem(16px);
+    }
+    h5{
+        font-weight: bold;
+        margin-top: functions.rem(6px);
+        color: variables.$black;
+        font-size: functions.rem(14px);  
+    }
+    p{
+        color: variables.$black;
+        font-size: functions.rem(16px); 
+    }
+}

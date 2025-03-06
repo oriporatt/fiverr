@@ -269,9 +269,9 @@ function _makeDummyGigs(){
                 ],
                 "likedByUsers": ['pro-user'],
                 "imgs": [
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307415/images_i83hev.jpg",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307459/download_uc4mqt.jpg",
-                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1737307497/download_zwlruz.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1741297413/bc1_frlhrv.webp",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1741297422/cd3_d8pclr.jpg",
+                    "https://res.cloudinary.com/deue4rbta/image/upload/c_fill,w_400,h_240/v1741297415/cd2_xqpz7k.jpg"
                 ],
                 "aboutGig": {
                     "title1": "Business Card Design",

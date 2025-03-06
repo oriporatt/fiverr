@@ -84,7 +84,6 @@ export function AppHeader() {
 	},
 	[])
 	const users =useSelector(storeState => storeState.userModule.users)
-	console.log(users)
 	
 	return (
 		<header className={`app-header main-container ${isGigsIndexPage ? 'header-regular' : ''}`}>

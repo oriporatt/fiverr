@@ -21,6 +21,13 @@
         line-height: functions.rem(21px);
 
     }    
+    h4{
+        color: variables.$black;
+        font-size: functions.rem(14px);
+        font-weight: bold;
+        line-height: functions.rem(21px);
+        margin-bottom: 0;
+    }
 	.gig-title {
        
         color: variables.$darkGray;
@@ -41,7 +48,9 @@
         overflow: hidden;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow effect on the container */
         border-radius: 8px;
-
+        &:hover {
+            cursor: pointer; /* Changes the cursor to a hand on hover */
+        }
     }
 
     img {

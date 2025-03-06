@@ -10,6 +10,8 @@ import Home from '../assets/svgs/home.svg?react'
 import BlackStar from '../assets/svgs/blackStar.svg?react'
 import GrayDiamond from '../assets/svgs/grayDiamond.svg?react'
 import BlackDiamond from '../assets/svgs/blackDiamond.svg?react'
+import { GigPreviewCarrousel } from '../cmps/GigPreviewCarrousel'
+
 
 export function GigDetails() {
 
@@ -18,18 +20,23 @@ export function GigDetails() {
 
   useEffect(() => {
     loadGig(gigId)
+    window.scrollTo(0, 0); 
+
   }, [gigId])
 
   function roundRate(rate){
     return Math.round(rate)
   }
 
-  function repeatIcon (icon, times) {
-    return icon.repeat(times); 
-  } 
+
+
+  function updateCloudinaryUrl(url) {
+    return url.replace("c_fill,w_400,h_240", "c_fill,w_660,h_400");
+}
 
   let rateInt 
   let level
+  let bigImgs
   if (gig){
     rateInt=roundRate(gig.owner.rate)
 
@@ -42,8 +49,8 @@ export function GigDetails() {
     }else{
       level=gig.owner.level
     }
-
-    gig.tags
+  
+    bigImgs= gig.imgs.map(url=>updateCloudinaryUrl(url))
   }
   if (!gig || gig._id!==gigId) return <p>Loading...</p> //when loading or swtichng gig
 
@@ -70,7 +77,6 @@ export function GigDetails() {
         </ul>
       </div>
      
-      {/* <Link to="/gig">Back to list</Link> */}
       {gig && <div className='gig-details-div'>
         <h1 className='gig-title'>{gig.title}</h1>
         <div className='owner-details-general'>
@@ -100,10 +106,40 @@ export function GigDetails() {
                 </div>
 
         </div>
-        <h4>${gig.price}</h4>
+        
+        <div className="img-container-big">
+            <GigPreviewCarrousel images={bigImgs} />
+        </div>
+        <div className='about-gig'>
+          <h4>About This gig</h4>
+          <p>{gig.description}</p>
+
+          {gig.aboutGig.title1&&
+          <h5>{gig.aboutGig.title1}</h5>}
+          
+          {gig.aboutGig.p1&&
+          <p>{gig.aboutGig.p1}</p>
+          }
+          
+          {gig.aboutGig.title2&&
+          <h5>{gig.aboutGig.title2}</h5>}
+          
+          {gig.aboutGig.p2&&
+          <p>{gig.aboutGig.p2}</p>
+          }
+
+          {gig.aboutGig.title3&&
+          <h5>{gig.aboutGig.title3}</h5>}
+          
+          {gig.aboutGig.p3&&
+          <p>{gig.aboutGig.p3}</p>
+          }
+
+        </div>
       </div>
+
       }
-      {/* <button onClick={() => { onAddCarMsg(car._id) }}>Add car msg</button> */}
+
 
     </section>
   )

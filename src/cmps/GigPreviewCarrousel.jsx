@@ -4,12 +4,18 @@ import Dot from '../assets/svgs/dot.svg?react'
 import LeftArrow from '../assets/svgs/leftArrow.svg?react'
 import RightArrow from '../assets/svgs/rightArrow.svg?react'
 
+import { useNavigate } from 'react-router-dom';
 
 
-
-export function GigPreviewCarrousel({ images }) {
+export function GigPreviewCarrousel({ images,gigId=undefined }) { //images is the array of images to show in index and details. gigId only relevant for index to navigate to the gig once click on the picture only
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
+
   let navBarList =[]
+
+  function navigateToGig(gigId){
+    navigate(`/gig/${gigId}`)
+  }
 
 
   const goToNext = () => {
@@ -57,7 +63,12 @@ export function GigPreviewCarrousel({ images }) {
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((img, idx) => (
-          <img key={idx} src={img} alt={`Image ${idx + 1}`} className="carousel-image" />
+
+            <img 
+            onClick={gigId ? () => navigateToGig(gigId) : undefined}  
+            key={idx} src={img} alt={`Image ${idx + 1}`} 
+            className="carousel-image" />
+          // <img key={idx} src={img} alt={`Image ${idx + 1}`} className="carousel-image" />
         ))}
       </div>
       
