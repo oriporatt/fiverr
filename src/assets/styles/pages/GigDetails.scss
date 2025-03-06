@@ -3,12 +3,13 @@
 @use "../setup/variables";
 
 .gig-details {
+    padding-top: 32px;
     .nav-bar-list{
         display: flex;
         gap: 1rem;
         font-size: functions.rem(14px) ;
         align-items: center;
-
+        margin-bottom: functions.rem(28px) ;;
 
         .slash{
             font-size: functions.rem(16px) ;
