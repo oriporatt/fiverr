@@ -18,15 +18,24 @@ export function GigDetails() {
   function roundRate(rate){
     return Math.round(rate)
   }
-  
-  let rateIdx 
 
+  function repeatIcon (icon, times) {
+    return icon.repeat(times); 
+  } 
+
+  let rateInt 
+  let level
   if (gig){
-    rateIdx=roundRate(gig.owner.rate)
-    if (rateIdx>1) {
-      rateIdx--
-    } else{
-      rateIdx=0
+    rateInt=roundRate(gig.owner.rate)
+
+    if (gig.owner.level==='basic'){
+      level='Level 1 ◆◇◇'
+    } else if (gig.owner.level==='standard'){
+      level='Level 2 ◆◆◇'
+    } else if (gig.owner.level==='premium'){
+      level='Level 3 ◆◆◆'
+    }else{
+      level=gig.owner.level
     }
   }
   if (!gig || gig._id!==gigId) return <p>Loading...</p> //when loading or swtichng gig
@@ -36,12 +45,16 @@ export function GigDetails() {
       <Link to="/gig">Back to list</Link>
       {gig && <div className='gig-details-div'>
         <h1 className='gig-title'>{gig.title}</h1>
-        <div className='owner-details'>
+        <div className='owner-details-general'>
                 <img  src={gig.owner.imgUrl}/>
-                <h5>{gig.owner.fullname}</h5>
-                <h6>{gig.owner.level}</h6>
-                <p>{gigService.sellerRates[rateIdx]} {gig.owner.rate} </p>
-                
+                <div className='owner-details-data'>
+                  <div className='name-level'>
+                    <h5>{gig.owner.fullname}</h5>
+                    <h6>{level}</h6>
+                  </div>
+                  <p>{repeatIcon('★',rateInt)} {gig.owner.rate} </p>
+                </div>
+
         </div>
         <h4>${gig.price}</h4>
       </div>

@@ -10,4 +10,46 @@
         color: variables.$black;
         font-weight: 700;
     }
+
+    .owner-details-general{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-auto-flow: column;
+        justify-content: start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        img{
+            border-radius: 50%;
+            height: functions.rem(46px) ;
+        }
+        .owner-details-data{
+            display: grid;
+            align-items: center;
+            .name-level{
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                h5{
+                    margin-bottom: 0;
+                    color: variables.$black;
+                    font-size: functions.rem(18px);
+                    font-weight: bold;
+                }
+                h6{
+                    color: variables.$darkGray;
+                    font-size: functions.rem(14px);
+                    font-weight: bold;
+                    margin-bottom: 0;
+                }
+            }
+            p{
+                margin-bottom: 0;
+                color: variables.$black;
+                font-size: functions.rem(16px);
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+
+        }
+    }
 }
