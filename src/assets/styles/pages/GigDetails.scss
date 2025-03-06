@@ -3,6 +3,37 @@
 @use "../setup/variables";
 
 .gig-details {
+    .nav-bar-list{
+        display: flex;
+        gap: 1rem;
+        font-size: functions.rem(14px) ;
+        align-items: center;
+
+
+        .slash{
+            font-size: functions.rem(16px) ;
+            color: variables.$gray2;
+        }
+        li{
+            display: flex;
+            justify-content: center;
+            color: variables.$black;
+            .home-link{
+                display: flex;
+                svg{
+
+                    width: 1rem;
+                    height: 1rem;
+                    transform-origin: center;
+                    fill: variables.$black;
+                }
+            }
+        }
+        a{
+            color: variables.$black;
+        }
+
+    }
     h1{
         font-size: functions.rem(28px) ;
         line-height: functions.rem(36px) ;
@@ -42,13 +73,36 @@
                     margin-bottom: 0;
                 }
             }
-            p{
-                margin-bottom: 0;
+
+            .rate{
+                line-height: 0;
+                display: flex;
+                align-items: center;
                 color: variables.$black;
                 font-size: functions.rem(16px);
-                font-weight: bold;
-                margin-bottom: 0;
+                gap: functions.rem(4px);
+                svg{
+                }
+                p{
+                    margin-top: functions.rem(6px);
+                    margin-bottom: 0;
+                    font-weight: bold;
+                    color: variables.$black;
+
+                }
             }
+
+        }
+    }
+    .owner-level{
+        display: flex;
+        align-items: center;
+        color: variables.$black;
+        p{
+            margin-bottom: 0;
+            margin-right: 0.5rem;
+            font-size: functions.rem(14px);
+
 
         }
     }
