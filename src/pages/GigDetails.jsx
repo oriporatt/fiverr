@@ -83,9 +83,9 @@ export function GigDetails() {
         
         <div className='side-order-menu'>
           <div className='package-chose'>
-            <button>Basic</button>
-            <button>Standard</button>
-            <button>Premium</button>
+            <button onClick={()=>setOrderPackage('Basic')} className={orderPackage==='Basic'? 'active-btn':''}>Basic</button>
+            <button onClick={()=>setOrderPackage('Standard')} className={orderPackage==='Standard'? 'active-btn':''}>Standard</button>
+            <button onClick={()=>setOrderPackage('Premium')} className={orderPackage==='Premium'? 'active-btn':''}>Premium</button>
           </div>
 
           <div className='package-expand-details'>
@@ -93,9 +93,9 @@ export function GigDetails() {
               <h4>{orderPackage} Package</h4>
               <h2>{gig.price}$</h2>
             </div>
-            {(orderPackage.toLowerCase()==='basic')&&<p1>{gig.packageDetails.basic}</p1>}
-            {(orderPackage.toLowerCase()==='standard')&&<p1>{gig.packageDetails.standard}</p1>}
-            {(orderPackage.toLowerCase()==='premium')&&<p1>{gig.packageDetails.premium}</p1>}
+            {(orderPackage.toLowerCase()==='basic')&&<p>{gig.packageDetails.basic}</p>}
+            {(orderPackage.toLowerCase()==='standard')&&<p>{gig.packageDetails.standard}</p>}
+            {(orderPackage.toLowerCase()==='premium')&&<p>{gig.packageDetails.premium}</p>}
           </div>
         </div>
 

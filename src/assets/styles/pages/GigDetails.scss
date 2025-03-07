@@ -19,10 +19,10 @@
             border: 1px solid variables.$lightGray ;
             background-color: variables.$white;
             height: 500px;
-            max-width: 400px;
-            min-width: 300px;
+            max-width: 350px;
+            min-width: 250px;
             display: grid;
-            grid-template-rows: 60px auto;
+            grid-template-rows: 50px auto;
         }
     }
 
@@ -34,8 +34,8 @@
             gap: 0;
             margin:0;
             width: 100%;
-            background-color: variables.$white;
-            color:variables.$black;
+            background-color: variables.$btnBG;
+            color:variables.$btnTxt;
             font-weight: 700;
             border-bottom: 1px solid variables.$lightGray ;
             &:nth-child(2) {
@@ -43,6 +43,11 @@
                 border-left: 1px solid variables.$lightGray ;
 
             }
+        }
+        .active-btn{
+            background-color: variables.$white;
+            color:variables.$black;
+            border-bottom: 2px solid variables.$black ;
         }
     }
 
