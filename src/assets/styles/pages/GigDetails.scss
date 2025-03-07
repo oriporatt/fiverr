@@ -4,6 +4,49 @@
 
 .gig-details {
     padding-top: 32px;
+
+    .main-layout-gig-details{
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 4fr 2fr;
+        gap: clamp(20px, 40px, 50px);
+        .gig-details-div{
+            grid-column: 1;
+        }
+        .side-order-menu{
+            grid-column: 2;
+            color: variables.$clr3;
+            border: 1px solid variables.$lightGray ;
+            background-color: variables.$white;
+            height: 500px;
+            max-width: 400px;
+            min-width: 300px;
+            display: grid;
+            grid-template-rows: 60px auto;
+        }
+    }
+
+    .package-chose{
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(3, minmax(80px, 1fr));
+        button{
+            gap: 0;
+            margin:0;
+            width: 100%;
+            background-color: variables.$white;
+            color:variables.$black;
+            font-weight: 700;
+            border-bottom: 1px solid variables.$lightGray ;
+            &:nth-child(2) {
+                border-right: 1px solid variables.$lightGray ;
+                border-left: 1px solid variables.$lightGray ;
+
+            }
+        }
+    }
+
+
     .nav-bar-list{
         display: flex;
         gap: 1rem;
@@ -134,4 +177,6 @@
         color: variables.$black;
         font-size: functions.rem(16px); 
     }
+
+
 }

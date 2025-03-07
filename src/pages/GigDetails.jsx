@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 import { useParams,NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -17,6 +17,7 @@ export function GigDetails() {
 
   const {gigId} = useParams()
   const gig = useSelector(storeState => storeState.gigModule.gig)
+  const [orderPackage, setOrderPackage] = useState('Basic')
 
   useEffect(() => {
     loadGig(gigId)
@@ -76,69 +77,94 @@ export function GigDetails() {
           ))}
         </ul>
       </div>
-     
-      {gig && <div className='gig-details-div'>
-        <h1 className='gig-title'>{gig.title}</h1>
-        <div className='owner-details-general'>
-                <img  src={gig.owner.imgUrl}/>
-                <div className='owner-details-data'>
-                  <div className='name-level'>
-                    <h5>{gig.owner.fullname}</h5>
-                    {(level==='Level 1')&&<div className='owner-level'>
-                          <p>{level}</p> <BlackDiamond/> <GrayDiamond/> <GrayDiamond/>
-                    </div>}
-                    {(level==='Level 2')&&<div className='owner-level'>
-                          <p>{level}</p> <BlackDiamond/> <BlackDiamond/> <GrayDiamond/>
-                    </div>}
-                    {(level==='Level 3')&&<div className='owner-level'>
-                          <p>{level}</p> <BlackDiamond/> <BlackDiamond/> <BlackDiamond/>
-                    </div>}
-                    
-                  </div>
-                  {/* <p>{repeatIcon('★',rateInt)} {gig.owner.rate} </p> */}
-                  <div className='rate'>
-                    {Array.from({ length: rateInt}, (_, index) => (
-                      <BlackStar key={index} />
-                    ))}
-                    <p>{gig.owner.rate}</p>
-                  </div>
+      
+      <div className='main-layout-gig-details'>
 
-                </div>
-
-        </div>
         
-        <div className="img-container-big">
-            <GigPreviewCarrousel images={bigImgs} />
+        <div className='side-order-menu'>
+          <div className='package-chose'>
+            <button>Basic</button>
+            <button>Standard</button>
+            <button>Premium</button>
+          </div>
+
+          <div className='package-expand-details'>
+            <div className='details-header'>
+              <h4>{orderPackage} Package</h4>
+              <h2>{gig.price}$</h2>
+            </div>
+            {(orderPackage.toLowerCase()==='basic')&&<p1>{gig.packageDetails.basic}</p1>}
+            {(orderPackage.toLowerCase()==='standard')&&<p1>{gig.packageDetails.standard}</p1>}
+            {(orderPackage.toLowerCase()==='premium')&&<p1>{gig.packageDetails.premium}</p1>}
+          </div>
         </div>
-        <div className='about-gig'>
-          <h4>About This gig</h4>
-          <p>{gig.description}</p>
 
-          {gig.aboutGig.title1&&
-          <h5>{gig.aboutGig.title1}</h5>}
-          
-          {gig.aboutGig.p1&&
-          <p>{gig.aboutGig.p1}</p>
-          }
-          
-          {gig.aboutGig.title2&&
-          <h5>{gig.aboutGig.title2}</h5>}
-          
-          {gig.aboutGig.p2&&
-          <p>{gig.aboutGig.p2}</p>
-          }
+        {gig && <div className='gig-details-div'>
+          <h1 className='gig-title'>{gig.title}</h1>
+          <div className='owner-details-general'>
+                  <img  src={gig.owner.imgUrl}/>
+                  <div className='owner-details-data'>
+                    <div className='name-level'>
+                      <h5>{gig.owner.fullname}</h5>
+                      {(level==='Level 1')&&<div className='owner-level'>
+                            <p>{level}</p> <BlackDiamond/> <GrayDiamond/> <GrayDiamond/>
+                      </div>}
+                      {(level==='Level 2')&&<div className='owner-level'>
+                            <p>{level}</p> <BlackDiamond/> <BlackDiamond/> <GrayDiamond/>
+                      </div>}
+                      {(level==='Level 3')&&<div className='owner-level'>
+                            <p>{level}</p> <BlackDiamond/> <BlackDiamond/> <BlackDiamond/>
+                      </div>}
+                      
+                    </div>
+                    {/* <p>{repeatIcon('★',rateInt)} {gig.owner.rate} </p> */}
+                    <div className='rate'>
+                      {Array.from({ length: rateInt}, (_, index) => (
+                        <BlackStar key={index} />
+                      ))}
+                      <p>{gig.owner.rate}</p>
+                    </div>
 
-          {gig.aboutGig.title3&&
-          <h5>{gig.aboutGig.title3}</h5>}
-          
-          {gig.aboutGig.p3&&
-          <p>{gig.aboutGig.p3}</p>
-          }
+                  </div>
 
+          </div>
+          
+          <div className="img-container-big">
+              <GigPreviewCarrousel images={bigImgs} />
+          </div>
+          <div className='about-gig'>
+            <h4>About This gig</h4>
+            <p>{gig.description}</p>
+
+            {gig.aboutGig.title1&&
+            <h5>{gig.aboutGig.title1}</h5>}
+            
+            {gig.aboutGig.p1&&
+            <p>{gig.aboutGig.p1}</p>
+            }
+            
+            {gig.aboutGig.title2&&
+            <h5>{gig.aboutGig.title2}</h5>}
+            
+            {gig.aboutGig.p2&&
+            <p>{gig.aboutGig.p2}</p>
+            }
+
+            {gig.aboutGig.title3&&
+            <h5>{gig.aboutGig.title3}</h5>}
+            
+            {gig.aboutGig.p3&&
+            <p>{gig.aboutGig.p3}</p>
+            }
+
+          </div>
         </div>
+        }
+
       </div>
 
-      }
+     
+
 
 
     </section>
