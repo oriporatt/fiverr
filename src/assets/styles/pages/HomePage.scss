@@ -4,6 +4,7 @@
 
 
 .home-page{
+
     margin-top: functions.rem(80px);
     @include mixins.for-narrow-layout{
         grid-column: -1/1;
@@ -237,7 +238,6 @@
 
 
 .main-categories-list{
-    
     display: grid;
     @include mixins.for-mobile-layout{
 

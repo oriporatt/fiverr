@@ -291,7 +291,7 @@
 
 
     .user-info {
-        position: absolute;        
+        position: relative;       
         // margin-inline-start: auto;
         background-color: #F85D5D;
         border-radius: 50%;
@@ -299,10 +299,14 @@
         width: 32px;
         display: flex;
         justify-content: center;
+        &:hover{
+            cursor: pointer;
+            border: 2px solid variables.$white;
+        }
         .user-circle{
             position: relative;
             top:0;
-            color:variables.$white; ;
+            color:variables.$white; 
         }
         &::after {
             content: '';
@@ -316,15 +320,61 @@
             border-radius: 50%;
         }
 
-        // button{
-        //     position: relative;
-        // }
-    }
+        .logout-modal{
+            position: absolute;
+            top: 40px;
+            right: 8px;
+            width: 200px;
+            border: 1px solid variables.$lightGray;
+            background-color: variables.$white;
+            border-radius: 5px;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999 ;
+            button{
+                color: variables.$black;
+                border: 1px solid variables.$black;
+                &:hover{
+                    color: variables.$white;
+                    background-color: variables.$black;
 
-    
+                }
 
+            }
+        }
+
+    } 
 }
 
+.user-name-modal{
+    position: relative;
+    padding-top: 8px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    h4{
+        width: 100%;
+        border-bottom: 1px solid variables.$lightGray;
+
+    }
+    .close-user{
+        position: absolute;
+        top:0;
+        right:-48px;
+        svg{
+            height: 20px;
+            width: 20px;
+            transform: scale(1); 
+            transform-origin: center;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+
+}
 
 .header-regular{
     position:static;

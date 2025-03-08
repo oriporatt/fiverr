@@ -6,13 +6,11 @@
 .index-header{
 
     display: grid;
-
     height: functions.rem(40px); 
     border-bottom: 1px solid #e0e0e0; 
     z-index: 50;
     background-color: variables.$white;
     grid-column: 1/-1;
-    
     .header-element-layout{
         display: grid;
         height: functions.rem(40px); 
@@ -140,8 +138,10 @@
 .home-upper {
     position: fixed;
     width: 100%;
-    z-index: 70;
+    z-index: 50;
     left: 0;
     top: functions.rem(81px);
+    background-color: variables.$white;
 
+    
 }

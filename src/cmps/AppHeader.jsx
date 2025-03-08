@@ -6,20 +6,25 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { UPDATE_FILTER_BY } from '../store/reducers/gig.reducer'
 import RejectSVG from '../assets/svgs/rejectSVG.svg?react'
+import CloseModal from '../assets/svgs/closeModal.svg?react'
+
 
 import {  loadUsers } from '../store/actions/user.actions'
 
 
 export function AppHeader() {
 	const location = useLocation();
-	const logoutBtnRef = useRef(null);
-    const hasClicked = useRef(false); // To track if the user has clicked the circle before
 
 	const dispatch = useDispatch()
 	const searchBoxTextGlobal = useSelector(storeState => storeState.gigModule.filterBy.txt)
 	const [ showX, setShowX ] = useState(false)
 	const [ localInput, setLocalInput ] = useState(searchBoxTextGlobal)
 	const [ showLogoutBtn, setShowLogoutBtn ] = useState(false)
+	const button1Ref = useRef(null);
+    const button2Ref = useRef(null);
+	const buttonCloseModalRef = useRef(null);
+
+	
 
 
 	const isHomePage = location.pathname==='/'
@@ -31,13 +36,40 @@ export function AppHeader() {
 	
 	const navigate = useNavigate()
 	let showSearchOnTop=false
+
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+			if (buttonCloseModalRef.current.contains(event.target)){
+				setShowLogoutBtn(false);
+			}else if (button2Ref.current &&
+				(!button2Ref.current.contains(event.target)&&!button1Ref.current.contains(event.target))) {
+                setShowLogoutBtn(false);
+            }
+        };
+
+        if (showLogoutBtn) {
+            document.addEventListener('click', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [showLogoutBtn]);
+
+
+
 	async function onLogout() {
 		try {
+			
 			await logout()
 			navigate('/')
 			showSuccessMsg(`Bye now`)
 		} catch (err) {
 			showErrorMsg('Cannot logout')
+		}
+		finally{
+			setShowLogoutBtn(false)
 		}
 	}
 	if ((searchBoxPos==='top' && isHomePage) || isGigsIndexPage){
@@ -88,22 +120,7 @@ export function AppHeader() {
 	},
 	[])
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (logoutBtnRef.current && !logoutBtnRef.current.contains(event.target) && hasClicked.current) {
-                setShowLogoutBtn(false);  // Hide the button if clicked outside
-            }
-        };
 
-        document.addEventListener('click', handleClickOutside);
-        
-        // Cleanup the event listener on component unmount
-        return () => {
-            document.removeEventListener('click', handleClickOutside);
-        };
-    }, []);
-
-	console.log(showLogoutBtn)
 
 	return (
 		<header className={`app-header main-container ${isGigsIndexPage ? 'header-regular' : ''}`}>
@@ -142,23 +159,32 @@ export function AppHeader() {
 					{!user && <NavLink to="login" className="login-link">Sing in</NavLink>}
 					{!user && <NavLink className='join' to=""><button>Join</button></NavLink>}
 					{user && (
-						<div className="user-info">
+						<div className="user-info"
+							ref={button1Ref} 
+							onClick={() => {setShowLogoutBtn(true)}}
+						>
 							{/* <Link to={`user/${user._id}`}> */}
 								<div className="user-circle"
-									onClick={() => {
-										hasClicked.current = true; // Mark that the user clicked
-										setShowLogoutBtn(true);
-									}}
-								>
+									>
 									{user.fullname[0]}
 								</div>
 							{/* </Link> */}
-							{/* <span className="score">{user.score?.toLocaleString()}</span> */}
 							{showLogoutBtn && (
-								<button 
-									ref={logoutBtnRef} 
-									onClick={onLogout}>Logout
-								</button>)}
+								<div ref={button2Ref} className='logout-modal'>
+									<div className='user-name-modal'>
+										<h4>{user.fullname}</h4>
+										<div className='close-user' 
+											ref={buttonCloseModalRef}
+											onClick={()=>{setShowLogoutBtn(false)}}>
+											<CloseModal/>
+										</div>
+									</div> 
+										
+									<button 
+										onClick={onLogout}>Logout
+									</button>
+								</div>
+							)}
 						</div>
 					)}
 					
