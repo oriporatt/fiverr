@@ -107,32 +107,39 @@ export function GigDetails() {
       
       <div className='main-layout-gig-details'>
 
-        
-        <div className='side-order-menu'>
-          <div className='package-chose'>
-            <button onClick={()=>setOrderPackage('Basic')} className={orderPackage==='Basic'? 'active-btn':''}>Basic</button>
-            <button onClick={()=>setOrderPackage('Standard')} className={orderPackage==='Standard'? 'active-btn':''}>Standard</button>
-            <button onClick={()=>setOrderPackage('Premium')} className={orderPackage==='Premium'? 'active-btn':''}>Premium</button>
-          </div>
+        <div className='right-side'>
+          <div className='side-order-menu'>
+            <div className='package-chose'>
+              <button onClick={()=>setOrderPackage('Basic')} className={orderPackage==='Basic'? 'active-btn':''}>Basic</button>
+              <button onClick={()=>setOrderPackage('Standard')} className={orderPackage==='Standard'? 'active-btn':''}>Standard</button>
+              <button onClick={()=>setOrderPackage('Premium')} className={orderPackage==='Premium'? 'active-btn':''}>Premium</button>
+            </div>
 
-          <div className='package-expand-details'>
-            <div className='details-header'>
-              <h4>{orderPackage} Package</h4>
-              <h2>{packagePrice}$</h2>
+            <div className='package-expand-details'>
+              <div className='details-header'>
+                <h4>{orderPackage} Package</h4>
+                <h2>{packagePrice}$</h2>
+              </div>
+              {(orderPackage.toLowerCase()==='basic')&&<p>{gig.packageDetails.basic}</p>}
+              {(orderPackage.toLowerCase()==='standard')&&<p>{gig.packageDetails.standard}</p>}
+              {(orderPackage.toLowerCase()==='premium')&&<p>{gig.packageDetails.premium}</p>}
+              <div className='delivery-revisions'>
+                <OrderDeliveryTime/><span>{deliveryTimePackage}-day delivery</span>
+                <OrderRevisions/><span>3 Revisions</span>
+              </div>
+              <button>
+                <span>Order</span>
+                <OrderArrow/>
+              </button>
             </div>
-            {(orderPackage.toLowerCase()==='basic')&&<p>{gig.packageDetails.basic}</p>}
-            {(orderPackage.toLowerCase()==='standard')&&<p>{gig.packageDetails.standard}</p>}
-            {(orderPackage.toLowerCase()==='premium')&&<p>{gig.packageDetails.premium}</p>}
-            <div className='delivery-revisions'>
-              <OrderDeliveryTime/><span>{deliveryTimePackage}-day delivery</span>
-              <OrderRevisions/><span>3 Revisions</span>
-            </div>
-            <button>
-              <span>Order</span>
-              <OrderArrow/>
-            </button>
+          </div>
+          <div className='contact-me'>
+            <button>Contact me</button>
           </div>
         </div>
+
+
+
 
         {gig && <div className='gig-details-div'>
           <h1 className='gig-title'>{gig.title}</h1>
