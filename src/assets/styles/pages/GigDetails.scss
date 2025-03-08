@@ -10,16 +10,23 @@
         grid-auto-flow: column;
         grid-template-columns: 4fr 2fr;
         gap: clamp(20px, 40px, 50px);
+        overflow: visible;
+
         .gig-details-div{
             grid-column: 1;
         }
         .right-side{
             grid-column: 2;
+            display: flex;
+            flex-direction: column;
+
         }
 
     }
 
     .side-order-menu{
+        position: sticky;
+        top: functions.rem(70px);
         color: variables.$clr3;
         border: 1px solid variables.$lightGray ;
         background-color: variables.$white;
@@ -119,6 +126,8 @@
 
     .contact-me{
         margin-top: 1rem;
+        position:sticky;
+        top:functions.rem(586px);
         background-color: variables.$btnBG;
         height: 80px;
         max-width: 400px;
