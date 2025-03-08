@@ -11,7 +11,7 @@ import BlackStar from '../assets/svgs/blackStar.svg?react'
 import GrayDiamond from '../assets/svgs/grayDiamond.svg?react'
 import BlackDiamond from '../assets/svgs/blackDiamond.svg?react'
 import { GigPreviewCarrousel } from '../cmps/GigPreviewCarrousel'
-
+import OrderArrow from '../assets/svgs/orderArrow.svg?react'
 
 export function GigDetails() {
 
@@ -96,6 +96,10 @@ export function GigDetails() {
             {(orderPackage.toLowerCase()==='basic')&&<p>{gig.packageDetails.basic}</p>}
             {(orderPackage.toLowerCase()==='standard')&&<p>{gig.packageDetails.standard}</p>}
             {(orderPackage.toLowerCase()==='premium')&&<p>{gig.packageDetails.premium}</p>}
+            <button>
+              <span>Order</span>
+              <OrderArrow/>
+            </button>
           </div>
         </div>
 
