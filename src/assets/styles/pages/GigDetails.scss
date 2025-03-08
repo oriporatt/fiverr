@@ -106,6 +106,9 @@
                 fill:variables.$white;
             }
             margin-bottom: functions.rem(48px);
+            &:hover{
+                background-color: variables.$gray ;
+            }
         }
         .delivery-revisions{
             display: flex;

@@ -30,9 +30,9 @@ function remove(userId) {
     return storageService.remove('user', userId)
 }
 
-async function update({ _id, score }) {
+async function update({ _id }) {
     const user = await storageService.get('user', _id)
-    user.score = score
+    // user.score = score
     await storageService.put('user', user)
 
 	// When admin updates other user's details, do not update loggedinUser
@@ -51,7 +51,7 @@ async function login(userCred) {
 
 async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-    userCred.score = 10000
+    // userCred.score = 10000
 
     const user = await storageService.post('user', userCred)
     return saveLoggedinUser(user)
@@ -70,7 +70,6 @@ function saveLoggedinUser(user) {
         _id: user._id, 
         fullname: user.fullname, 
         imgUrl: user.imgUrl, 
-        score: user.score, 
         isAdmin: user.isAdmin 
     }
 	sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
@@ -85,7 +84,6 @@ async function _createAdmin() {
         password: 'admin',
         fullname: 'Mustafa Adminsky',
         imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
-        score: 10000,
     }
 
     const newUser = await storageService.post('user', userCred)
@@ -105,7 +103,9 @@ async function _initUsers(){
     [
         {
           "_id": "s101",
+          "username": "hassan",
           "fullname": "Hassan Malik",
+          "password": "555",
           "cv": "I am a certified digital marketer with 7 years of experience in SEO, social media marketing, and PPC campaigns. I have worked with brands across various industries, helping them boost their online presence and maximize their ROI. Whether you need keyword research, Facebook ads, or content strategy, I am here to provide tailored solutions for your business growth.",
           "level": "premium",
           "rate": 4.8,
@@ -118,6 +118,7 @@ async function _initUsers(){
         {
           "_id": "s102",
           "fullname": "Elena Petrova",
+          "password": "555",
           "cv": "I am a creative graphic designer with over 6 years of experience in branding, logo design, and illustration. I have helped businesses establish strong visual identities by crafting modern, eye-catching designs. My skills include Adobe Illustrator, Photoshop, and Figma. Let's work together to create stunning visuals that represent your brand.",
           "level": "standard",
           "rate": 4.6,
@@ -130,6 +131,7 @@ async function _initUsers(){
         {
           "_id": "s103",
           "fullname": "James Carter",
+          "password": "555",
           "cv": "As a professional video editor with 5+ years of experience, I specialize in producing high-quality videos for YouTube, social media, and corporate presentations. My expertise includes Adobe Premiere Pro, After Effects, and DaVinci Resolve. I ensure smooth transitions, engaging effects, and polished edits to bring your vision to life.",
           "level": "basic",
           "rate": 4.3,
@@ -142,6 +144,7 @@ async function _initUsers(){
         {
           "_id": "s104",
           "fullname": "Mei Ling",
+          "password": "555",
           "cv": "I am a highly skilled translator specializing in English to Mandarin and vice versa. With over 10 years of experience, I have worked with businesses, authors, and content creators to provide accurate and culturally appropriate translations. My services cover documents, websites, and subtitles. Let’s bridge the language barrier together!",
           "level": "premium",
           "rate": 4.9,
@@ -154,6 +157,7 @@ async function _initUsers(){
         {
           "_id": "s105",
           "fullname": "Ricardo Mendes",
+          "password": "555",
           "cv": "As a professional WordPress developer, I specialize in designing, customizing, and optimizing websites for businesses and individuals. With 6 years of experience, I have built responsive, fast-loading, and SEO-friendly websites. I can help you create a stunning online presence that meets your business needs.",
           "level": "standard",
           "rate": 4.5,
@@ -166,6 +170,7 @@ async function _initUsers(){
         {
           "_id": "s106",
           "fullname": "Aisha Yusuf",
+          "password": "555",
           "cv": "I am a professional content writer and editor with 8 years of experience crafting compelling articles, blogs, and website content. My expertise includes SEO writing, ghostwriting, and technical content creation. I have worked with clients from diverse industries to deliver engaging and informative pieces that drive traffic and conversions.",
           "level": "premium",
           "rate": 4.8,
@@ -178,6 +183,7 @@ async function _initUsers(){
         {
           "_id": "s107",
           "fullname": "Daniel Schmidt",
+          "password": "555",
           "cv": "I am a professional 3D artist with expertise in modeling, rendering, and animation. With over 7 years of experience in Blender and Maya, I have worked on game assets, product designs, and architectural visualizations. Whether you need a realistic render or stylized 3D characters, I am here to bring your ideas to life.",
           "level": "standard",
           "rate": 4.6,
@@ -190,6 +196,7 @@ async function _initUsers(){
         {
           "_id": "s108",
           "fullname": "Isabella Dupont",
+          "password": "555",
           "cv": "As a social media strategist, I help businesses grow their online presence with targeted marketing campaigns. I have 5 years of experience managing Instagram, Facebook, and LinkedIn for brands worldwide. From content creation to analytics, I offer a full range of services to maximize your engagement and reach.",
           "level": "basic",
           "rate": 4.4,
@@ -202,6 +209,7 @@ async function _initUsers(){
         {
           "_id": "s109",
           "fullname": "Mohammed Al-Farsi",
+          "password": "555",
           "cv": "I am a skilled mobile app developer specializing in Android and iOS applications. With 6 years of experience, I have built apps for e-commerce, health, and education industries. My tech stack includes Flutter, React Native, and Swift. If you need a reliable and user-friendly mobile app, I am here to help!",
           "level": "premium",
           "rate": 4.9,
@@ -214,6 +222,7 @@ async function _initUsers(){
         {
           "_id": "s110",
           "fullname": "Natalia Ivanova",
+          "password": "555",
           "cv": "I am a talented UX/UI designer with a passion for creating beautiful and functional user experiences. With over 5 years of experience, I have worked with startups and established companies to design websites and mobile apps that are both aesthetically pleasing and easy to use. Let’s make your product stand out!",
           "level": "standard",
           "rate": 4.7,

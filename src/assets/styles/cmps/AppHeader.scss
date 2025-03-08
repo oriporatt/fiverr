@@ -290,23 +290,36 @@
 
 
 
-    // .user-info {
-    //     display: flex;
-    //     align-items: center;
-    //     margin-inline-start: auto;
+    .user-info {
+        position: absolute;        
+        // margin-inline-start: auto;
+        background-color: #F85D5D;
+        border-radius: 50%;
+        height: 32px;
+        width: 32px;
+        display: flex;
+        justify-content: center;
+        .user-circle{
+            position: relative;
+            top:0;
+            color:variables.$white; ;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            bottom:-1px ;
+            right: -1px;
+            width: 8px;
+            height: 8px;
+            background-color: #1dbf73;
+            border: 2px solid variables.$white;
+            border-radius: 50%;
+        }
 
-    //     color: $clr1;
-
-    //     img {
-    //         width: 32px;
-    //         aspect-ratio: 1;
-    //         border-radius: 50%;
-    //     }
-        
-    //     .btn-link {
-           
-    //     }
-    // }
+        // button{
+        //     position: relative;
+        // }
+    }
 
     
 
