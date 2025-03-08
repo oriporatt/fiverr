@@ -12,6 +12,9 @@ import GrayDiamond from '../assets/svgs/grayDiamond.svg?react'
 import BlackDiamond from '../assets/svgs/blackDiamond.svg?react'
 import { GigPreviewCarrousel } from '../cmps/GigPreviewCarrousel'
 import OrderArrow from '../assets/svgs/orderArrow.svg?react'
+import OrderDeliveryTime from '../assets/svgs/orderDeliveryTime.svg?react'
+import OrderRevisions from '../assets/svgs/orderRevisions.svg?react'
+
 
 export function GigDetails() {
 
@@ -25,6 +28,10 @@ export function GigDetails() {
 
   }, [gigId])
 
+
+  
+
+
   function roundRate(rate){
     return Math.round(rate)
   }
@@ -33,11 +40,29 @@ export function GigDetails() {
 
   function updateCloudinaryUrl(url) {
     return url.replace("c_fill,w_400,h_240", "c_fill,w_660,h_400");
-}
+  }
+  function calcPackagePrice(){
+    if (orderPackage==='Basic'){
+      packagePrice=gig.price
+      deliveryTimePackage=gig.daysToMake
+
+    }else if(orderPackage==='Standard'){
+      packagePrice=gig.price*1.5
+      deliveryTimePackage=gig.daysToMake*1.5
+
+    }else if(orderPackage==='Premium'){
+      packagePrice=gig.price*2
+      deliveryTimePackage=gig.daysToMake*2
+    }
+    packagePrice=Math.round(packagePrice * 100) / 100;
+    deliveryTimePackage=Math.round(deliveryTimePackage)
+  } 
 
   let rateInt 
   let level
   let bigImgs
+  let packagePrice
+  let deliveryTimePackage
   if (gig){
     rateInt=roundRate(gig.owner.rate)
 
@@ -52,7 +77,9 @@ export function GigDetails() {
     }
   
     bigImgs= gig.imgs.map(url=>updateCloudinaryUrl(url))
+    calcPackagePrice()
   }
+
   if (!gig || gig._id!==gigId) return <p>Loading...</p> //when loading or swtichng gig
 
   return (
@@ -91,11 +118,15 @@ export function GigDetails() {
           <div className='package-expand-details'>
             <div className='details-header'>
               <h4>{orderPackage} Package</h4>
-              <h2>{gig.price}$</h2>
+              <h2>{packagePrice}$</h2>
             </div>
             {(orderPackage.toLowerCase()==='basic')&&<p>{gig.packageDetails.basic}</p>}
             {(orderPackage.toLowerCase()==='standard')&&<p>{gig.packageDetails.standard}</p>}
             {(orderPackage.toLowerCase()==='premium')&&<p>{gig.packageDetails.premium}</p>}
+            <div className='delivery-revisions'>
+              <OrderDeliveryTime/><span>{deliveryTimePackage}-day delivery</span>
+              <OrderRevisions/><span>3 Revisions</span>
+            </div>
             <button>
               <span>Order</span>
               <OrderArrow/>

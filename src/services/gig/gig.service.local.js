@@ -147,7 +147,7 @@ function _makeDummyGigs(){
             {
                 "_id": "i101",
                 "title": "I will design your logo",
-                "price": 12,
+                "price": 130,
                 "owner": {
                     "_id": "s101",
                     "fullname": "Hassan Malik",
@@ -192,7 +192,7 @@ function _makeDummyGigs(){
             {
                 "_id": "i102",
                 "title": "I will create a modern website",
-                "price": 50,
+                "price": 110,
                 "owner": {
                     "_id": "s102",
                     "fullname": "Elena Petrova",
@@ -230,7 +230,7 @@ function _makeDummyGigs(){
             {
                 "_id": "i103",
                 "title": "I will write engaging blog posts",
-                "price": 20,
+                "price": 99,
                 "owner": {
                     "_id": "s103",
                     "fullname": "James Carter",
@@ -268,7 +268,7 @@ function _makeDummyGigs(){
             {
                 "_id": "i104",
                 "title": "I will design an eye-catching business card",
-                "price": 15,
+                "price": 95,
                 "owner": {
                     "_id": "s104",
                     "fullname": "Mei Ling",
@@ -305,7 +305,7 @@ function _makeDummyGigs(){
             {
                 "_id": "i105",
                 "title": "I will write compelling ad copy",
-                "price": 20,
+                "price": 110,
                 "owner": {
                     "_id": "s105",
                     "fullname": "Sarah Greene",
@@ -344,7 +344,7 @@ function _makeDummyGigs(){
             {
                 "_id": "i106",
                 "title": "I will create social media content",
-                "price": 30,
+                "price": 210,
                 "owner": {
                     "_id": "s106",
                     "fullname": "Ava Thompson",
@@ -385,7 +385,7 @@ function _makeDummyGigs(){
             {
                 "_id": "i107",
                 "title": "I will assist with market research",
-                "price": 40,
+                "price": 175,
                 "owner": {
                     "_id": "s107",
                     "fullname": "Tariq Ahmed",
