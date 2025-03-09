@@ -53,7 +53,7 @@ export async function addOrder(order) {
         store.dispatch(
             {
                 type: ADD_ORDER,
-                order
+                order: savedOrder
             }
         )
         return savedOrder
@@ -68,13 +68,13 @@ export async function updateOrder(order) {
         const savedOrder = await orderService.save(order)
         store.dispatch(
             {
-                type: ADD_ORDER,
+                type: UPDATE_ORDER,
                 savedOrder
             }
         )
         return savedOrder
     } catch (err) {
-        console.log('Cannot save order', err)
+        console.log('Cannot update order', err)
         throw err
     }
 }

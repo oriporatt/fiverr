@@ -3,7 +3,6 @@ export const SET_ORDER = 'SET_ORDER'
 export const REMOVE_ORDER = 'REMOVE_GIG'
 export const ADD_ORDER = 'ADD_ORDER'
 export const UPDATE_ORDER = 'UPDATE_ORDER'
-import { gigService } from "../../services/gig/index"
 
 const initialState = {
     orders: [],
@@ -13,8 +12,8 @@ const initialState = {
 export function orderReducer(state = initialState, action) {
     var newState = state
     var orders
-    switch (SET_ORDERS.type) {
-        case SET_ORDER:
+    switch (action.type) {
+        case SET_ORDERS  :
             newState = { ...state, orders: action.orders }
             break
         case SET_ORDER:

@@ -15,9 +15,11 @@ import OrderArrow from '../assets/svgs/orderArrow.svg?react'
 import OrderDeliveryTime from '../assets/svgs/orderDeliveryTime.svg?react'
 import OrderRevisions from '../assets/svgs/orderRevisions.svg?react'
 import { userService } from '../services/user';
-
+import { addOrder } from '../store/actions/order.actions';
 
 export function GigDetails() {
+
+
 
   const {gigId} = useParams()
   const gig = useSelector(storeState => storeState.gigModule.gig)
@@ -116,6 +118,11 @@ export function GigDetails() {
     return(newOrder)
   }
 
+  async function onSubmitOrder(){
+    const savedOrder=await addOrder(order)
+    
+  }
+
   if (!gig || gig._id!==gigId) return <p>Loading...</p> //when loading or swtichng gig
 
   return (
@@ -163,7 +170,7 @@ export function GigDetails() {
                 <OrderDeliveryTime/><span>{deliveryTimePackage}-day delivery</span>
                 <OrderRevisions/><span>3 Revisions</span>
               </div>
-              <button>
+              <button onClick={onSubmitOrder}>
                 <span>Order</span>
                 <OrderArrow/>
               </button>
@@ -242,8 +249,6 @@ export function GigDetails() {
       </div>
 
      
-
-
 
     </section>
   )
