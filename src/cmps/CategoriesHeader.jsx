@@ -3,7 +3,8 @@ import { useState, useEffect,useRef } from 'react'
 import { gigService } from '../services/gig/index'
 import { Link, NavLink ,useLocation} from 'react-router-dom'
 import { useNavigate } from 'react-router'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { UPDATE_FILTER_BY } from '../store/reducers/gig.reducer'
 
 export function CategoriesHeader() {
     const location = useLocation();
@@ -51,6 +52,37 @@ export function CategoriesHeader() {
     const headerCategories = gigService.categories
 
 
+    const dispatch = useDispatch()
+
+    const emptyFilterBy =gigService.getDefaultFilter()
+
+
+
+    function onClickCategory(newCategory){
+        let newCategoriesArray = [...emptyFilterBy.categoriesArray]
+
+        newCategoriesArray= newCategoriesArray.map(catObj=>{
+            if (catObj.category===newCategory){
+                return {
+                    category: catObj.category,
+                    active:true}
+            }else{
+                return catObj
+            }
+        })
+
+        const newFilterBy={
+            ...emptyFilterBy,
+            categoriesArray:newCategoriesArray
+        }
+
+        dispatch({
+            type: UPDATE_FILTER_BY,
+            filterBy: newFilterBy
+        });
+        navigate('/gig')
+
+    }
     return (
         <main className={`categories-header full ${showSticky?'home-upper':''}`}>
             {show&&<header className='index-header main-container'>      
@@ -70,7 +102,7 @@ export function CategoriesHeader() {
                     {headerCategories.map(category=>{
                         return(
                         <li key={category} >
-                            <a> {category}</a>
+                            <a onClick={()=>onClickCategory(category)}> {category}</a>
                         </li>
                         )
                     })}

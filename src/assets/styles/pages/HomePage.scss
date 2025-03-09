@@ -238,6 +238,9 @@
 
 
 .main-categories-list{
+    li{
+        cursor: pointer;
+    }
     display: grid;
     @include mixins.for-mobile-layout{
 

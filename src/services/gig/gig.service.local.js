@@ -76,7 +76,7 @@ async function query(filterBy) {
             const chosenFilterTagsList= chosenFilterTags.map(item=>item.category)
             
             const filteredGigs = gigs.filter(gig =>
-                gig.tags.some(tag => chosenFilterTagsList.includes(tag))
+                chosenFilterTagsList.every(tag => gig.tags.includes(tag))
             )
             gigs= filteredGigs
         }

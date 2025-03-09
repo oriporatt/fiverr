@@ -37,7 +37,6 @@ export function AppHeader() {
 	const navigate = useNavigate()
 	let showSearchOnTop=false
 
-	console.log(useSelector(storeState => storeState.userModule.users))
 	
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -158,7 +157,7 @@ export function AppHeader() {
 					{/* {user?.isAdmin && <NavLink to="/admin">Admin</NavLink>} */}
 
 					{!user && <NavLink to="login" className="login-link">Sing in</NavLink>}
-					{!user && <NavLink className='join' to=""><button>Join</button></NavLink>}
+					{!user && <NavLink className='join' to="login/signup"><button>Join</button></NavLink>}
 					{user && (
 						<div className="user-info"
 							ref={button1Ref} 

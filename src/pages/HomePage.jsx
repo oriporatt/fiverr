@@ -13,6 +13,7 @@ import SVGbusiness from "../assets/svgs/SVGbusiness";
 import SVGconsulting from "../assets/svgs/SVGconsulting";
 import { UPDATE_FILTER_BY } from "../store/reducers/gig.reducer"; 
 import RejectSVG from '../assets/svgs/rejectSVG.svg?react'
+import { gigService } from "../services/gig/index";
 
 export function HomePage() {
     const searchBoxEl=useRef(null); 
@@ -109,6 +110,35 @@ export function HomePage() {
 
         })
     }
+
+
+    const emptyFilterBy= gigService.getDefaultFilter()
+    function onClickCategory(newCategory){
+        let newCategoriesArray = [...emptyFilterBy.categoriesArray]
+
+        newCategoriesArray= newCategoriesArray.map(catObj=>{
+            if (catObj.category===newCategory){
+                return {
+                    category: catObj.category,
+                    active:true}
+            }else{
+                return catObj
+            }
+        })
+
+        const newFilterBy={
+            ...emptyFilterBy,
+            categoriesArray:newCategoriesArray
+        }
+
+        dispatch({
+            type: UPDATE_FILTER_BY,
+            filterBy: newFilterBy
+        });
+        navigate('/gig')
+
+    }
+
     return (
         <section className='home-page '>
             
@@ -194,43 +224,43 @@ export function HomePage() {
                     {">"}
                 </button>
                 <ul className="main-categories-list" ref={listRef} >
-                    <li>
+                    <li onClick={()=>onClickCategory('Programming & Tech')}>
                         <div className="svg-element-main"><SVGprogrammingAndTech/></div>
                         <h3>Programming & Tech</h3>
                     </li>
-                    <li>
+                    <li onClick={()=>onClickCategory('Graphics & Design')}>
                         <div className="svg-element-main"><SVGgraphicAndDesign /></div>
                         <h3>Graphics & Design</h3>
                     </li>
-                    <li>
+                    <li onClick={()=>onClickCategory('Digital Marketing')}>
                         <div className="svg-element-main">< SVGdigitalMarketing/></div>
                         <h3>Digital Marketing</h3>
                     </li>
-                    <li>
+                    <li onClick={()=>onClickCategory('Writing & Translation')}>
                         <div className="svg-element-main">< SVGwritingAndTranslation/></div>
                         <h3>Writing & Translation</h3>
                     </li>
-                    <li>
+                    <li onClick={()=>onClickCategory('Video & Animation')}>
                         <div className="svg-element-main">< SVGvideoAndAnimation/></div>
                         <h3>Video & Animation</h3>
                     </li>
 
-                    <li>
+                    <li onClick={()=>onClickCategory('AI Services')}>
                         <div className="svg-element-main">< SVGaiSerices/></div>
                         <h3>AI Services</h3>
                     </li>
                     
-                    <li>
+                    <li onClick={()=>onClickCategory('Music & Audio')}>
                         <div className="svg-element-main">< SVGmusicAndAudio/></div>
                         <h3>Music & Audio</h3>
                     </li>
 
-                    <li>
+                    <li onClick={()=>onClickCategory('Business')}>
                         <div className="svg-element-main">< SVGbusiness/></div>
                         <h3>Business</h3>
                     </li>
 
-                    <li>
+                    <li onClick={()=>onClickCategory('Consulting')}>
                         <div className="svg-element-main">< SVGconsulting/></div>
                         <h3>Consulting</h3>
                     </li>
