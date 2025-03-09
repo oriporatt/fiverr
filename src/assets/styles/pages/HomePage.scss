@@ -497,7 +497,7 @@
         color: variables.$white;
         font-size: functions.rem(14px);
         font-weight: bold;
-        line-height:functions.rem(22px); ;
+        line-height:functions.rem(22px); 
     }
     img{
         justify-self: center;
@@ -543,4 +543,116 @@
     }
 
 
+}
+
+.fiverr-pro{
+    background-color: #e8faf4;
+    border-radius:  functions.rem(16px); 
+    padding:functions.rem(24px)functions.rem(16px)  functions.rem(36px) functions.rem(24px) ;
+    margin: functions.rem(16px); 
+    display: flex;
+    flex-direction: column;
+    h2{
+        font-size: functions.rem(40px); 
+        font-family: 'Montserrat', sans-serif;
+        span{
+            font-weight: bold;
+        }
+    }
+
+    h1{
+        font-size: functions.rem(32px); 
+        span {
+            font-family: DomaineDisplay, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-style: normal; 
+            color: #1dbf73;
+        }
+    }
+    li{
+        display: grid;
+        grid-template-columns: auto 1fr;
+        div{
+            grid-row: 1;
+            display: flex;
+            gap: functions.rem(22px); 
+            align-items: center;
+            h4{
+                margin: 0;
+                font-weight: bold;
+            }
+        }
+        p{
+            grid-row: 2;
+            font-size: functions.rem(14px); 
+            color: variables.$black;
+            line-height:  functions.rem(22px); 
+        }
+
+    }
+    button{
+        width:functions.rem(150px);
+        height: functions.rem(48px);
+        line-height: functions.rem(24px);
+        padding: functions.rem(10px) functions.rem(20px);
+        color: variables.$white;
+        background-color: black;
+        border-width: functions.rem(1px); 
+        border-style: solid; 
+        border-radius: 10px;
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+    @include mixins.for-mobile-layout{
+        ul{
+            display: grid;
+            gap: functions.rem(16px);
+        }
+        img{
+            display: none;
+        }
+        button{
+            align-self: center;
+        }
+    }
+    @include mixins.for-narrow-layout{
+        ul{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: functions.rem(16px);
+        }
+        img{
+            display: none;
+        }
+    }
+    @include mixins.for-normal-layout{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        > :not(:nth-child(4)) {
+            grid-column: 1; 
+        }
+        ul{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: functions.rem(16px);
+        }
+        img{
+            display: block;
+        }
+    }
+    @include mixins.for-wide-layout{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        > :not(:nth-child(4)) {
+            grid-column: 1; 
+        }
+        ul{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: functions.rem(16px);
+        }
+        img{
+            display: block;
+        }
+    }
 }

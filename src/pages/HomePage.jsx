@@ -12,8 +12,9 @@ import SVGmusicAndAudio from "../assets/svgs/SVGmusicAndAudio";
 import SVGbusiness from "../assets/svgs/SVGbusiness";
 import SVGconsulting from "../assets/svgs/SVGconsulting";
 import { UPDATE_FILTER_BY } from "../store/reducers/gig.reducer"; 
-import RejectSVG from '../assets/svgs/rejectSVG.svg?react'
 import { gigService } from "../services/gig/index";
+import RejectSVG from '../assets/svgs/rejectSVG.svg?react'
+import HomeDiamondV from '../assets/svgs/homeDiamondV.svg?react'
 
 export function HomePage() {
     const searchBoxEl=useRef(null); 
@@ -303,6 +304,45 @@ export function HomePage() {
             </ul>
 
             <div className="fiverr-pro">
+                <h2><span>fiverr</span>pro.</h2>
+                <h1>The <span>premium</span> freelance solution for businesses</h1>
+                <ul className="fiverr-pro-list"> 
+                    <li>
+                        <div className="title">
+                            <HomeDiamondV/>
+                            <h4>Dedicated hiring experts</h4>
+                        </div>
+                        <p>Count on an account manager to find you the right talent and see to your project’s every need.</p>
+                    </li>
+
+                    <li>
+                        <div className="title">
+                            <HomeDiamondV/>
+                            <h4>Satisfaction guarantee</h4>
+                        </div>
+                        <p>Order confidently, with guaranteed refunds for less-than-satisfactory deliveries.</p>
+                    </li>
+
+                    
+                    <li>
+                        <div className="title">
+                            <HomeDiamondV/>
+                            <h4>Advanced management tools</h4>
+                        </div>
+                        <p>Seamlessly integrate freelancers into your team and projects.</p>
+                    </li>
+
+                    <li>
+                        <div className="title">
+                            <HomeDiamondV/>
+                            <h4>Flexible payment models</h4>
+                        </div>
+                        <p>Pay per project or opt for hourly rates to facilitate longer-term collaboration.</p>
+                    </li>
+
+                </ul>
+                <img src="/img/fiverr-pro.webp" /> 
+                <button>Try Now</button>
 
             </div>
 
