@@ -15,6 +15,10 @@ import { UPDATE_FILTER_BY } from "../store/reducers/gig.reducer";
 import { gigService } from "../services/gig/index";
 import RejectSVG from '../assets/svgs/rejectSVG.svg?react'
 import HomeDiamondV from '../assets/svgs/homeDiamondV.svg?react'
+import HomeAccessTalent from '../assets/svgs/homeAccessTalent.svg?react'
+import HomeTime from '../assets/svgs/homeTime.svg?react'
+import HomeQuality from '../assets/svgs/homeQuality.svg?react'
+import HomePay from '../assets/svgs/homePay.svg?react'
 
 export function HomePage() {
     const searchBoxEl=useRef(null); 
@@ -347,7 +351,27 @@ export function HomePage() {
             </div>
 
             <div className="freelancer-add">
-
+                <h2>Make it all happen with freelancers</h2>
+                <ul>
+                    <li>
+                        <HomeAccessTalent/>
+                        <p>Access a pool of top talent across 700 categories</p>
+                    </li>
+                    <li>
+                        <HomeTime/>
+                        <p>Enjoy a simple, easy-to-use matching experience</p>
+                    </li>
+                    <li>
+                        <HomeQuality/>
+                        <p>Get quality work done quickly and within budget</p>
+                    </li>
+                    <li>
+                        <HomePay/>
+                        <p>Only pay when you’re happy</p>
+                    </li>
+                    
+                </ul>
+                <button>Join Now</button>
             </div>
 
 

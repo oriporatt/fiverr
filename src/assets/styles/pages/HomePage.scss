@@ -656,3 +656,98 @@
         }
     }
 }
+
+.freelancer-add{
+    margin-top: functions.rem(40px);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: grid;
+    h2{
+
+        font-size: functions.rem(32px);
+        margin-bottom: functions.rem(40px);
+    }
+
+    li{
+        display: flex;
+        gap:  functions.rem(16px);
+        align-items: center;
+    }
+    p{
+        max-width: functions.rem(250px);
+        margin: 0;
+    }
+    button{
+        width:functions.rem(150px);
+        height: functions.rem(48px);
+        line-height: functions.rem(24px);
+        padding: functions.rem(10px) functions.rem(20px);
+        color: variables.$white;
+        background-color: black;
+        border-width: functions.rem(1px); 
+        border-style: solid; 
+        border-radius: 10px;
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+    @include mixins.for-mobile-layout{
+        ul{
+            display: grid;
+            gap: functions.rem(32px);
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+    }
+
+    @include mixins.for-narrow-layout{
+        ul{
+            display: grid;
+            gap: functions.rem(32px);
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+    }
+
+    @include mixins.for-normal-layout{
+        ul{
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: repeat(4,fr);
+            gap: functions.rem(32px);
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+        li{
+            display: grid;
+            justify-items: center;
+        }
+        p{
+            justify-self: center;
+        }
+        button{
+            justify-self: center;
+        }
+    }
+
+    @include mixins.for-wide-layout{
+        ul{
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: repeat(4,fr);
+            gap: functions.rem(32px);
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+        li{
+            display: grid;
+            justify-items: center;
+        }
+        p{
+            justify-self: center;
+        }
+        button{
+            justify-self: center;
+        }
+    }
+}
