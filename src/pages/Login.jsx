@@ -48,27 +48,33 @@ export function Login() {
         // </form>
 
         <form className="login-form" onSubmit={onLogin}>
-            <label htmlFor="username">Username:</label>
-            <input
-                type="text"
-                id="username"
-                name="username"
-                value={credentials.username}
-                onChange={handleChange}
-                placeholder="Enter your username"
-                required
-            />
+            <div className='input-username'>
+                <label htmlFor="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={credentials.username}
+                    onChange={handleChange}
+                    placeholder="Enter your username"
+                    required
+                />
+            </div>
 
-            <label htmlFor="password">Password:</label>
-            <input
-                type="password"
-                id="password"
-                name="password"
-                value={credentials.password}
-                onChange={handleChange}
-                placeholder="Enter your password"
-                required
-            />
+            <div className='input-password'>
+                <label htmlFor="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={credentials.password}
+                    onChange={handleChange}
+                    placeholder="Enter your password"
+                    required
+                />
+            </div>
+           
+
 
             <button type="submit">Login</button>
         </form>

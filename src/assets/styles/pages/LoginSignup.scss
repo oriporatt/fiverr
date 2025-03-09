@@ -1,19 +1,31 @@
+@use "../setup/functions";
+@use "../setup/mixins";
 @use "../setup/variables";
 
 .login-form,
 .signup-form {
-	display: grid;
-	width: min(80%, 300px);
-	margin: auto;
 
+	font-family: "Macan", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 600;
+	font-size: 1rem;
+	border-radius:1rem ;
+	box-shadow: 0 0 .880517px rgba(0,0,0,.029),0 0 2.29197px rgba(0,0,0,.03),0 0 5.52px rgba(0,0,0,.054),0 0 11px rgba(0,0,0,.09);  
+	background-color: variables.$white;
+
+
+
+	display: grid;
+	justify-items: center;
+	width: max(80%, 300px);
+	min-width: 300px;
 	padding: 1em;
-	background-color: variables.$clr4;
+	input {
+		width: min(80%, 300px);
+	}
 }
 
 .signup-form {
-	input {
-		width: 100%;
-	}
+
 
     .admin-toggle {
         display: flex;
@@ -26,25 +38,54 @@
     }
 }
 
-.login-page nav {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 2em;
+.login-page {
+	// min-width: functions.rem(100px);
+	// max-width: functions.rem(120px);
+	// aspect-ratio: 1 / 1;
+	font-family: "Macan", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 600;
+	font-size: 1rem;
+	// border-radius:1rem ;
+	// box-shadow: 0 0 .880517px rgba(0,0,0,.029),0 0 2.29197px rgba(0,0,0,.03),0 0 5.52px rgba(0,0,0,.054),0 0 11px rgba(0,0,0,.09);  
+	display: grid;
+	justify-items: center;
 
-	margin-block: 100px 0.5em;
+	button {
+		font-family: 'Macan', sans-serif; 
+		font-weight: 700;
+		color: variables.$clr3;
+		border: 1px solid variables.$clr3;
+		background-color: variables.$white;
+		padding: 10px 20px;
+		border-radius: 5px;
+		&:hover{
+			background-color: variables.$clr3;
+			color: variables.$white;
 
-	a {
-		font-size: 0.8em;
-		color: variables.$clr4;
-
-		&:hover {
-			color: variables.$clr1;
 		}
 	}
-	a.active {
-		text-decoration: underline;
-		color: variables.$clr2;
-		
+	
+	nav {
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 2em;
+
+		margin-block: 100px 0.5em;
+
+		a {
+			font-size: functions.rem(16px);
+			color: variables.$clr4;
+
+			&:hover {
+				color: variables.$clr1;
+			}
+		}
+		a.active {
+			text-decoration: underline;
+			color: variables.$clr2;
+			
+		}
 	}
 }

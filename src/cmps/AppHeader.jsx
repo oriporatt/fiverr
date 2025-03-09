@@ -37,7 +37,8 @@ export function AppHeader() {
 	const navigate = useNavigate()
 	let showSearchOnTop=false
 
-
+	console.log(useSelector(storeState => storeState.userModule.users))
+	
     useEffect(() => {
         const handleClickOutside = (event) => {
 			if (buttonCloseModalRef.current.contains(event.target)){

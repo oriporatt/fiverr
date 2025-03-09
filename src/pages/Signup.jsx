@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
 import { signup } from '../store/actions/user.actions'
@@ -34,34 +34,56 @@ export function Signup() {
     function onUploaded(imgUrl) {
         setCredentials({ ...credentials, imgUrl })
     }
+    useEffect(()=>{
+        clearState()
+        
+    },
+    [])
 
     return (
         <form className="signup-form" onSubmit={onSignup}>
-            <input
-                type="text"
-                name="fullname"
-                value={credentials.fullname}
-                placeholder="Fullname"
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="text"
-                name="username"
-                value={credentials.username}
-                placeholder="Username"
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="password"
-                name="password"
-                value={credentials.password}
-                placeholder="Password"
-                onChange={handleChange}
-                required
-            />
-            <ImgUploader onUploaded={onUploaded} />
+            <div className='input-fullname'>
+                <label htmlFor="fullname">Full Name</label>
+                <input
+                    type="text"
+                    name="fullname"
+                    value={credentials.fullname}
+                    placeholder="Fullname"
+                    onChange={handleChange}
+                    required
+                    autoComplete="off"
+
+                />
+            </div>
+
+            <div className='input-username'>
+                <label htmlFor="username">Username</label>
+                <input
+                    type="text"
+                    name="username"
+                    value={credentials.username}
+                    placeholder="Username"
+                    onChange={handleChange}
+                    required
+                    autoComplete="off"
+
+                />
+            </div>
+
+            <div className='input-password'>
+                <label htmlFor="password">Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    value={credentials.password}
+                    placeholder="Password"
+                    onChange={handleChange}
+                    required
+                    autoComplete="new-password"
+
+                />
+            </div>
+            {/* <ImgUploader onUploaded={onUploaded} /> */}
             <button>Signup</button>
         </form>
     )
