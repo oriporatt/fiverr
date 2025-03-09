@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 508.02 508.02">
+  <defs>
+    <style>
+      .a{fill:#1dbf73;}
+      .b{fill:#fff;}
+      .c{font-family:'Arial', sans-serif; font-weight:bold; font-size:160px;}
+    </style>
+  </defs>
+  <circle class="a" cx="254.01" cy="254.01" r="254.01"/>
+  <text class="b c" x="170" y="320">si</text>
+</svg>

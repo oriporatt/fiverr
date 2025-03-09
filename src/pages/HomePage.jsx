@@ -307,10 +307,10 @@ export function HomePage() {
                 
             </ul>
 
-            <div className="fiverr-pro">
-                <h2><span>fiverr</span>pro.</h2>
+            <div className="skiller-pro">
+                <h2><span>skiller</span>pro.</h2>
                 <h1>The <span>premium</span> freelance solution for businesses</h1>
-                <ul className="fiverr-pro-list"> 
+                <ul className="skiller-pro-list"> 
                     <li>
                         <div className="title">
                             <HomeDiamondV/>

@@ -1,0 +1,7 @@
+<svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Text "Skiller" in Fiverr style -->
+  <text x="10" y="70" font-family="Arial, sans-serif" font-size="70" fill="#404040" font-weight="bold">skiller</text>
+
+  <!-- Green dot very close to the "r" -->
+  <circle cx="230" cy="64" r="8" fill="#1dbf73" />
+</svg>

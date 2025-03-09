@@ -7,7 +7,7 @@ import { logout } from '../store/actions/user.actions'
 import { UPDATE_FILTER_BY } from '../store/reducers/gig.reducer'
 import RejectSVG from '../assets/svgs/rejectSVG.svg?react'
 import CloseModal from '../assets/svgs/closeModal.svg?react'
-
+import Skiller from '../assets/svgs/skiller.svg?react'
 
 import {  loadUsers } from '../store/actions/user.actions'
 
@@ -130,7 +130,8 @@ export function AppHeader() {
 				</NavLink>
 
 				<NavLink to="/" className="logo">
-					<img src="/img/fiverr_logo.svg" alt="Fiverr Logo" className="logo-img"/>
+					<div className='logo-img'><Skiller/></div>
+					{/* <img src="/img/fiverr_logo.svg" alt="Fiverr Logo" className="logo-img"/> */}
 				</NavLink>
 
 				{showSearchOnTop&&
