@@ -302,33 +302,15 @@ export function HomePage() {
                 
             </ul>
 
+            <div className="fiverr-pro">
 
-            <h2>What success on Fiverr looks like</h2>
-            <h3>Vontélle Eyewear turns to Fiverr freelancers to bring their vision to life.</h3>
-            <br></br>
-            <br></br>
+            </div>
 
-            <h1>Popular services</h1>
-            <h3>The premium freelance solution for businesses</h3>
-            <br></br>
-            <br></br>
+            <div className="freelancer-add">
 
-            <h2>What success on Fiverr looks like</h2>
-            <h3>Vontélle Eyewear turns to Fiverr freelancers to bring their vision to life.</h3>
-            <br></br>
-            <br></br>
+            </div>
 
-            <h1>Popular services</h1>
-            <h3>The premium freelance solution for businesses</h3>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
 
-            <h1>Popular services</h1>
-            <h3>The premium freelance solution for businesses</h3>
-            <br></br>
-            <br></br>
         </section >
     )
 }
