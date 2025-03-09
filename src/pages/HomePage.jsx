@@ -63,7 +63,7 @@ export function HomePage() {
 	},
 	[localInput])
 
-    // horizinal scroling functions
+    // horizinal scroling functions 
     const [leftScrollButton, setLeftScrollButton] = useState(false)
     const listRef = useRef(null);
     
@@ -271,10 +271,37 @@ export function HomePage() {
             </div>
             
 
-            <h1>Popular services</h1>
-            <h3>The premium freelance solution for businesses</h3>
-            <br></br>
-            <br></br>
+            <h1 className="popular-services-h1" >Popular services</h1>
+            <ul className="popular-services-list">
+                <li className="web-dev">
+                    <h4>Website Development</h4>
+                    <img src="/img/popular/website-development.webp" /> 
+
+                </li>
+                <li className="logo-design">
+                    <h4>Logo Design</h4>
+                    <img src="/img/popular/logo-design.webp" /> 
+                </li>
+                <li className="seo">
+                    <h4>SEO</h4>
+                    <img src="/img/popular/seo.webp" /> 
+                </li>
+                <li className="architecture-interior">
+                    <h4>Architecture & Interior Design</h4>
+                    <img src="/img/popular/architecture-design.webp" /> 
+                </li>
+                <li className="voice-over">
+                    <h4>Voice Over</h4>
+                    <img src="/img/popular/voice-over.webp" /> 
+                </li>
+                <li className="social-media-marketing">
+                    <h4>Social Media Marketing</h4>
+                    <img src="/img/popular/social-media-marketing.webp" /> 
+                </li>
+
+                
+            </ul>
+
 
             <h2>What success on Fiverr looks like</h2>
             <h3>Vontélle Eyewear turns to Fiverr freelancers to bring their vision to life.</h3>

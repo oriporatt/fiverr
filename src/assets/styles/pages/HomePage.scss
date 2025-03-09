@@ -289,7 +289,7 @@
 
         grid-auto-flow: row;
         grid-template-columns: repeat(4,1fr) ;
-        
+
         padding-top: functions.rem(12px);
         padding-bottom: functions.rem(12px);
 
@@ -407,6 +407,9 @@
 
 .home-main-categories{
     position: relative;
+    border-bottom: 1px solid variables.$lightGray;
+
+
 }
 
 
@@ -468,3 +471,76 @@
     right: -5px;
   }
 
+.popular-services-h1{
+    margin-top: functions.rem(50px);
+    margin-bottom:functions.rem(32px); ;
+    font-size: functions.rem(32px);
+    font-weight: 400;
+    line-height: 38px;
+}
+
+.popular-services-list{
+    display: grid;
+    gap:1rem;
+    justify-items: center;
+    li{
+        box-shadow: rgba(0, 0, 0, 0.13) 0px 3px 10px 0px;
+        width: functions.rem(135px);
+        height:functions.rem(180px); ;
+        border-radius: 8px;
+        display: grid;
+        grid-template-rows: 1fr 2fr;
+    }
+    h4{
+        padding-top: 10px;
+        padding-left: 10px;
+        color: variables.$white;
+        font-size: functions.rem(14px);
+        font-weight: bold;
+        line-height:functions.rem(22px); ;
+    }
+    img{
+        justify-self: center;
+        align-self: end;
+        margin-bottom: 4px;
+        border-radius: 6px;
+        width: 125px;
+
+
+    }
+    .web-dev{
+        background-color: #00732e;
+    }
+    .logo-design{
+        background-color: #ff7640;
+    }
+    .seo{
+        background-color: #003912;
+    }
+    .architecture-interior{
+        background-color: #4d1727;
+    }
+    .voice-over{
+        background-color: #421300;
+    }
+    .social-media-marketing{
+        background-color: #687200;
+    }
+
+    @include mixins.for-mobile-layout{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include mixins.for-narrow-layout{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include mixins.for-normal-layout{
+        grid-auto-flow: column;
+        grid-template-columns: repeat(auto, 1fr);
+    }
+    @include mixins.for-wide-layout{
+        grid-auto-flow: column;
+        grid-template-columns: repeat(auto, 1fr);
+    }
+
+
+}
