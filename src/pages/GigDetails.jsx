@@ -14,6 +14,7 @@ import { GigPreviewCarrousel } from '../cmps/GigPreviewCarrousel'
 import OrderArrow from '../assets/svgs/orderArrow.svg?react'
 import OrderDeliveryTime from '../assets/svgs/orderDeliveryTime.svg?react'
 import OrderRevisions from '../assets/svgs/orderRevisions.svg?react'
+import { userService } from '../services/user';
 
 
 export function GigDetails() {
@@ -22,16 +23,24 @@ export function GigDetails() {
   const gig = useSelector(storeState => storeState.gigModule.gig)
   const [orderPackage, setOrderPackage] = useState('Basic')
 
+  const [order,setOrder]=useState(null)
+
+    // update gig state while changing
+
   useEffect(() => {
     loadGig(gigId)
     window.scrollTo(0, 0); 
-
   }, [gigId])
 
+  // update order state while changing
+  useEffect(() => {
+    if (gig){
+      setOrder(buildOrderObj())
+    }
+
+  }, [gig,orderPackage])
 
   
-
-
   function roundRate(rate){
     return Math.round(rate)
   }
@@ -78,6 +87,33 @@ export function GigDetails() {
   
     bigImgs= gig.imgs.map(url=>updateCloudinaryUrl(url))
     calcPackagePrice()
+    
+  }
+
+  function buildOrderObj(){
+    let newOrder={}
+    const client=userService.getLoggedinUser()
+
+    newOrder.clientId=client._id
+    newOrder.clientFullName=client.fullname
+
+    newOrder.providerId=gig.owner._id
+    newOrder.providerFullname=gig.owner.fullname
+
+    newOrder.gigId=gig._id
+    newOrder.gigTitle=gig.title
+
+    const createdAt = Date.now()
+    const deliveryDate = new Date();
+    deliveryDate.setDate(deliveryDate.getDate() + deliveryTimePackage);
+    
+    newOrder.createdAt=createdAt
+    newOrder.deliveryDate=deliveryDate
+
+    newOrder.status="pending"
+    newOrder.package=orderPackage
+    newOrder.total=packagePrice
+    return(newOrder)
   }
 
   if (!gig || gig._id!==gigId) return <p>Loading...</p> //when loading or swtichng gig
