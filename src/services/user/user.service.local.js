@@ -118,6 +118,7 @@ async function _initUsers(){
         {
           "_id": "s102",
           "fullname": "Elena Petrova",
+          "username": "Elena",
           "password": "555",
           "cv": "I am a creative graphic designer with over 6 years of experience in branding, logo design, and illustration. I have helped businesses establish strong visual identities by crafting modern, eye-catching designs. My skills include Adobe Illustrator, Photoshop, and Figma. Let's work together to create stunning visuals that represent your brand.",
           "level": "standard",
@@ -131,6 +132,7 @@ async function _initUsers(){
         {
           "_id": "s103",
           "fullname": "James Carter",
+          "username":"James",
           "password": "555",
           "cv": "As a professional video editor with 5+ years of experience, I specialize in producing high-quality videos for YouTube, social media, and corporate presentations. My expertise includes Adobe Premiere Pro, After Effects, and DaVinci Resolve. I ensure smooth transitions, engaging effects, and polished edits to bring your vision to life.",
           "level": "basic",

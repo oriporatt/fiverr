@@ -169,7 +169,7 @@ export function AppHeader() {
 
 				<nav>
 
-					<NavLink className='gig-link' to="gig">Explore Gigs</NavLink>
+					{systemMode==='buyer'&&<NavLink className='gig-link' to="gig">Explore Gigs</NavLink>}
 					{systemMode==='buyer'&&user&&<NavLink className='switch-seller' to="/seller" onClick={onSwitchToSelling}>Switch to Selling</NavLink>}
 					{systemMode==='seller'&&user&&<NavLink className='switch-buying' to="" onClick={onSwitchToBuying}>Switch to Buying</NavLink>}
 					{systemMode==='buyer'&&user&&<button className='buyer-orders'>My orders</button>}

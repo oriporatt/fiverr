@@ -3,20 +3,22 @@
 @use "../setup/variables";
 
 .seller-index {
-    margin-top: functions.rem(80px);
-    
+    margin-top: functions.rem(120px);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap:1rem;
+    grid-template-rows: auto;
 }
 
 .seller-profile{
-    margin-top: functions.rem(40px);
     min-width: 200px;
-    max-width: 350px;
-
-    min-height: 400px;
+    max-width: 300px;
     border: 1px solid variables.$lightGray;
     border-radius: 8px;
     box-shadow: 0 0 .880517px rgba(0,0,0,.029),0 0 2.29197px rgba(0,0,0,.03),0 0 5.52px rgba(0,0,0,.054),0 0 11px rgba(0,0,0,.09);  
-
+    height: auto;
+    max-height: 500px; 
+    overflow: hidden; 
 }
 
 .top-details{
@@ -72,7 +74,7 @@
     h6{
         font-size:functions.rem(14px); 
         margin: 0;
-        margin-left: 8px;
+        margin-left: 4px;
         &.data-bold{
             font-weight: 700;
         }
@@ -119,5 +121,77 @@
             width: functions.rem(16px); 
         }
 
+    }
+}
+
+.gig-order-table{
+    border: 1px solid variables.$lightGray;
+    border-radius: 8px;
+    box-shadow: 0 0 .880517px rgba(0,0,0,.029),0 0 2.29197px rgba(0,0,0,.03),0 0 5.52px rgba(0,0,0,.054),0 0 11px rgba(0,0,0,.09);  
+    width: 100%;
+    border-collapse: collapse;
+    thead {
+    }
+    th, td {
+        padding: 8px;
+        text-align: center;
+        word-wrap: break-word; 
+        overflow: hidden;
+    }
+    th {
+        padding: 8px;
+        text-align: center;
+        font-size: functions.rem(14px); 
+        font-weight: 400 ;
+        color: variables.$black;;
+
+    }
+    tr{
+        border-bottom: 1px solid variables.$lightGray;
+
+    }
+    td {
+        padding: 8px;
+        color: variables.$black;
+        font-size: functions.rem(14px); ;
+
+        .client-element{
+            display: flex;
+            align-items: center;
+            gap:8px;
+            width: 100%;
+            justify-content: flex-start;
+            img{
+                border-radius: 50%;
+                height: functions.rem(35px); 
+                width: functions.rem(35px); 
+            }
+            h4{
+                margin: 0;
+                line-height: functions.rem(20px);
+                font-size: functions.rem(14px);
+            }
+        }
+        &.order-at{
+            text-align: center;
+            font-size: functions.rem(12px);
+            color: rgb(1, 1, 101);
+            max-width: 100px;
+            line-height:  functions.rem(15px);;
+        }
+        &.delivery-at{
+            text-align: center;
+            font-size: functions.rem(12px);
+            color: rgb(60, 0, 0);
+            max-width: 80px;
+            line-height:  functions.rem(15px);;
+        }
+    }
+    .gig-status-menu{
+        svg{
+            padding-top: 4px;
+            height: functions.rem(16px); 
+            width: functions.rem(16px);    
+        }
     }
 }

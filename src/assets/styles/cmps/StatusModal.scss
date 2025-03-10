@@ -1,0 +1,45 @@
+/* Basic styling for the dialog */
+dialog {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    visibility: hidden;
+  }
+  
+  button {
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button.active {
+    background-color: green;
+    color: white;
+  }
+  
+  button.inactive {
+    background-color: grey;
+    color: white;
+  }
+  
+  /* Optional: Add a background overlay for the dialog */
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* When dialog is open */
+dialog[open] {
+    visibility: visible;
+    opacity: 1; /* Make it visible */
+  }
