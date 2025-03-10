@@ -4,6 +4,7 @@ import { useSelector ,useDispatch} from 'react-redux'
 
 import { userService } from '../services/user'
 import { login } from '../store/actions/user.actions'
+import { SET_SYSTEM_MODE } from '../store/reducers/system.reducer'
 
 export function Login() {
 
@@ -11,6 +12,7 @@ export function Login() {
 	
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         // loadUsers()
@@ -26,6 +28,10 @@ export function Login() {
 
         if (!credentials.username) return
         await login(credentials)
+        dispatch({
+            type: SET_SYSTEM_MODE,
+            mode: 'buyer'
+        });
         navigate('/')
     }
 
