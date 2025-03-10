@@ -8,7 +8,7 @@ export const SET_SYSTEM_MODE = 'SET_SYSTEM_MODE'
 const initialState = {
   isLoading: false,
   searchBoxPosition: 'bottom',
-  mode: 'seller'
+  mode: 'buyer'
 }
 
 export function systemReducer (state = initialState, action = {}) {
