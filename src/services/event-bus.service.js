@@ -29,4 +29,8 @@ export function showErrorMsg(txt) {
     showUserMsg({txt, type: 'error'})
 }
 
+export function showOrderMsg(txt) {
+    showUserMsg({txt, type: 'order'})
+}
+
 window.showUserMsg = showUserMsg

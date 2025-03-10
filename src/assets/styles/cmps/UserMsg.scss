@@ -2,9 +2,7 @@
 
 .user-msg {
     position: fixed;
-    top: 120px;
     right: .2em;
-
     display: flex;
     align-items: center;
 
@@ -16,13 +14,17 @@
     font-size: .9em;
 
     opacity: 0;
-    translate: 150%;
-    transition: 600ms;
+    translate: 150% 0;
+    transition: 800ms;
+    top:300px;
+    z-index: 100;
+
 }
 
 .user-msg.visible {
     opacity: 1;
     translate: 0;
+
 }
 
 .user-msg button {
@@ -34,8 +36,15 @@
 }
 
 .user-msg.success {
+
     background-color: rgb(41, 189, 73);
 }
 .user-msg.error {
+
     background-color: rgb(216, 59, 59);
+}
+
+.user-msg.order {
+    background-color: black;
+    color: white;
 }

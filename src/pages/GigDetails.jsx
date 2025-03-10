@@ -16,6 +16,7 @@ import OrderDeliveryTime from '../assets/svgs/orderDeliveryTime.svg?react'
 import OrderRevisions from '../assets/svgs/orderRevisions.svg?react'
 import { userService } from '../services/user';
 import { addOrder } from '../store/actions/order.actions';
+import { showOrderMsg } from '../services/event-bus.service';
 
 export function GigDetails() {
 
@@ -120,7 +121,7 @@ export function GigDetails() {
 
   async function onSubmitOrder(){
     const savedOrder=await addOrder(order)
-    
+    showOrderMsg('Order Submitted Successfully!')
   }
 
   if (!gig || gig._id!==gigId) return <p>Loading...</p> //when loading or swtichng gig

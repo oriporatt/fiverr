@@ -8,7 +8,7 @@ import { UPDATE_FILTER_BY } from '../store/reducers/gig.reducer'
 import RejectSVG from '../assets/svgs/rejectSVG.svg?react'
 import CloseModal from '../assets/svgs/closeModal.svg?react'
 import Skiller from '../assets/svgs/skiller.svg?react'
-
+import { SET_SYSTEM_MODE } from '../store/reducers/system.reducer'
 import {  loadUsers } from '../store/actions/user.actions'
 
 
@@ -17,6 +17,7 @@ export function AppHeader() {
 
 	const dispatch = useDispatch()
 	const searchBoxTextGlobal = useSelector(storeState => storeState.gigModule.filterBy.txt)
+	const systemMode = useSelector(storeState => storeState.systemModule.mode)
 	const [ showX, setShowX ] = useState(false)
 	const [ localInput, setLocalInput ] = useState(searchBoxTextGlobal)
 	const [ showLogoutBtn, setShowLogoutBtn ] = useState(false)
@@ -64,7 +65,7 @@ export function AppHeader() {
 			
 			await logout()
 			navigate('/')
-			showSuccessMsg(`Bye now`)
+			showSuccessMsg(`Logout Successfully`)
 		} catch (err) {
 			showErrorMsg('Cannot logout')
 		}
@@ -105,6 +106,21 @@ export function AppHeader() {
 		setLocalInput(searchValue)
 	}
 
+	function onSwitchToBuying(){
+		dispatch({
+			type: SET_SYSTEM_MODE,
+			mode: 'buyer'
+		});
+	}
+	function onSwitchToSelling(){
+		dispatch({
+			type: SET_SYSTEM_MODE,
+			mode: 'seller'
+		});
+	}
+
+	
+
 	useEffect(()=>{
 		setLocalInput(searchBoxTextGlobal)
 		if (searchBoxTextGlobal){
@@ -119,6 +135,7 @@ export function AppHeader() {
 		loadUsers()
 	},
 	[])
+
 
 
 
@@ -153,9 +170,11 @@ export function AppHeader() {
 				<nav>
 
 					<NavLink className='gig-link' to="gig">Explore Gigs</NavLink>
-					<NavLink className='become-seller' to="">Become a Seller</NavLink>
+					{systemMode==='buyer'&&<NavLink className='switch-seller' to="" onClick={onSwitchToSelling}>Switch to Selling</NavLink>}
+					{systemMode==='seller'&&<NavLink className='switch-buying' to="" onClick={onSwitchToBuying}>Switch to Buying</NavLink>}
+					{systemMode==='buyer'&&<button className='buyer-orders'>My orders</button>}
 
-					{/* {user?.isAdmin && <NavLink to="/admin">Admin</NavLink>} */}
+
 
 					{!user && <NavLink to="login" className="login-link">Sing in</NavLink>}
 					{!user && <NavLink className='join' to="login/signup"><button>Join</button></NavLink>}
