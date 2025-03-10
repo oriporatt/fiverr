@@ -80,14 +80,11 @@ export function SellerIndex() {
         return url
     }
 
-    const dialogRef = useRef(null);
+    const [activeRow, setActiveRow] = useState(null);
     
-    function toggleShowStatusModal() {
-        if (dialogRef.current) {
-            dialogRef.current.showModal(); 
-        }
+    function toggleModal(id){
+        setActiveRow((prev) => (prev === id ? null : id));
     }
-
 
 
     useEffect(() => {
@@ -95,7 +92,6 @@ export function SellerIndex() {
     }, [])
 
     if (!seller) return <h1>Loading..</h1>
-
     return (
         <main className="seller-index">  
             <div className='seller-profile'>
@@ -157,8 +153,8 @@ export function SellerIndex() {
                         </tr>
                     </thead>
                     <tbody>
-                        {sellerOrders.map((thisOrder) => (
-                            <tr key={thisOrder._id}>
+                        {sellerOrders.map((thisOrder,row) => (
+                            <tr key={thisOrder._id} className='this-row'>
                                 <td>
                                     <div className='client-element'>
                                         <img  src={thisOrder.clientUrl}/>
@@ -172,16 +168,22 @@ export function SellerIndex() {
                                 <td className='gig-status'>
                                     {thisOrder.status}                                    
                                 </td>
-                                <td className='gig-status-menu'>
-                                    <div>
-                                        <ThreeDots onClick={toggleShowStatusModal} />
-                                    </div>
+
+                               
+                                <td className='gig-status-menu' >
+                                    <ThreeDots onClick={() => toggleModal(row)}/>
+                                    {activeRow === row && (
+                                    <StatusModal setActiveRow={setActiveRow} initialStatus={thisOrder.status}/>
+                                    )}
                                 </td>
+
+
+
                             </tr>
                         ))}
                     </tbody>
                 </table>
-                <StatusModal dialogRef={dialogRef} initialStatus="Inactive"/>
+                
             </div>
             
 

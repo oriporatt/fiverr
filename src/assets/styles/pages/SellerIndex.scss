@@ -186,12 +186,25 @@
             max-width: 80px;
             line-height:  functions.rem(15px);;
         }
+
+    }
+    table, tr, td {
+        overflow: visible;
     }
     .gig-status-menu{
+        position: relative;
         svg{
             padding-top: 4px;
             height: functions.rem(16px); 
-            width: functions.rem(16px);    
+            width: functions.rem(16px);   
+            cursor: pointer;
+ 
         }
+    }
+}
+
+.this-row{
+    &:hover{
+        background-color: variables.$lightGray;
     }
 }
