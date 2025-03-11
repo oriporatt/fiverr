@@ -35,7 +35,7 @@ export function SellerIndex() {
 
 
 
-
+    let statsObj={}
     let rateInt=''
     let sellerOrders=[]
     if (seller){
@@ -50,6 +50,8 @@ export function SellerIndex() {
                 deliveryDateFormatted: formatDeliveryDate(thisOrder.deliveryDate)
             }
         })
+        calcStats()
+        console.log(statsObj)
     }
 
     function formatTimestamp(timestamp) {
@@ -81,6 +83,33 @@ export function SellerIndex() {
         }
         return url
     }
+
+    
+    function calcStats(){
+        
+        statsObj.totalOrders=sellerOrders.length
+        statsObj.completedOrders=sellerOrders.filter(order=>order.status==='completed').length
+        statsObj.rejectedOrders=sellerOrders.filter(order=>order.status==='rejected').length
+        statsObj.pending=sellerOrders.filter(order=>order.status==='pending').length
+        statsObj.approved=sellerOrders.filter(order=>order.status==='approved').length
+        statsObj.inProgress=sellerOrders.filter(order=>order.status==='in-progress').length
+
+        statsObj.totalOrderValue = sellerOrders
+            .filter(order => order.status !== 'rejected') 
+            .reduce((sum, order) => sum + order.total, 0);
+        statsObj.clients =getUniqueClientFullnames(sellerOrders).length
+
+    }
+
+    function getUniqueClientFullnames(sellerOrders) {
+        return Array.from(
+          sellerOrders.reduce((acc, order) => {
+            acc.add(order.clientFullName); 
+            return acc;
+          }, new Set()) 
+        );
+      }
+    
 
     const [activeRow, setActiveRow] = useState(null);
     
@@ -154,63 +183,93 @@ export function SellerIndex() {
 
                 </div>
             </div>
+            
+            
+            <div className='stats-and-orders'>
 
-            <div className='manage-orders'>
-                <table className='gig-order-table'>
-                    <thead>
-                        <tr>
-                            <th>BUYER</th>
-                            <th>GIG</th>
-                            <th>ORDER AT</th>
-                            <th>DELIVERY AT</th>
-                            <th>TOTAL</th>
-                            <th>STATUS</th>
-                            <th></th>
+            
+                {statsObj&&<div className='stats'>
+                    <h3>Your Stats</h3>
+                    <ul className='stats-list'>
+                        <li className='total-by-status'>
+                            <div className='totals'>
+                                <h4>Total Orders</h4>
+                                <h5>{statsObj.totalOrders}</h5>
+                            </div>
+                            {statsObj.pending>0&&<h6 className='pending-stats'>{statsObj.pending} <span > Pending</span></h6>}
+                            {statsObj.approved>0&&<h6 className='approved-stats'>{statsObj.approved} <span> Approved</span></h6>}
+                            {statsObj.inProgress>0&&<h6 className='in-progress-stats'>{statsObj.inProgress} <span> In-Progress</span></h6>}
+                            {statsObj.rejectedOrders>0&&<h6 className='rejected-stats'>{statsObj.rejectedOrders} <span> Rejected</span></h6>}
+                            {statsObj.completedOrders>0&&<h6 className='completed-stats'>{statsObj.completedOrders} <span> Completed</span></h6>}
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {sellerOrders.map((thisOrder,row) => (
-                            <tr key={thisOrder._id} className='this-row'>
-                                <td>
-                                    <div className='client-element'>
-                                        <img  src={thisOrder.clientUrl}/>
-                                        <h4>{thisOrder.clientFullName}</h4>
-                                    </div>
-                                </td>
-                                <td>{thisOrder.gigTitle}</td>
-                                <td className='order-at'>{thisOrder.createdAtFormatted}</td>
-                                <td className='delivery-at'>{thisOrder.deliveryDateFormatted}</td>
-                                <td>{thisOrder.total}$</td>
-                                <td className='gig-status' onClick={() => toggleModal(row)}>
-                                    {thisOrder.status==="pending"&&<span className='pending'>Pending</span>}                                    
-                                    {thisOrder.status==="approved"&&<span className='approved'>Approved</span>}                                    
-                                    {thisOrder.status==="in-progress"&&<span className='in-progress'>In Progress</span>}                                    
-                                    {thisOrder.status==="completed"&&<span className='completed'>Completed</span>}                                    
-                                    {thisOrder.status==="rejected"&&<span className='rejected'>Rejected</span>}                                    
-                                </td>
+                        </li>
+                        <li className='total-orders'>
+                            <h6>60 ordes</h6>
+                        </li>
+                        <li className='total-orders'>
+                            <h6>60 ordes</h6>
+                        </li>
+                    </ul>
 
-                               
-                                <td className='gig-status-menu' >
-                                    <ThreeDots onClick={() => toggleModal(row)}/>
-                                    {activeRow === row && (
-                                    <StatusModal setActiveRow={setActiveRow} 
-                                                initialStatus={thisOrder.status} 
-                                                onSubmitStatus={onSubmitStatus}
-                                                orderId={thisOrder._id}
-                                                />
-                                    )}
-                                </td>
+                </div>}
 
-
+                <div className='manage-orders'>
+                    <h3>Manage Orders</h3>
+                    <table className='gig-order-table'>
+                        <thead>
+                            <tr>
+                                <th>BUYER</th>
+                                <th>GIG</th>
+                                <th>ORDER AT</th>
+                                <th>DELIVERY AT</th>
+                                <th>TOTAL</th>
+                                <th>STATUS</th>
+                                <th></th>
 
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-                
+                        </thead>
+                        <tbody>
+                            {sellerOrders.map((thisOrder,row) => (
+                                <tr key={thisOrder._id} className='this-row'>
+                                    <td>
+                                        <div className='client-element'>
+                                            <img  src={thisOrder.clientUrl}/>
+                                            <h4>{thisOrder.clientFullName}</h4>
+                                        </div>
+                                    </td>
+                                    <td>{thisOrder.gigTitle}</td>
+                                    <td className='order-at'>{thisOrder.createdAtFormatted}</td>
+                                    <td className='delivery-at'>{thisOrder.deliveryDateFormatted}</td>
+                                    <td>{thisOrder.total}$</td>
+                                    <td className='gig-status' onClick={() => toggleModal(row)}>
+                                        {thisOrder.status==="pending"&&<span className='pending'>Pending</span>}                                    
+                                        {thisOrder.status==="approved"&&<span className='approved'>Approved</span>}                                    
+                                        {thisOrder.status==="in-progress"&&<span className='in-progress'>In Progress</span>}                                    
+                                        {thisOrder.status==="completed"&&<span className='completed'>Completed</span>}                                    
+                                        {thisOrder.status==="rejected"&&<span className='rejected'>Rejected</span>}                                    
+                                    </td>
+
+                                
+                                    <td className='gig-status-menu' >
+                                        <ThreeDots onClick={() => toggleModal(row)}/>
+                                        {activeRow === row && (
+                                        <StatusModal setActiveRow={setActiveRow} 
+                                                    initialStatus={thisOrder.status} 
+                                                    onSubmitStatus={onSubmitStatus}
+                                                    orderId={thisOrder._id}
+                                                    />
+                                        )}
+                                    </td>
+
+
+
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    
+                </div>
             </div>
-            
 
         </main>
     )
