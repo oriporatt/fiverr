@@ -79,8 +79,8 @@ export function OrdersModal({onCloseMyOrders}) {
                 <table className='gig-order-table-modal'>
                     <thead>
                         <tr>
+                            <th>Creator</th>
                             <th>GIG</th>
-                            <th>TOTAL</th>
                             <th>ORDER AT</th>
                             <th>STATUS</th>
                         </tr>
