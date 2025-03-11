@@ -413,6 +413,18 @@
             // max-height: 500px;
         }
     }
+    th, td {
+        justify-self: center;
+        padding: 8px 10px;
+        border: none;
+        align-items: center;
+        
+    }
+    .client-element{
+        display: flex;
+        flex-direction: column;
+    }
+
     .for-card{
         display: none;
     }
