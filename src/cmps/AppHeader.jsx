@@ -10,7 +10,9 @@ import CloseModal from '../assets/svgs/closeModal.svg?react'
 import Skiller from '../assets/svgs/skiller.svg?react'
 import { SET_SYSTEM_MODE } from '../store/reducers/system.reducer'
 import {  loadUsers } from '../store/actions/user.actions'
-
+import { loadOrders } from '../store/actions/order.actions'
+import { orderService } from '../services/order'
+import { OrdersModal } from './OrdersModal'
 
 export function AppHeader() {
 	const location = useLocation();
@@ -24,8 +26,9 @@ export function AppHeader() {
 	const button1Ref = useRef(null);
     const button2Ref = useRef(null);
 	const buttonCloseModalRef = useRef(null);
+	const [ showOrdersModal, setShowOrdersModal ] = useState(false)
 
-	
+
 
 
 	const isHomePage = location.pathname==='/'
@@ -119,6 +122,7 @@ export function AppHeader() {
 		});
 	}
 
+
 	
 
 	useEffect(()=>{
@@ -133,11 +137,18 @@ export function AppHeader() {
 
 	useEffect(()=>{
 		loadUsers()
+		loadOrders(orderService.getDefaultFilter())
 	},
 	[])
 
 
-
+	function onCloseMyOrders(){
+		setShowOrdersModal(false)
+	}
+	
+	function onToggleOrdersModal(){
+		setShowOrdersModal(lastState=>!lastState)
+	}
 
 	return (
 		<header className={`app-header main-container ${isGigsIndexPage ? 'header-regular' : ''}`}>
@@ -172,9 +183,13 @@ export function AppHeader() {
 					{systemMode==='buyer'&&<NavLink className='gig-link' to="gig">Explore Gigs</NavLink>}
 					{systemMode==='buyer'&&user&&<NavLink className='switch-seller' to="/seller" onClick={onSwitchToSelling}>Switch to Selling</NavLink>}
 					{systemMode==='seller'&&user&&<NavLink className='switch-buying' to="" onClick={onSwitchToBuying}>Switch to Buying</NavLink>}
-					{systemMode==='buyer'&&user&&<button className='buyer-orders'>My orders</button>}
-
-
+					{systemMode==='buyer'&&user&&<div className='button-my-orders-div'>
+						<button className='buyer-orders' onClick={onToggleOrdersModal}>
+						My orders
+						</button>						
+						{showOrdersModal&&<OrdersModal onCloseMyOrders={onCloseMyOrders}/>}
+					</div>}
+						
 
 					{!user && <NavLink to="login" className="login-link">Sing in</NavLink>}
 					{!user && <NavLink className='join' to="login/signup"><button>Join</button></NavLink>}
@@ -196,7 +211,7 @@ export function AppHeader() {
 										<div className='close-user' 
 											ref={buttonCloseModalRef}
 											onClick={()=>{setShowLogoutBtn(false)}}>
-											<CloseModal/>
+											<CloseModal />
 										</div>
 									</div> 
 										
