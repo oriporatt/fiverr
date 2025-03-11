@@ -13,6 +13,8 @@ import Member from '../assets/svgs/member.svg?react'
 import Fullname from '../assets/svgs/fullname.svg?react'
 import ResponseTime from '../assets/svgs/responseTime.svg?react'
 import ThreeDots from '../assets/svgs/threeDots.svg?react'
+import Income from '../assets/svgs/income.svg?react'
+import Clients from '../assets/svgs/clients.svg?react'
 
 import { loadOrders } from '../store/actions/order.actions'
 import { orderService } from '../services/order'
@@ -97,7 +99,9 @@ export function SellerIndex() {
         statsObj.totalOrderValue = sellerOrders
             .filter(order => order.status !== 'rejected') 
             .reduce((sum, order) => sum + order.total, 0);
-        statsObj.clients =getUniqueClientFullnames(sellerOrders).length
+        statsObj.clients =getUniqueClientFullnames(sellerOrders
+            .filter(order => order.status !== 'rejected') 
+        ).length
 
     }
 
@@ -203,11 +207,19 @@ export function SellerIndex() {
                             {statsObj.completedOrders>0&&<h6 className='completed-stats'>{statsObj.completedOrders} <span> Completed</span></h6>}
 
                         </li>
-                        <li className='total-orders'>
-                            <h6>60 ordes</h6>
+                        <li className='total-by-amount'>
+                            <div className='total-amount'>
+                                <h4>Total Income</h4>
+                                <h5>{statsObj.totalOrderValue}$</h5>
+                                <Income/>
+                            </div>
                         </li>
-                        <li className='total-orders'>
-                            <h6>60 ordes</h6>
+                        <li className='total-by-clients'>
+                            <div className='total-amount'>
+                                <h4>Clients</h4>
+                                <h5>{statsObj.clients}</h5>
+                                <Clients/>
+                            </div>
                         </li>
                     </ul>
 

@@ -306,10 +306,11 @@
         color: variables.$green;
     }
     .totals{
+        margin-top: functions.rem(8px); 
         justify-items: center;
         h4{
             margin: 0;
-            font-size:functions.rem(14px); ;
+            font-size:functions.rem(14px); 
         }
         h5{
             font-size:functions.rem(32px); 
@@ -320,3 +321,28 @@
     }
 }
 
+.total-amount{
+    margin-top: functions.rem(8px); 
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    h4{
+        margin: 0;
+        font-size:functions.rem(14px); 
+    }
+    h5{
+        justify-self: center;
+        font-size:functions.rem(32px); 
+        font-weight: 700;
+        margin: 0;
+
+    }
+    svg{
+        height: 60px;
+        width: 60px;
+        margin-bottom: 20px;
+
+    }
+}
