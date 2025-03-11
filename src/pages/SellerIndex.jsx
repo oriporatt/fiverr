@@ -145,6 +145,7 @@ export function SellerIndex() {
     return (
         <main className="seller-index">  
             <div className='seller-profile'>
+                
                 <div className='top-details'>
                     <div className='img-container'>
                         <img  src={seller.imageUrl}/>
@@ -250,8 +251,8 @@ export function SellerIndex() {
                                         </div>
                                     </td>
                                     <td>{thisOrder.gigTitle}</td>
-                                    <td className='order-at'>{thisOrder.createdAtFormatted}</td>
-                                    <td className='delivery-at'>{thisOrder.deliveryDateFormatted}</td>
+                                    <td className='order-at'><span className='for-card'>Order At</span>{thisOrder.createdAtFormatted}</td>
+                                    <td className='delivery-at'><span className='for-card'>Delivery At</span>{thisOrder.deliveryDateFormatted}</td>
                                     <td>{thisOrder.total}$</td>
                                     <td className='gig-status' onClick={() => toggleModal(row)}>
                                         {thisOrder.status==="pending"&&<span className='pending'>Pending</span>}                                    

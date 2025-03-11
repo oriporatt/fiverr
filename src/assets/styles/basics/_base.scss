@@ -62,3 +62,10 @@ main{
     // margin-top:  5rem; 
 }
 
+// added after problem with width
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }

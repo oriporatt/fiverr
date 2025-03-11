@@ -189,6 +189,7 @@
         .login-link{
             display: none;
         }
+
     }
 
 
@@ -222,6 +223,7 @@
         .login-link{
             display: block;
         }
+
     }
 
     //normal : with search top option, no menu icon , big nav menu, with img
@@ -374,6 +376,34 @@
 
 }
 
+
+@include mixins.for-mobile-layout {
+    .switch-buying{
+        font-size: functions.rem(10px);
+        // max-width: 50px;
+        text-align: center;
+    }
+    .switch-seller{
+        font-size: functions.rem(10px);
+        // max-width: 50px;
+        text-align: center;
+    }
+}
+
+@include mixins.for-narrow-layout {
+    .switch-buying{
+        font-size: functions.rem(10px);
+        // max-width: 50px;
+        text-align: center;
+    }
+    .switch-seller{
+        font-size: functions.rem(10px);
+        // max-width: 50px;
+        text-align: center;
+    }
+}
+
+
 .header-regular{
     position:static;
     grid-column: -1/1;
@@ -382,3 +412,5 @@
 .button-my-orders-div{
     position: relative;
 }
+
+
