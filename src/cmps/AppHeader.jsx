@@ -41,7 +41,7 @@ export function AppHeader() {
 	
     useEffect(() => {
         const handleClickOutside = (event) => {
-			if (buttonCloseModalRef.current.contains(event.target)){
+			if (buttonCloseModalRef.current&&buttonCloseModalRef.current.contains(event.target)){
 				setShowLogoutBtn(false);
 			}else if (button2Ref.current &&
 				(!button2Ref.current.contains(event.target)&&!button1Ref.current.contains(event.target))) {

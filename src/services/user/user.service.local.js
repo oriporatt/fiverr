@@ -146,6 +146,7 @@ async function _initUsers(){
         {
           "_id": "s104",
           "fullname": "Mei Ling",
+          "username": "Mei",
           "password": "555",
           "cv": "I am a highly skilled translator specializing in English to Mandarin and vice versa. With over 10 years of experience, I have worked with businesses, authors, and content creators to provide accurate and culturally appropriate translations. My services cover documents, websites, and subtitles. Let’s bridge the language barrier together!",
           "level": "premium",
@@ -159,6 +160,7 @@ async function _initUsers(){
         {
           "_id": "s105",
           "fullname": "Ricardo Mendes",
+          "username": "Ricardo",
           "password": "555",
           "cv": "As a professional WordPress developer, I specialize in designing, customizing, and optimizing websites for businesses and individuals. With 6 years of experience, I have built responsive, fast-loading, and SEO-friendly websites. I can help you create a stunning online presence that meets your business needs.",
           "level": "standard",
@@ -172,6 +174,7 @@ async function _initUsers(){
         {
           "_id": "s106",
           "fullname": "Aisha Yusuf",
+          "username": "Aisha",
           "password": "555",
           "cv": "I am a professional content writer and editor with 8 years of experience crafting compelling articles, blogs, and website content. My expertise includes SEO writing, ghostwriting, and technical content creation. I have worked with clients from diverse industries to deliver engaging and informative pieces that drive traffic and conversions.",
           "level": "premium",
@@ -185,6 +188,7 @@ async function _initUsers(){
         {
           "_id": "s107",
           "fullname": "Daniel Schmidt",
+          "username": "Daniel",
           "password": "555",
           "cv": "I am a professional 3D artist with expertise in modeling, rendering, and animation. With over 7 years of experience in Blender and Maya, I have worked on game assets, product designs, and architectural visualizations. Whether you need a realistic render or stylized 3D characters, I am here to bring your ideas to life.",
           "level": "standard",
@@ -198,6 +202,7 @@ async function _initUsers(){
         {
           "_id": "s108",
           "fullname": "Isabella Dupont",
+          "username": "Isabella",
           "password": "555",
           "cv": "As a social media strategist, I help businesses grow their online presence with targeted marketing campaigns. I have 5 years of experience managing Instagram, Facebook, and LinkedIn for brands worldwide. From content creation to analytics, I offer a full range of services to maximize your engagement and reach.",
           "level": "basic",
@@ -211,6 +216,7 @@ async function _initUsers(){
         {
           "_id": "s109",
           "fullname": "Mohammed Al-Farsi",
+          "username": "Mohammed",
           "password": "555",
           "cv": "I am a skilled mobile app developer specializing in Android and iOS applications. With 6 years of experience, I have built apps for e-commerce, health, and education industries. My tech stack includes Flutter, React Native, and Swift. If you need a reliable and user-friendly mobile app, I am here to help!",
           "level": "premium",
@@ -224,6 +230,7 @@ async function _initUsers(){
         {
           "_id": "s110",
           "fullname": "Natalia Ivanova",
+          "username": "Natalia",
           "password": "555",
           "cv": "I am a talented UX/UI designer with a passion for creating beautiful and functional user experiences. With over 5 years of experience, I have worked with startups and established companies to design websites and mobile apps that are both aesthetically pleasing and easy to use. Let’s make your product stand out!",
           "level": "standard",

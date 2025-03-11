@@ -69,7 +69,7 @@ export async function updateOrder(order) {
         store.dispatch(
             {
                 type: UPDATE_ORDER,
-                savedOrder
+                order: savedOrder
             }
         )
         return savedOrder

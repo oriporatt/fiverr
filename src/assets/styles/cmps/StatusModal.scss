@@ -48,17 +48,21 @@
             background-color: lightblue;
         }
         .approved{
-            background-color: lightgreen;
+            background-color: rgb(93, 128, 255);
+            color: white;
         }
         .in-progress{
             background-color: rgb(255, 231, 110);
         }
         .completed{
-            background-color: green;
+            background-color: variables.$green;
             color: white;
+
         }
         .rejected{
             background-color: rgb(227, 82, 82);
+            color: white;
+
         }
 
     }

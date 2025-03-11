@@ -8,6 +8,7 @@
     grid-template-columns: auto 1fr;
     gap:1rem;
     grid-template-rows: auto;
+    
 }
 
 .seller-profile{
@@ -19,6 +20,8 @@
     height: auto;
     max-height: 500px; 
     overflow: hidden; 
+    margin-top: 5px;
+
 }
 
 .top-details{
@@ -126,11 +129,20 @@
 
 .gig-order-table{
     border: 1px solid variables.$lightGray;
-    border-radius: 8px;
+
     box-shadow: 0 0 .880517px rgba(0,0,0,.029),0 0 2.29197px rgba(0,0,0,.03),0 0 5.52px rgba(0,0,0,.054),0 0 11px rgba(0,0,0,.09);  
     width: 100%;
     border-collapse: collapse;
+    margin-top: 5px;
+    margin-bottom: functions.rem(50px); 
+
     thead {
+        border: 1px solid variables.$lightGray;
+        position: sticky;
+        top:-1px;
+        background: white;
+
+
     }
     th, td {
         padding: 8px;
@@ -148,7 +160,6 @@
     }
     tr{
         border-bottom: 1px solid variables.$lightGray;
-
     }
     td {
         padding: 8px;
@@ -191,6 +202,7 @@
     table, tr, td {
         overflow: visible;
     }
+
     .gig-status-menu{
         position: relative;
         svg{
@@ -207,4 +219,42 @@
     &:hover{
         background-color: variables.$lightGray;
     }
+}
+
+.gig-status{
+    cursor: pointer;
+    span{
+        border: 1px solid variables.$lightGray;
+        border-radius: 4px;
+        font-size:functions.rem(12px); 
+        font-weight: 400;
+        height: 30px;
+        min-width: 70px;
+        display: inline-block;
+        align-content: center;
+        &.pending{
+            background-color: lightblue;
+        }
+        &.approved{
+            background-color: rgb(93, 128, 255);
+            color: white;
+        }
+        &.in-progress{
+            background-color: rgb(255, 231, 110);
+        }
+        &.completed{
+            background-color: variables.$green;
+            color: white;
+        }
+        &.rejected{
+            background-color: rgb(227, 82, 82);
+            color: white;
+        }
+    }
+}
+
+.manage-orders{
+    
+    overflow-x: auto; 
+    // max-height: 500px;
 }

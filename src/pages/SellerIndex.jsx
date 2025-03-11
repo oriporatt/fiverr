@@ -17,6 +17,7 @@ import ThreeDots from '../assets/svgs/threeDots.svg?react'
 import { loadOrders } from '../store/actions/order.actions'
 import { orderService } from '../services/order'
 import { StatusModal } from '../cmps/StatusModal'
+import { updateOrder } from '../store/actions/order.actions'
 
 export function SellerIndex() {
     const dispatch = useDispatch()
@@ -31,6 +32,7 @@ export function SellerIndex() {
             seller=sellerArray[0]
         }
     }
+
 
 
 
@@ -86,12 +88,27 @@ export function SellerIndex() {
         setActiveRow((prev) => (prev === id ? null : id));
     }
 
+    function onSubmitStatus(newStatus,orderId){
+        let oldOrder={}
+        const oldOrderArray = orders.filter(currentOrder=>currentOrder._id===orderId)
+        if (oldOrderArray.length===1){
+            oldOrder=oldOrderArray[0]
+        }
+        const newOrder=
+            {
+                ...oldOrder,
+                status: newStatus
+            }
+        updateOrder(newOrder)
+        setActiveRow(null)
+
+    }
+
 
     useEffect(() => {
         loadOrders(orderService.getDefaultFilter())
     }, [])
 
-    if (!seller) return <h1>Loading..</h1>
     return (
         <main className="seller-index">  
             <div className='seller-profile'>
@@ -165,15 +182,23 @@ export function SellerIndex() {
                                 <td className='order-at'>{thisOrder.createdAtFormatted}</td>
                                 <td className='delivery-at'>{thisOrder.deliveryDateFormatted}</td>
                                 <td>{thisOrder.total}$</td>
-                                <td className='gig-status'>
-                                    {thisOrder.status}                                    
+                                <td className='gig-status' onClick={() => toggleModal(row)}>
+                                    {thisOrder.status==="pending"&&<span className='pending'>Pending</span>}                                    
+                                    {thisOrder.status==="approved"&&<span className='approved'>Approved</span>}                                    
+                                    {thisOrder.status==="in-progress"&&<span className='in-progress'>In Progress</span>}                                    
+                                    {thisOrder.status==="completed"&&<span className='completed'>Completed</span>}                                    
+                                    {thisOrder.status==="rejected"&&<span className='rejected'>Rejected</span>}                                    
                                 </td>
 
                                
                                 <td className='gig-status-menu' >
                                     <ThreeDots onClick={() => toggleModal(row)}/>
                                     {activeRow === row && (
-                                    <StatusModal setActiveRow={setActiveRow} initialStatus={thisOrder.status}/>
+                                    <StatusModal setActiveRow={setActiveRow} 
+                                                initialStatus={thisOrder.status} 
+                                                onSubmitStatus={onSubmitStatus}
+                                                orderId={thisOrder._id}
+                                                />
                                     )}
                                 </td>
 
@@ -190,4 +215,3 @@ export function SellerIndex() {
         </main>
     )
 }
-//check

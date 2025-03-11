@@ -4,7 +4,7 @@ import RadioOn from '../assets/svgs/radioOn.svg?react'
 import CloseModal2 from '../assets/svgs/closeModal2.svg?react'
 
 
-export function StatusModal({ setActiveRow,initialStatus }) {
+export function StatusModal({ setActiveRow,initialStatus,onSubmitStatus,orderId }) {
     const [statusState, setStatusState] = useState(initialStatus);
 
     function onToggleStatus(newStatus){
@@ -36,7 +36,7 @@ export function StatusModal({ setActiveRow,initialStatus }) {
                 <button className='rejected'>Rejected</button>
             </div>
 
-            <button className='menu-btn'>Apply</button>
+            <button onClick={()=>onSubmitStatus(statusState,orderId)} className='menu-btn'>Apply</button>
             <button className='menu-btn' onClick={() => setActiveRow(null)} >Close</button>
             <div className='x-corner' onClick={() => setActiveRow(null)}>
                 <CloseModal2 className='x-svg' />
